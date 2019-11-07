@@ -4,13 +4,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the usuario database table.
  * 
  */
 @Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -35,8 +34,6 @@ public class Usuario implements Serializable {
 	private Date fechaUltimoPassword;
 
 	private int intentos;
-
-	private String login;
 
 	private String login;
 
@@ -129,14 +126,6 @@ public class Usuario implements Serializable {
 
 	public void setIntentos(int intentos) {
 		this.intentos = intentos;
-	}
-
-	public String getLogin() {
-		return this.login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 	public String getLogin() {
