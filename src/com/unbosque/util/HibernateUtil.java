@@ -9,6 +9,7 @@ import com.unbosque.entity.Usuario;
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;
+
 	private HibernateUtil() {
 	}
 
