@@ -1,7 +1,7 @@
 package com.unbosque.util;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 import com.unbosque.entity.Usuario;
 // import com.university.entity.Auditoria;
@@ -12,15 +12,12 @@ public class HibernateUtil {
 	private HibernateUtil() {
 	}
 
-	@SuppressWarnings("deprecation")
 	public static SessionFactory getSessionFactory() {
 
 		if (sessionFactory == null) {
 			try {
-				@SuppressWarnings("deprecation")
-				AnnotationConfiguration ac = new AnnotationConfiguration();
+				Configuration ac = new Configuration();
 				ac.addAnnotatedClass(Usuario.class);
-				ac.addAnnotatedClass(Auditoria.class);
 				sessionFactory = ac.configure().buildSessionFactory();
 
 			} catch (Throwable ex) {
