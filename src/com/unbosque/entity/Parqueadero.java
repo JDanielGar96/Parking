@@ -3,88 +3,63 @@ package com.unbosque.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the parqueadero database table.
  * 
  */
 @Entity
-@NamedQuery(name="Parqueadero.findAll", query="SELECT p FROM Parqueadero p")
+@NamedQuery(name = "Parqueadero.findAll", query = "SELECT p FROM Parqueadero p")
 public class Parqueadero implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false, length = 5)
 	private int id;
-
-	private String ciudad;
-
-	private String correo;
-
-	private int disponibilidad;
-
-	private String estado;
-
-	private String fidelizacion;
-
+	@Column(name = "idEmpresa", nullable = false, length = 5)
 	private int idEmpresa;
-
+	@Column(name = "nombreParqueadero", nullable = false, length = 30)
 	private String nombreParqueadero;
-
+	@Column(name = "ciudad", nullable = false, length = 30)
+	private String ciudad;
+	@Column(name = "correo", nullable = false, length = 45)
+	private String correo;
+	@Column(name = "disponibilidad", nullable = false, length = 2)
+	private int disponibilidad;
+	@Column(name = "servicio", nullable = false, length = 45)
 	private String servicio;
+	@Column(name = "fidelizacion", nullable = false, length = 1)
+	private String fidelizacion;
+	@Column(name = "estado", nullable = false, length = 1)
+	private String estado;
 
 	public Parqueadero() {
 	}
 
+	public Parqueadero(int id, int idEmpresa, String nombreParqueadero, String ciudad, String correo,
+			int disponibilidad, String servicio, String fidelizacion, String estado) {
+		super();
+		this.id = id;
+		this.idEmpresa = idEmpresa;
+		this.nombreParqueadero = nombreParqueadero;
+		this.ciudad = ciudad;
+		this.correo = correo;
+		this.disponibilidad = disponibilidad;
+		this.servicio = servicio;
+		this.fidelizacion = fidelizacion;
+		this.estado = estado;
+	}
+
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getCiudad() {
-		return this.ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-
-	public String getCorreo() {
-		return this.correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public int getDisponibilidad() {
-		return this.disponibilidad;
-	}
-
-	public void setDisponibilidad(int disponibilidad) {
-		this.disponibilidad = disponibilidad;
-	}
-
-	public String getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getFidelizacion() {
-		return this.fidelizacion;
-	}
-
-	public void setFidelizacion(String fidelizacion) {
-		this.fidelizacion = fidelizacion;
-	}
-
 	public int getIdEmpresa() {
-		return this.idEmpresa;
+		return idEmpresa;
 	}
 
 	public void setIdEmpresa(int idEmpresa) {
@@ -92,19 +67,63 @@ public class Parqueadero implements Serializable {
 	}
 
 	public String getNombreParqueadero() {
-		return this.nombreParqueadero;
+		return nombreParqueadero;
 	}
 
 	public void setNombreParqueadero(String nombreParqueadero) {
 		this.nombreParqueadero = nombreParqueadero;
 	}
 
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public int getDisponibilidad() {
+		return disponibilidad;
+	}
+
+	public void setDisponibilidad(int disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
 	public String getServicio() {
-		return this.servicio;
+		return servicio;
 	}
 
 	public void setServicio(String servicio) {
 		this.servicio = servicio;
+	}
+
+	public String getFidelizacion() {
+		return fidelizacion;
+	}
+
+	public void setFidelizacion(String fidelizacion) {
+		this.fidelizacion = fidelizacion;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

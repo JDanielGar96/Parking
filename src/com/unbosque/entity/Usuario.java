@@ -14,158 +14,152 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false, length = 5)
 	private int id;
-
-	private String activo;
-
-	private String apellidosNombres;
-
-	private String celular;
-
-	private String clave;
-
-	private String correo;
-
-	private String direccion;
-
-	private String estado;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaUltimoPassword;
-
-	private int intentos;
-
+	@Column(name = "login", nullable = false, length = 8)
 	private String login;
-
-	private String nombre;
-
-	private String password;
-
+	@Column(name = "clave", nullable = false, length = 256)
+	private String clave;
+	@Column(name = "tcredito", nullable = false, length = 30)
 	private String tcredito;
-
+	@Column(name = "apellidosNombres", nullable = false, length = 80)
+	private String apellidosNombres;
+	@Column(name = "correo", nullable = false, length = 75)
+	private String correo;
+	@Column(name = "celular", nullable = false, length = 15)
+	private String celular;
+	@Column(name = "direccion", nullable = false, length = 45)
+	private String direccion;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fechaUltimoPassword", nullable = false, length = 19)
+	private Date fechaUltimoPassword;
+	@Column(name = "activo", nullable = false, length = 1)
+	private String activo;
+	@Column(name = "intentos", nullable = false, length = 2)
+	private int intentos;
+	@Column(name = "tipoUsuario", nullable = false, length = 7)
 	private String tipoUsuario;
 
 	public Usuario() {
 	}
 
+	public Usuario(int id, String login, String clave, String tcredito, String apellidosNombres, String correo,
+			String celular, String direccion, Date fechaUltimoPassword, String activo, int intentos,
+			String tipoUsuario) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.clave = clave;
+		this.tcredito = tcredito;
+		this.apellidosNombres = apellidosNombres;
+		this.correo = correo;
+		this.celular = celular;
+		this.direccion = direccion;
+		this.fechaUltimoPassword = fechaUltimoPassword;
+		this.activo = activo;
+		this.intentos = intentos;
+		this.tipoUsuario = tipoUsuario;
+	}
+
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getActivo() {
-		return this.activo;
-	}
-
-	public void setActivo(String activo) {
-		this.activo = activo;
-	}
-
-	public String getApellidosNombres() {
-		return this.apellidosNombres;
-	}
-
-	public void setApellidosNombres(String apellidosNombres) {
-		this.apellidosNombres = apellidosNombres;
-	}
-
-	public String getCelular() {
-		return this.celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
-	public String getClave() {
-		return this.clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-
-	public String getCorreo() {
-		return this.correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public String getDireccion() {
-		return this.direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public String getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public Date getFechaUltimoPassword() {
-		return this.fechaUltimoPassword;
-	}
-
-	public void setFechaUltimoPassword(Date fechaUltimoPassword) {
-		this.fechaUltimoPassword = fechaUltimoPassword;
-	}
-
-	public int getIntentos() {
-		return this.intentos;
-	}
-
-	public void setIntentos(int intentos) {
-		this.intentos = intentos;
-	}
-
 	public String getLogin() {
-		return this.login;
+		return login;
 	}
 
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
-	public String getNombre() {
-		return this.nombre;
+	public String getClave() {
+		return clave;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 
 	public String getTcredito() {
-		return this.tcredito;
+		return tcredito;
 	}
 
 	public void setTcredito(String tcredito) {
 		this.tcredito = tcredito;
 	}
 
+	public String getApellidosNombres() {
+		return apellidosNombres;
+	}
+
+	public void setApellidosNombres(String apellidosNombres) {
+		this.apellidosNombres = apellidosNombres;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public Date getFechaUltimoPassword() {
+		return fechaUltimoPassword;
+	}
+
+	public void setFechaUltimoPassword(Date fechaUltimoPassword) {
+		this.fechaUltimoPassword = fechaUltimoPassword;
+	}
+
+	public String getActivo() {
+		return activo;
+	}
+
+	public void setActivo(String activo) {
+		this.activo = activo;
+	}
+
+	public int getIntentos() {
+		return intentos;
+	}
+
+	public void setIntentos(int intentos) {
+		this.intentos = intentos;
+	}
+
 	public String getTipoUsuario() {
-		return this.tipoUsuario;
+		return tipoUsuario;
 	}
 
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }
