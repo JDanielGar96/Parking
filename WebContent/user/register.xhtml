@@ -77,7 +77,8 @@
 			</div>
 		</div>
 			
-		<p:commandButton styleClass="register-button" value="#{lbl.register}" action="#{userBean.registerUser}"/>  
+		<h:commandButton action="#{userBean.registerUser}" styleClass="register-button" value="#{lbl.register}"/>  
+		
 		<p:link outcome="/index.xhtml" value="#{lbl.goBack}" />
 	</h:form>
 </h:body>

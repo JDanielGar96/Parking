@@ -17,7 +17,7 @@ import javax.faces.model.ListDataModel;
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 
-@ManagedBean(name = "userBean", eager = true)
+@ManagedBean(name = "userBean")
 @SessionScoped
 public class UsuarioBean implements Serializable {
 	/**
@@ -29,8 +29,6 @@ public class UsuarioBean implements Serializable {
 	
 	public UsuarioBean() {
 		this.user = new Usuario();
-		this.user.setLogin("Bitch");
-		System.out.println(this.user.getLogin());
 	}
 
 	public UsuarioBean(Usuario user) {
@@ -40,8 +38,12 @@ public class UsuarioBean implements Serializable {
 	public String registerUser() {
 		System.out.println("Chegei");
 		UsuarioDAOImpl dao = new UsuarioDAOImpl();
-		dao.save(this.user);
-		return "/user/index.xhtml?faces-redirect=true";
+		user.setActivo("A");
+		user.setFechaUltimoPassword(new Date());
+		user.setIntentos(0);
+		dao.save(user);
+		System.out.println("Salvado");
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	public String getUserAdditionReady() {
@@ -62,7 +64,7 @@ public class UsuarioBean implements Serializable {
 		 * Here goes the redirection web page after user selects update info option in
 		 * the WebContent File
 		 */
-		return "/user/myAccount.xhtml?faces-redirect=true";
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	public ActionListener registerActionListener() {

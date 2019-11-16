@@ -5,6 +5,7 @@ import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Usuario;
 
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -76,5 +77,15 @@ public class UsuarioDAOImpl implements Dao {
 			return false;
 		}
 		return true;
+	}
+	
+	public static void main(String[] args) {
+		Usuario usuario = new Usuario(
+				2, "Wsp", "Amiva", "021312312", "Garcia Davila Jose Daniel", "Josedgarciad@unbosque.edu.co", 
+				"3123026202", "Cra 17a # 175 - 82", new Date(), "Activo", 3, "Admin"
+		);
+		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
+		implementation.save(usuario);
+		System.out.println("Error");
 	}
 }
