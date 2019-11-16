@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://pfaces.org/a4j" 
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:outputStylesheet>
+        .rf-dt{
+            width:400px;
+        }
+        .tooltip-text {
+            width: 50px;
+            height: 20px;
+            cursor: arrow;
+            border-width: 2px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .acent{
+            text-align: center;
+        }
+    </h:outputStylesheet>
+    
+	<f:view>
+		<h:head>
+		    <f:loadBundle basename="labels" var="lbl" />
+			<title><h:outputText value="#{lbl.queryTitle}" /></title>
+		</h:head>
+		
+		<h:body>
+			<h:form>
+			
+				<h:panelGrid columnClasses="acent">
+					<p:dataScroller for="paginatedTable" maxPages="10" fastStep="5" />
+					<p:dataTable value="#{userBean.usersList}" var="user" id="paginatedTable" width="1000px" rows="10">
+					
+					 <f:facet name="header"><h:outputText value="#{lbl.tableTitle}"/></f:facet>
+						
+							<h:column sortBy="#{usuario.id}">
+						       <f:facet name="header"><h:outputText value="#{lbl.id}"/></f:facet><h:outputText value="#{usuario.id}" />
+							</h:column>
+							
+							<h:column sortBy="#{usuario.login}">
+							   <f:facet name="header"><h:outputText value="#{lbl.login}" /></f:facet><h:outputText value="#{usuario.login}" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header"><h:outputText value="#{lbl.password}" /></f:facet><h:outputText value="*******" />
+							</h:column>
+							
+							<h:column>
+							<f:facet name="header"><h:outputText value="#{lbl.names}" /></f:facet><h:outputText value="#{usuario.apellidosNombres}" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header"><h:outputText value="#{lbl.mail}" /></f:facet><h:outputText value="#{usuario.correo}" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header"><h:outputText value="#{lbl.phone}" /></f:facet><h:outputText value="#{usuario.celular}" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">}<h:outputText value="#{lbl.lastPassword}" /></f:facet><h:outputText value="#{usuario.fechaUltimoPassword}" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header"><h:outputText value="#{lbl.userTipe}"  /></f:facet><h:outputText value="#{usuario.tipoUsuario}" />
+							</h:column>
+							
+							<h:column>
+							    <f:facet name="header"><h:outputText value="#{lbl.status}" /></f:facet><h:outputText value="Activo" rendered="#{'A' eq usuario.activo}" />
+							    <h:outputText value="Inactivo" rendered="#{'I' eq usuario.activo}" />
+							</h:column>
+							
+							<h:column>
+							<f:facet name="header"><h:outputText value="#{lbl.modify}"/></f:facet>
+							   <h:form>
+							        <a4j:commandButton action="#{userBean.userUpdateReady}">
+										<p:tooltip followMouse="true" showDelay="200"><p class="tooltip-text"><h:outputText value="#{lbl.editUser}"/></p></p:tooltip>
+									</a4j:commandButton>
+								</h:form>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header"><h:outputText value="Eliminar" /></f:facet>
+								<h:form>
+									<a4j:commandButton  action="#{userBean.deleteUser()}">
+										<p:tooltip followMouse="true" showDelay="200"><p class="tooltip-text"><h:outputText value="#{lbl.delete}"/></p></p:tooltip>
+									</a4j:commandButton>
+								</h:form>
+							</h:column>
+							
+					</p:dataTable>
+					
+					<p:dataScroller for="paginatedTable" maxPages="5" fastStep="3" />
+					    <h:form>
+					    	<a4j:commandButton action="#{userBean.userUpdateReady}">
+						    	<p:tooltip followMouse="true" showDelay="200"><p class="tooltip-text"><h:outputText value="#{lbl.add}"/></p></p:tooltip>
+						    </a4j:commandButton>
+					    </h:form>
+					    
+				</h:panelGrid>
+				
+			</h:form>
+		</h:body>
+	</f:view>
+</ui:composition>
