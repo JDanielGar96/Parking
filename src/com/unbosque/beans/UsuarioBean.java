@@ -26,20 +26,22 @@ public class UsuarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Usuario user;
-	private DataModel userList;
 	
 	public UsuarioBean() {
+		this.user = new Usuario();
+		this.user.setLogin("Bitch");
+		System.out.println(this.user.getLogin());
 	}
 
-	public UsuarioBean(Usuario user, DataModel userList) {
+	public UsuarioBean(Usuario user) {
 		this.user = user;
-		this.userList = userList;
 	}
 	
-	public DataModel getUsersList() {
-		List<Object> list = new UsuarioDAOImpl().list();
-		userList = new ListDataModel(list);
-		return (DataModel<Usuario>) userList;
+	public String registerUser() {
+		System.out.println("Chegei");
+		UsuarioDAOImpl dao = new UsuarioDAOImpl();
+		dao.save(this.user);
+		return "/user/index.xhtml?faces-redirect=true";
 	}
 
 	public String getUserAdditionReady() {
@@ -51,24 +53,7 @@ public class UsuarioBean implements Serializable {
 		return "/user/register.xhtml?faces-redirect=true";
 	}
 
-	public String addUser() {
-		UsuarioDAOImpl dao = new UsuarioDAOImpl();
-		dao.save(user);
-		/*
-		 * Here goes the redirection web page after user gets registered in the
-		 * WebContent File
-		 */
-		return "/user/index.xhtml?faces-redirect=true";
-	}
 
-	public String getUserUpdateReady() {
-		user = (Usuario) (userList.getRowData());
-		/*
-		 * Here goes the redirection web page after user selects the edit info option in
-		 * the WebContent File
-		 */
-		return "/user/edit.xhtml?faces-redirect=true";
-	}
 
 	public String updateUser() {
 		UsuarioDAOImpl dao = new UsuarioDAOImpl();
@@ -80,25 +65,13 @@ public class UsuarioBean implements Serializable {
 		return "/user/myAccount.xhtml?faces-redirect=true";
 	}
 
-	public String deleteUser() {
-		Usuario tempUser = (Usuario) (userList.getRowData());
-		UsuarioDAOImpl dao = new UsuarioDAOImpl();
-		tempUser.setActivo("I");
-		dao.update(tempUser);
-		// dao.remove(usuarioTemp);
-		/*
-		 * Here goes the redirection web page after user selects delete option in the
-		 * WebContent File
-		 */
-		return "/user/index.xhtml?faces-redirect=true";
-	}
-
 	public ActionListener registerActionListener() {
 		return new ActionListener() {
 			@Override
 			public void processAction(ActionEvent event) throws AbortProcessingException {
 				displayMessage();
-				addUser();
+				registerUser();
+
 			}
 		};
 	}

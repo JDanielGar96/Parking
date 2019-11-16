@@ -25,6 +25,7 @@ h1 {
     border-radius: 1em;
 	flex-direction: column;
 	justify-content: center;
+   	width: 25em;
 }
 .register-button {
 	color: #42f5b6;
@@ -34,9 +35,28 @@ h1 {
 	border: 2px solid #42f5b6;
 	font-size: 1em;
    	font-weight: bold;
-	margin: 1em;
 	padding: .5em;
 }
 .menu-button {
 	width: 100%;
+}
+.input-group {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.input-group input { 
+    width: 12em;
+}
+.input-group div {
+	width: 11em;
+}
+.input-validation {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+.input-validation, .register-button {
+	margin-bottom: 1em;
 }

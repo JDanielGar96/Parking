@@ -13,10 +13,18 @@
 <h:body class="login-container">
 	<h1>Ingresar</h1>
 	<h:form styleClass="login-form">    
-	    <h:outputLabel value="USUARIO" />
-	    <p:inputText type="password" />
-   	    <h:outputLabel value="CONTRASEÑA" />
-	    <p:password />
+	
+	    <h:outputLabel value="Usuario" />
+		<p:inputText id="user" required="true" label="user"
+			maxlength="8"
+			requiredMessage="Por favor, digita un usuario"
+			validatorMessage="Usuario no valido"
+			value="#{userBean.usuario.login}">
+		</p:inputText>
+		<p:message for="user" />
+		
+   	    <h:outputLabel value="Contraseña" />
+	    <p:password id="password" required="true" label="password" maxlength="8"/>
 	    <p:messages showDetail="true"/>
    	    <br />
 	    <p:captcha label="Captcha" />
