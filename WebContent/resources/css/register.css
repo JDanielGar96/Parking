@@ -1,12 +1,12 @@
-.login-container {
+.register-container {
 	align-items: center;
 	background-image: url("#{resource['images/login-background.jpg']}");
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
+	flex-direction: column;
 	height: 100vh;
 	margin: 0;
 	width: 100vw;
@@ -15,7 +15,7 @@
 h1 {
 	color: white;
 }
-.login-form {
+.register-form {
 	align-items: center;
     background-color: #ffffffd9;
     border-color: black;
@@ -26,7 +26,7 @@ h1 {
 	flex-direction: column;
 	justify-content: center;
 }
-.submit-button {
+.register-button {
 	color: #42f5b6;
 	cursor: pointer;
 	background-color: #fff;
@@ -37,6 +37,6 @@ h1 {
 	margin: 1em;
 	padding: .5em;
 }
-label {
-	margin: .5em 0;
+.menu-button {
+	width: 100%;
 }
