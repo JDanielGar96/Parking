@@ -3,20 +3,20 @@ package com.unbosque.dao.impl;
 import com.unbosque.dao.Dao;
 import com.unbosque.util.HibernateUtil;
 
-import com.unbosque.entity.Parqueadero;
+import com.unbosque.entity.Usuario;
 
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class ParqueaderoDAOImpl implements Dao {
+public class UsuarioDAOImpl implements Dao {
     	
 	@Override
 	public boolean save(Object object) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		try {
-			Parqueadero savedObject = (Parqueadero) object;
+			Usuario savedObject = (Usuario) object;
 			session.save(savedObject);
 			t.commit();
 		} catch (Exception e) {
@@ -29,7 +29,7 @@ public class ParqueaderoDAOImpl implements Dao {
 	public Object get(long id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
-			Parqueadero object = (Parqueadero) session.load(Parqueadero.class, id);
+			Usuario object = (Usuario) session.load(Usuario.class, id);
 			return object;
 		} catch (Exception e) {
 			return null;
@@ -41,7 +41,7 @@ public class ParqueaderoDAOImpl implements Dao {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
-			List list = session.createQuery("from Parqueadero").list();
+			List list = session.createQuery("from Usuario").list();
 			transaction.commit();
 			return list;
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class ParqueaderoDAOImpl implements Dao {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction t = session.beginTransaction();
-			Parqueadero removedObject = (Parqueadero) object;
+			Usuario removedObject = (Usuario) object;
 			session.delete(removedObject);
 			t.commit();
 		} catch (Exception e) {
@@ -69,7 +69,7 @@ public class ParqueaderoDAOImpl implements Dao {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
-			Parqueadero updatedObject = (Parqueadero) object;
+			Usuario updatedObject = (Usuario) object;
 			session.update(updatedObject);
 			transaction.commit();
 		} catch(Exception e) {
