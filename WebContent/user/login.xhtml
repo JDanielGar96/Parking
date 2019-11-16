@@ -11,6 +11,7 @@
 	<h:outputStylesheet library="css" name="login.css"  />
 </h:head>
 <h:body class="login-container">
+	<h1>Ingresar</h1>
 	<h:form styleClass="login-form">    
 	    <h:outputLabel value="USUARIO" />
 	    <p:inputText type="password" />
@@ -19,7 +20,7 @@
 	    <p:messages showDetail="true"/>
    	    <br />
 	    <p:captcha label="Captcha" />
-	    <h:commandButton class="submit-button" action="#{captchaBean.submit}" value="Ingresar"></h:commandButton>
+	    <p:commandButton styleClass="submit-button" action="#{captchaBean.submit}" value="Ingresar"></p:commandButton>
 	    <p:link outcome="register" value="¿No tienes cuenta? Has click aquí"></p:link>
 	</h:form>
 </h:body>

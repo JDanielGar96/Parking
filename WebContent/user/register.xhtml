@@ -9,32 +9,27 @@
 <h:head>
 	<f:loadBundle basename="labels" var="lbl" />
 	<title><h:outputText value="#{lbl.registerTitle}" /></title>
+	<h:outputStylesheet library="css" name="register.css"  />
 </h:head>
-<h:body>
-	<h:form>
-		<p:growl id="userBean" showDetail="true" sticky="true"/>
-		<p:panel id="newRegister" header="#{lbl.titleRegOne}" footer="#{lbl.titleRegTwo}" style="margin-bottom:5px">
-			
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="#{lbl.login}" /><p:inputText value="#{userBean.usuario.login}" required="true"/>
-				<h:outputLabel value="#{lbl.password}" /><p:inputText value="#{userBean.usuario.clave}" required="true"/>
-				<h:outputLabel value="#{lbl.names}" /><p:inputText value="#{userBean.usuario.apellidosNombres}" required="true"/>
-			    <h:outputLabel value="#{lbl.mail}" /><p:inputText value="#{userBean.usuario.correo}" required="true"/>
-				<h:outputLabel value="#{lbl.phone}" /><p:inputText value="#{userBean.usuario.celular}" required="true"/>
-				<h:outputLabel value="#{lbl.address}" /><p:inputText value="#{userBean.usuario.direccion}" required="true"/>
-				<h:outputLabel value="#{lbl.creditCard}" /><p:inputText value="#{userBean.usuario.tcredito}" required="true"/>
-				<h:outputLabel value="#{lbl.userTipe}" /><h:selectOneMenu value="#{userBean.usuario.tipoUsuario}" required="true">
-					<f:selectItem itemLabel="#{lbl.ownerUser}" itemValue="#{lbl.userOwnerTipe}" />
-					<f:selectItem itemLabel="#{lbl.clientUser}" itemValue="#{lbl.userClientTipe}" />
-		         </h:selectOneMenu>
-		         
-				<h:panelGroup style="display:block; text-align:center">
-				<p:commandButton value="#{lbl.register}" actionListener="#{userBean.registerActionListener}" update="userBean" />  
-					<h:commandLink action="#{lbl.index}" value="#{lbl.goBack}" />
-				</h:panelGroup>
-				
-			</h:panelGrid>
-		</p:panel>
+<h:body class="register-container">
+	<h1>Registrar</h1>
+	<h:form class="register-form">
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel value="#{lbl.login}" /><p:inputText value="#{userBean.usuario.login}" required="true"/>
+			<h:outputLabel value="#{lbl.password}" /><p:inputText value="#{userBean.usuario.clave}" required="true"/>
+			<h:outputLabel value="#{lbl.names}" /><p:inputText value="#{userBean.usuario.apellidosNombres}" required="true"/>
+		    <h:outputLabel value="#{lbl.mail}" /><p:inputText value="#{userBean.usuario.correo}" required="true"/>
+			<h:outputLabel value="#{lbl.phone}" /><p:inputText value="#{userBean.usuario.celular}" required="true"/>
+			<h:outputLabel value="#{lbl.address}" /><p:inputText value="#{userBean.usuario.direccion}" required="true"/>
+			<h:outputLabel value="#{lbl.creditCard}" /><p:inputText value="#{userBean.usuario.tcredito}" required="true"/>
+			<h:outputLabel value="#{lbl.userTipe}" />
+			<p:selectOneMenu styleClass="menu-button" value="#{userBean.usuario.tipoUsuario}" required="true">
+				<f:selectItem itemLabel="#{lbl.ownerUser}" itemValue="#{lbl.userOwnerTipe}" />
+				<f:selectItem itemLabel="#{lbl.clientUser}" itemValue="#{lbl.userClientTipe}" />
+	         </p:selectOneMenu>
+		</h:panelGrid>
+		<p:commandButton styleClass="register-button" value="#{lbl.register}" actionListener="#{userBean.registerActionListener}"/>  
+		<p:commandLink action="#{lbl.index}" value="#{lbl.goBack}" />
 	</h:form>
 </h:body>
 </html>
