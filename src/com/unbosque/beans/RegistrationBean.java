@@ -36,10 +36,6 @@ public class RegistrationBean {
 		return "/index.xhtml?faces-redirect=true";
 	}
 	
-	public void validateEmail() {
-		System.out.println("Entre");
-	}
-	
 	public Usuario getUser() {
 		return this.user;
 	}
