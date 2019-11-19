@@ -20,16 +20,18 @@ import com.unbosque.dao.impl.UsuarioDAOImpl;
 @ManagedBean(name = "userListBean", eager = true)
 @SessionScoped
 public class ListaUsuarioBean implements Serializable {
-	
-	private Usuario user; 
+
+	private Usuario user;
+	@SuppressWarnings("rawtypes")
 	private DataModel userList;
-	
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public DataModel getUsersList() {
 		List<Object> list = new UsuarioDAOImpl().list();
 		userList = new ListDataModel(list);
 		return (DataModel<Usuario>) userList;
 	}
-	
+
 	public String getUserUpdateReady() {
 		user = (Usuario) (userList.getRowData());
 		/*
@@ -38,7 +40,7 @@ public class ListaUsuarioBean implements Serializable {
 		 */
 		return "/user/edit.xhtml?faces-redirect=true";
 	}
-	
+
 	public String deleteUser() {
 		Usuario tempUser = (Usuario) (userList.getRowData());
 		UsuarioDAOImpl dao = new UsuarioDAOImpl();
