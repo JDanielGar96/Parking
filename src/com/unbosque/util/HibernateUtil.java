@@ -6,6 +6,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import com.unbosque.entity.Usuario;
 import com.unbosque.entity.Auditoria;
 
+@SuppressWarnings("deprecation")
 public class HibernateUtil {
 
 	private static SessionFactory sessionFactory;

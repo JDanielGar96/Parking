@@ -8,6 +8,14 @@
 	<name>SophyParkingProject</name>
 	<description>This a sample project in maven</description>
 	<url>http://maven.apache.org</url>
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -25,17 +33,33 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-		<!--  PrimeFaces -->
+		<!-- PrimeFaces -->
 		<dependency>
-		    <groupId>org.primefaces</groupId>
-		    <artifactId>primefaces</artifactId>
-		    <version>7.0</version>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>7.0</version>
+		</dependency>
+		<!-- primefaces library -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>home</artifactId>
+			<version>1.0.4</version>
 		</dependency>
 		<!-- MySQL connector -->
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>8.0.17</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.17</version>
 		</dependency>
 	</dependencies>
 	<packaging>war</packaging>
