@@ -2,7 +2,7 @@ package com.unbosque.dao;
 
 import java.util.List;
 
-public interface Dao {
+public interface DaoGeneral {
 	public boolean save(Object object);
 	
 	public Object get(long id);

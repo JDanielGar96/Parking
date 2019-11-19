@@ -1,6 +1,6 @@
 package com.unbosque.dao.impl;
 
-import com.unbosque.dao.Dao;
+import com.unbosque.dao.DaoGeneral;
 import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Usuario;
@@ -10,7 +10,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UsuarioDAOImpl implements Dao {
+public class UsuarioDAOImpl implements DaoGeneral {
     	
 	@Override
 	public boolean save(Object object) {
@@ -32,16 +32,6 @@ public class UsuarioDAOImpl implements Dao {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Usuario object = (Usuario) session.load(Usuario.class, id);
 			session.close();
-			return object;
-		} catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public Object getByEmail(String email) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			Usuario object = (Usuario) session.load(Usuario.class, email);
 			return object;
 		} catch (Exception e) {
 			return null;

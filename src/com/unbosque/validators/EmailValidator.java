@@ -1,5 +1,7 @@
 package com.unbosque.validators;
 
+import java.util.List;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +11,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
+
+import com.unbosque.entity.Usuario;
+import com.unbosque.dao.impl.UsuarioDAOImpl;
 
 @FacesValidator("com.unbosque.validators.EmailValidator")
 public class EmailValidator implements Validator {
@@ -27,16 +32,27 @@ public class EmailValidator implements Validator {
 	@Override
 	public void validate(FacesContext context, UIComponent component,
 			Object value) throws ValidatorException {
-		
-		matcher = pattern.matcher(value.toString());
+		String emailValue = value.toString();
+		matcher = pattern.matcher(emailValue);
 		if(!matcher.matches()){
 			
 			FacesMessage msg = 
-				new FacesMessage("E-mail validation failed.", "Formato de correo no valido.");
+				new FacesMessage(null, "Formato de correo no valido.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
 
 		}
-
+		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
+		List userList = implementation.list();
+		for(Object userObject: userList) {
+			Usuario user = (Usuario) userObject;
+			System.out.println(user.getApellidosNombres());
+			if(user.getCorreo().equalsIgnoreCase(emailValue)) {
+				FacesMessage msg = 
+					new FacesMessage(null, "El correo solicitado ya existe.");
+				msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+				throw new ValidatorException(msg);
+			}
+		}
 	}
 }
