@@ -31,6 +31,17 @@ public class UsuarioDAOImpl implements Dao {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Usuario object = (Usuario) session.load(Usuario.class, id);
+			session.close();
+			return object;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public Object getByEmail(String email) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Usuario object = (Usuario) session.load(Usuario.class, email);
 			return object;
 		} catch (Exception e) {
 			return null;
@@ -49,7 +60,6 @@ public class UsuarioDAOImpl implements Dao {
 			return null;
 		}
 	}
-
 
 	@Override
 	public boolean remove(Object object) {
@@ -77,15 +87,5 @@ public class UsuarioDAOImpl implements Dao {
 			return false;
 		}
 		return true;
-	}
-	
-	public static void main(String[] args) {
-		Usuario usuario = new Usuario(
-				2, "Wsp", "Amiva", "021312312", "Garcia Davila Jose Daniel", "Josedgarciad@unbosque.edu.co", 
-				"3123026202", "Cra 17a # 175 - 82", new Date(), "Activo", 3, "Admin"
-		);
-		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
-		implementation.save(usuario);
-		System.out.println("Error");
 	}
 }

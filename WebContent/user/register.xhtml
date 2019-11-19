@@ -17,34 +17,50 @@
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.login}" />
-				<p:inputText value="#{userBean.usuario.login}" required="true"/>
+				<p:inputText 
+					value="#{registrationBean.user.login}" 
+					required="true"
+					id="login"
+					requiredMessage="El login es requerido."
+				/>
 			</div>
+			<p:message for="login" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.password}" />
-				<p:inputText value="#{userBean.usuario.clave}" required="true"/>
-			</div>	
+				<p:inputText 
+					value="#{registrationBean.user.clave}" 
+					required="true"
+					id="password"
+					requiredMessage="La clave es requerida."
+				/>
+			</div>
+			<p:message for="password" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.names}" />
-				<p:inputText value="#{userBean.usuario.apellidosNombres}" required="true"/>
+				<p:inputText 
+					value="#{registrationBean.user.apellidosNombres}"
+					required="true"
+					id="surnames"
+					requiredMessage="Nombres y apellidos requeridos."
+				/>
 			</div>
+			<p:message for="surnames" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">
 			    <h:outputLabel value="#{lbl.mail}" />
 			    <p:inputText 
-			    	value="#{userBean.usuario.correo}" 
+			    	value="#{registrationBean.user.correo}" 
 			    	id="email" 
 			    	required="true" 
 			    	label="email"
-					requiredMessage="Please enter your email address."
-					validatorMessage="Invalid email format"
+					requiredMessage="Correo requerido."
 				>
-					<f:validateRegex
-						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					<f:validator validatorId="com.unbosque.validators.EmailValidator" />
 			    </p:inputText>
 			</div>
 			<p:message for="email" />
@@ -52,32 +68,60 @@
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.phone}" />
-				<p:inputText value="#{userBean.usuario.celular}" required="true"/>
+				<p:inputText 
+					value="#{registrationBean.user.celular}" 
+					required="true"
+					id="number" 
+					requiredMessage="El numero es requerido."
+					validatorMessage="Numero invalido, rangos de 7 a 12 digitos."
+				>
+				    <f:validateLongRange
+				        minimum="1000000000"
+				        maximum="999999999999"/>
+				</p:inputText>
 			</div>
+			<p:message for="number" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.address}" />
-				<p:inputText value="#{userBean.usuario.direccion}" required="true"/>
+				<p:inputText 
+					value="#{registrationBean.user.direccion}" 
+					required="true"
+					id="address" 
+					requiredMessage="La direccion es requerida."
+				/>
 			</div>
+			<p:message for="address" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.creditCard}" />
-				<p:inputText value="#{userBean.usuario.tcredito}" required="true"/>
+				<p:inputText 
+					value="#{registrationBean.user.tcredito}" 
+					required="true"
+					id="credit-card" 
+					requiredMessage="Tarjeta de credito requerida."
+					validatorMessage="Tajeta de credito no valida."
+				>
+				    <f:validateLongRange
+				        minimum="10000000000000"
+				        maximum="9999999999999999"/>
+				</p:inputText>
 			</div>
+			<p:message for="credit-card" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">		
 				<h:outputLabel value="#{lbl.userTipe}" />
-				<p:selectOneMenu styleClass="menu-button" value="#{userBean.usuario.tipoUsuario}" required="true">
+				<p:selectOneMenu styleClass="menu-button" value="#{registrationBean.user.tipoUsuario}" required="true">
 					<f:selectItem itemLabel="#{lbl.ownerUser}" itemValue="#{lbl.userOwnerTipe}" />
 					<f:selectItem itemLabel="#{lbl.clientUser}" itemValue="#{lbl.userClientTipe}" />
 		         </p:selectOneMenu>
 			</div>
 		</div>
 			
-		<h:commandButton action="#{userBean.registerUser}" styleClass="register-button" value="#{lbl.register}"/>  
+		<h:commandButton action="#{registrationBean.createUser}" styleClass="register-button" value="#{lbl.register}"/>  
 		
 		<p:link outcome="/index.xhtml" value="#{lbl.goBack}" />
 	</h:form>
