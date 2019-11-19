@@ -42,6 +42,7 @@ public class UsuarioDAOImpl implements Dao {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
+			@SuppressWarnings("rawtypes")
 			List list = session.createQuery("from Usuario").list();
 			transaction.commit();
 			return list;
@@ -49,7 +50,6 @@ public class UsuarioDAOImpl implements Dao {
 			return null;
 		}
 	}
-
 
 	@Override
 	public boolean remove(Object object) {

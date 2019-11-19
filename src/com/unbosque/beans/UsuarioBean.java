@@ -1,9 +1,6 @@
 package com.unbosque.beans;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,15 +8,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ActionListener;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
-
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 
 @ManagedBean(name = "userBean")
 @SessionScoped
-public class UsuarioBean implements Serializable {
+public class UsuarioBean {
 	/**
 	 * 
 	 */
@@ -33,6 +27,14 @@ public class UsuarioBean implements Serializable {
 
 	public UsuarioBean(Usuario user) {
 		this.user = user;
+	}
+	
+	public Usuario getUsuario() {
+		return user;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.user = usuario;
 	}
 	
 	public String registerUser() {
@@ -54,8 +56,6 @@ public class UsuarioBean implements Serializable {
 		/* Here goes the register user web page in the WebContent File */
 		return "/user/register.xhtml?faces-redirect=true";
 	}
-
-
 
 	public String updateUser() {
 		UsuarioDAOImpl dao = new UsuarioDAOImpl();
@@ -83,12 +83,5 @@ public class UsuarioBean implements Serializable {
 		context.addMessage(null, new FacesMessage("Inicio de sesión exitoso", "Bienvenido: " + user.getApellidosNombres()));
 	}
 
-	public Usuario getUsuario() {
-		return user;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.user = usuario;
-	}
 
 }

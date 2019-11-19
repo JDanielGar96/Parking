@@ -5,8 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a4j="http://pfaces.org/a4j" 
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:rich="http://richfaces.org/rich">
+	xmlns:p="http://primefaces.org/ui">
     
 	<f:view>
 		<h:head>
@@ -23,12 +22,12 @@
 					
 					 <f:facet name="header"><h:outputText value="#{lbl.tableTitle}"/></f:facet>
 						
-							<h:column sortBy="#{usuario.id}">
-						       <f:facet name="header"><h:outputText value="#{lbl.id}"/></f:facet><h:outputText value="#{usuario.id}" />
+							<h:column sortBy="#{userBean.usuario.id}">
+						       <f:facet name="header"><h:outputText value="#{lbl.id}"/></f:facet><h:outputText value="#{userBean.usuario.id}" />
 							</h:column>
 							
-							<h:column sortBy="#{usuario.login}">
-							   <f:facet name="header"><h:outputText value="#{lbl.login}" /></f:facet><h:outputText value="#{usuario.login}" />
+							<h:column sortBy="#{userBean.usuario.login}">
+							   <f:facet name="header"><h:outputText value="#{lbl.login}" /></f:facet><h:outputText value="#{userBean.usuario.login}" />
 							</h:column>
 							
 							<h:column>
@@ -36,23 +35,23 @@
 							</h:column>
 							
 							<h:column>
-							<f:facet name="header"><h:outputText value="#{lbl.names}" /></f:facet><h:outputText value="#{usuario.apellidosNombres}" />
+							<f:facet name="header"><h:outputText value="#{lbl.names}" /></f:facet><h:outputText value="#{userBean.usuario.apellidosNombres}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header"><h:outputText value="#{lbl.mail}" /></f:facet><h:outputText value="#{usuario.correo}" />
+								<f:facet name="header"><h:outputText value="#{lbl.mail}" /></f:facet><h:outputText value="#{userBean.usuario.correo}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header"><h:outputText value="#{lbl.phone}" /></f:facet><h:outputText value="#{usuario.celular}" />
+								<f:facet name="header"><h:outputText value="#{lbl.phone}" /></f:facet><h:outputText value="#{userBean.usuario.celular}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header">}<h:outputText value="#{lbl.lastPassword}" /></f:facet><h:outputText value="#{usuario.fechaUltimoPassword}" />
+								<f:facet name="header">}<h:outputText value="#{lbl.lastPassword}" /></f:facet><h:outputText value="#{userBean.usuario.fechaUltimoPassword}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header"><h:outputText value="#{lbl.userTipe}"  /></f:facet><h:outputText value="#{usuario.tipoUsuario}" />
+								<f:facet name="header"><h:outputText value="#{lbl.userTipe}"  /></f:facet><h:outputText value="#{userBean.usuario.tipoUsuario}" />
 							</h:column>
 							
 							<h:column>
