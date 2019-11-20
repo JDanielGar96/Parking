@@ -12,6 +12,7 @@
 	</h:head>
 	<h:body class="login-container">
 		<h1>Ingresar</h1>
+		<p:growl id="msg" showDetail="true" life="3000" />
 		<h:form styleClass="login-form">    
 		
 		    <h:outputLabel value="Usuario" />
@@ -33,14 +34,18 @@
 		    	label="password"
 		    	maxlength="8"
 		    	requiredMessage="Por favor, digita una clave."
-				
 			/>
-		    <p:messages showDetail="true"/>
+		    <p:messages for="password"/>
 		    
 	   	    <br />
 	   	    
-			<p:captcha label="Captcha" />
-		    <p:commandButton styleClass="submit-button" action="#{loginBean.loginUser}" value="Ingresar"></p:commandButton>
+			<p:captcha 
+				id="captcha" 
+				label="Captcha"
+				requiredMessage="Por favor, valide el captcha" />
+			<p:messages for="captcha"/>
+			
+		    <h:commandButton styleClass="submit-button" action="#{loginBean.loginUser}" value="Ingresar" />
 		    <p:link outcome="register" value="¿No tienes cuenta? Has click aquí"></p:link>
 		</h:form>
 	</h:body>

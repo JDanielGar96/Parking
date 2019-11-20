@@ -41,18 +41,21 @@ public class LoginBean implements Serializable {
             session.setAttribute("userName", userName);
             return "home";
         } else {
- 
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Login no valido",
+                    "Credenciales no validos",
                     "Porfavor, intenta de nuevo"));
             return "login";
         }
 	}
 	
+	public void sayHello() {
+		System.out.println("Hello");
+	}
 	
-    public String logout() {
+	
+    public String logoutUser() {
         HttpSession session = Util.getSession();
         session.invalidate();
         return "index";

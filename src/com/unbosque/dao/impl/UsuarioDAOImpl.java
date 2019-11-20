@@ -114,8 +114,8 @@ public class UsuarioDAOImpl implements DaoUser {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
-			Object userObject = (Object) session.createSQLQuery("FROM usuario WHERE login = :login")
-					.setParameter("login", login)
+			Object userObject = (Object) session.createQuery("FROM Usuario WHERE login = :login")
+					.setString("login", login)
 					.uniqueResult();
 			user = (Usuario) userObject;
 			if(user.getClave().equals(password)) {
