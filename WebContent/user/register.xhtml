@@ -22,19 +22,25 @@
 					required="true"
 					id="login"
 					requiredMessage="El login es requerido."
-				/>
+				>
+					<f:validator validatorId="com.unbosque.validators.LoginValidator" />
+				</p:inputText>
 			</div>
 			<p:message for="login" />
 		</div>
 		<div class="input-validation">
 			<div class="input-group">
 				<h:outputLabel value="#{lbl.password}" />
-				<p:inputText 
+		    	<p:password
 					value="#{registrationBean.user.clave}" 
 					required="true"
 					id="password"
 					requiredMessage="La clave es requerida."
-				/>
+					maxlength="8"
+					validatorMessage="El password debe tener minimo 5 caracteres."
+				>
+					<f:validateLength minimum="5" />
+				</p:password>
 			</div>
 			<p:message for="password" />
 		</div>
@@ -71,6 +77,7 @@
 				<p:inputText 
 					value="#{registrationBean.user.celular}" 
 					required="true"
+					type="number"
 					id="number" 
 					requiredMessage="El numero es requerido."
 					validatorMessage="Numero invalido, rangos de 7 a 12 digitos."
@@ -100,12 +107,13 @@
 				<p:inputText 
 					value="#{registrationBean.user.tcredito}" 
 					required="true"
+					type="number"
 					id="credit-card" 
 					requiredMessage="Tarjeta de credito requerida."
 					validatorMessage="Tajeta de credito no valida."
 				>
 				    <f:validateLongRange
-				        minimum="10000000000000"
+				        minimum="100000000000000"
 				        maximum="9999999999999999"/>
 				</p:inputText>
 			</div>

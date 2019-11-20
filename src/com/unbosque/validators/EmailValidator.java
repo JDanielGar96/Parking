@@ -43,10 +43,10 @@ public class EmailValidator implements Validator {
 
 		}
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
-		List userList = implementation.list();
+		List<Object> userList = implementation.list();
 		for(Object userObject: userList) {
 			Usuario user = (Usuario) userObject;
-			System.out.println(user.getApellidosNombres());
+			System.out.println("Validando Email...");
 			if(user.getCorreo().equalsIgnoreCase(emailValue)) {
 				FacesMessage msg = 
 					new FacesMessage(null, "El correo solicitado ya existe.");

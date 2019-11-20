@@ -11,13 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-<<<<<<< HEAD
-public class UsuarioDAOImpl implements Dao {
-
-=======
 public class UsuarioDAOImpl implements DaoGeneral {
-    	
->>>>>>> master
 	@Override
 	public boolean save(Object object) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -43,7 +37,6 @@ public class UsuarioDAOImpl implements DaoGeneral {
 			return null;
 		}
 	}
-<<<<<<< HEAD
 
 	public Object getByEmail(String email) {
 		try {
@@ -56,9 +49,6 @@ public class UsuarioDAOImpl implements DaoGeneral {
 	}
 
 	@SuppressWarnings("unchecked")
-=======
-	
->>>>>>> master
 	@Override
 	public List<Object> list() {
 		try {
