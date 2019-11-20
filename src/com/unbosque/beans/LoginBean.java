@@ -30,6 +30,7 @@ public class LoginBean implements Serializable {
 	}
 
 	public String loginUser() {
+		System.out.println("Realizando el logueo...");
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
 		String userName = user.getLogin();
 		String password = user.getClave();
@@ -49,6 +50,13 @@ public class LoginBean implements Serializable {
             return "login";
         }
 	}
+	
+	
+    public String logout() {
+        HttpSession session = Util.getSession();
+        session.invalidate();
+        return "index";
+     }
 
 
 	public Usuario getUser() {
