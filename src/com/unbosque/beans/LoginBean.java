@@ -3,13 +3,13 @@ package com.unbosque.beans;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 
-@ManagedBean(name = "loginBean")
-@SessionScoped
+@ManagedBean
+@ViewScoped
 public class LoginBean implements Serializable {
 	/*
 	 * Communicate with view to validate login of user
@@ -24,14 +24,11 @@ public class LoginBean implements Serializable {
 		 * Create new user to validate parameters in the database
 		 */
 		this.user = new Usuario();
-		this.user.setLogin("Hola");
 	}
 
-	public String loginUser() {
+	public void loginUser() {
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
-		return "Hola";
 	}
-	
 
 	public Usuario getUser() {
 		return this.user;
