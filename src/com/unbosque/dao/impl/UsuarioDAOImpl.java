@@ -108,7 +108,7 @@ public class UsuarioDAOImpl implements DaoUser {
 
 
 	@Override
-	public boolean login(String login, String password) {
+	public String login(String login, String password) {
         Transaction transaction = null;
         Usuario user = null;
 		try {
@@ -119,7 +119,7 @@ public class UsuarioDAOImpl implements DaoUser {
 					.uniqueResult();
 			user = (Usuario) userObject;
 			if(user.getClave().equals(password)) {
-				return true;
+				return user.getTipoUsuario();
 			}
 			transaction.commit();
 		} catch (Exception e) {
@@ -128,6 +128,6 @@ public class UsuarioDAOImpl implements DaoUser {
             }
             e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 }

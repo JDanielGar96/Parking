@@ -27,6 +27,7 @@ public class LoginBean implements Serializable {
 		 * Create new user to validate parameters in the database
 		 */
 		this.user = new Usuario();
+		System.out.println("Hola");
 	}
 
 	public String loginUser() {
@@ -34,31 +35,36 @@ public class LoginBean implements Serializable {
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
 		String userName = user.getLogin();
 		String password = user.getClave();
-        boolean result = implementation.login(userName, password);
-        if (result) {
+        String result = implementation.login(userName, password);
+        if (result != null) {
             // Http Session and store username
             HttpSession session = Util.getSession();
             session.setAttribute("userName", userName);
-            return "home";
+            session.setAttribute("userType", result);
+            switch(result) {
+            case "ADMIN":
+            	return "/admin/home.xhtml?faces-redirect=true";
+            case "OWNER":
+            	return "/owner/home.xhtml?faces-redirect=true";
+            case "CLIENT":
+            	return "/client/home.xhtml?faces-redirect=true";
+            }           
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Credenciales no validos",
                     "Porfavor, intenta de nuevo"));
-            return "login";
         }
-	}
-	
-	public void sayHello() {
-		System.out.println("Hello");
+        return null;
 	}
 	
 	
-    public String logoutUser() {
+    public String logOutUser() {
+    	System.out.println("LogOut...");
         HttpSession session = Util.getSession();
         session.invalidate();
-        return "index";
+        return "/index.xhtml?faces-redirect=true";
      }
 
 

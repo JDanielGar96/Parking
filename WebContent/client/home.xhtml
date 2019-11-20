@@ -5,25 +5,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
->
+      >
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<title>Header</title>
+		<title>Home</title>
+		<h:outputStylesheet library="css" name="general.css"  />
 		<h:outputStylesheet library="css" name="header.css"  />
 	</h:head>
 	<h:body>
-		<header>
-			<h:graphicImage 
-				library="images" 
-				name="logo.svg" 
-				alt="logo" 
-				styleClass="logo"/>
-			<h:form class="buttons">
-			    <h:commandButton 
-			    	styleClass="logout" 
-			    	action="#{loginBean.logOutUser}" 
-			    	value="Salir" />
-			</h:form>
-		</header>
+		<ui:insert name="header">
+			<ui:include src="/template/common/header.xhtml"></ui:include>
+		</ui:insert>
 	</h:body>
 </ui:composition>

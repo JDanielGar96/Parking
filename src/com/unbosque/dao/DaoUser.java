@@ -6,6 +6,6 @@ public interface DaoUser extends DaoGeneral {
 	
 	public Object getByEmail(String email);
 	
-	public boolean login(String login, String password);
+	public String login(String login, String password);
 
 }

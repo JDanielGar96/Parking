@@ -13,44 +13,88 @@ import javax.servlet.http.HttpSession;
  
 @WebFilter(filterName = "AuthFilter", urlPatterns = {"*.xhtml"})
 public class AuthFilter implements Filter {
-     
-    public AuthFilter() {
-    }
+    
+	public static String[] authorizedUrls = {
+			"/index.xhtml",
+			"/user/login.xhtml",
+			"/user/register.xhtml"
+	};
+	
+    public AuthFilter() {}
  
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-         
-    }
+    public void init(FilterConfig filterConfig) throws ServletException {}
  
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
          try {
  
-            // check whether session variable is set
+            // Check variables on session ( If exist )
+        	 
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
-            HttpSession ses = req.getSession(false);
-            //  allow user to proccede if url is login.xhtml or user logged in or user is accessing any page in //public folder
-            String reqURI = req.getRequestURI();
-            if ( 	
-            		reqURI.indexOf("/index.xhtml") >= 0 || 
-            		reqURI.indexOf("/user/login.xhtml") >= 0 ||
-            		reqURI.indexOf("/user/register.xhtml") >= 0 ||
-            		(ses != null && ses.getAttribute("username") != null) || 
-            		reqURI.indexOf("/public/") >= 0 || 
-            		reqURI.contains("javax.faces.resource") 
-            	)
-                   chain.doFilter(request, response);
-            else   // user didn't log in but asking for a page that is not allowed so take user to login page
-                   res.sendRedirect(req.getContextPath() + "/index.xhtml");  // Anonymous user. Redirect to login page
+            
+            HttpSession session = req.getSession(false);
+            
+            //  Filter by type of user
+            String requestUrl = req.getRequestURI();
+            System.out.println(requestUrl);
+            
+            if(session != null && session.getAttribute("userName") != null) {
+            	System.out.println("La sesion no es nula.");
+            	if(this.validateUserAuth(requestUrl, session) || this.validatePublicUrls(requestUrl)) {
+            		chain.doFilter(request, response);
+            	} else {
+            		String userType = (String) session.getAttribute("userType");
+            		res.sendRedirect(req.getContextPath() + 
+            				"/" + userType.toLowerCase() + "/home.xhtml");
+            	}
+            } else {
+            	System.out.println("Al menos entre aquí.");
+            	if(this.validateUrls(requestUrl) || this.validatePublicUrls(requestUrl)) {
+            		chain.doFilter(request, response);
+            	} else {
+            		res.sendRedirect(req.getContextPath() + "/index.xhtml");
+            	}
+            }
+
       }
      catch(Throwable t) {
          System.out.println( t.getMessage());
      }
-    } //doFilter
- 
-    @Override
-    public void destroy() {
-         
     }
+    
+    private boolean validateUrls(String urlName) {
+    	// Validate urls of not logged users
+    	for(String url: AuthFilter.authorizedUrls) {
+    		if(urlName.indexOf(url) >= 0) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    private boolean validatePublicUrls(String requestUrl) {
+    	// Validate if url is public or not
+    	return requestUrl.indexOf("/public/") >= 0 ||
+    			requestUrl.contains("javax.faces.resource");
+    }
+ 
+    private boolean validateUserAuth(String urlName, HttpSession session) {
+    	// Validate users thought avalible authorizations in the db
+    	try {    		
+    		String levelAuth = (String) session.getAttribute("userType");
+    		if(urlName.indexOf("client") >= 0 && levelAuth.equalsIgnoreCase("CLIENT") ||
+    				urlName.indexOf("admin") >= 0 && levelAuth.equalsIgnoreCase("ADMIN") ||
+    				urlName.indexOf("owner") >= 0 && levelAuth.equalsIgnoreCase("OWNER")) {
+    			return true;
+    		}
+    	} catch (Exception e) {
+    		return false;
+    	}
+    	return false;
+    }
+    
+    @Override
+    public void destroy() {}
 }
