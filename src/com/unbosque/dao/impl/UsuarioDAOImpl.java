@@ -5,13 +5,19 @@ import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Usuario;
 
-import java.util.Date;
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+<<<<<<< HEAD
+public class UsuarioDAOImpl implements Dao {
+
+=======
 public class UsuarioDAOImpl implements DaoGeneral {
     	
+>>>>>>> master
 	@Override
 	public boolean save(Object object) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -28,7 +34,7 @@ public class UsuarioDAOImpl implements DaoGeneral {
 
 	@Override
 	public Object get(long id) {
-		try {			
+		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Usuario object = (Usuario) session.load(Usuario.class, id);
 			session.close();
@@ -37,14 +43,29 @@ public class UsuarioDAOImpl implements DaoGeneral {
 			return null;
 		}
 	}
+<<<<<<< HEAD
+
+	public Object getByEmail(String email) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Usuario object = (Usuario) session.load(Usuario.class, email);
+			return object;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+=======
 	
+>>>>>>> master
 	@Override
 	public List<Object> list() {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
-			@SuppressWarnings("rawtypes")
-			List list = session.createQuery("from Usuario").list();
+			Query query = session.createQuery("FROM Usuario");
+			List<Object> list = query.list();
 			transaction.commit();
 			return list;
 		} catch (Exception e) {
@@ -54,7 +75,7 @@ public class UsuarioDAOImpl implements DaoGeneral {
 
 	@Override
 	public boolean remove(Object object) {
-		try {			
+		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction t = session.beginTransaction();
 			Usuario removedObject = (Usuario) object;
@@ -68,13 +89,13 @@ public class UsuarioDAOImpl implements DaoGeneral {
 
 	@Override
 	public boolean update(Object object) {
-		try {			
+		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			Usuario updatedObject = (Usuario) object;
 			session.update(updatedObject);
 			transaction.commit();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 		return true;
