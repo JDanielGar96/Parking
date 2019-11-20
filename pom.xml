@@ -45,6 +45,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.17</version>
 		</dependency>
+		<!--  Servlet -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>servlet-api</artifactId>
+		    <version>3.0-alpha-1</version>
+		    <scope>provided</scope>
+		</dependency>
 	</dependencies>
 	<packaging>war</packaging>
 	<build>

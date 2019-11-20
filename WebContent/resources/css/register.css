@@ -1,19 +1,15 @@
 .register-container {
 	align-items: center;
-	background-image: url("#{resource['images/login-background.jpg']}");
-	background-attachment: fixed;
+/* 	background-image: url("#{resource['images/login-background.jpg']}"); */
+/* 	background-attachment: fixed;
 	background-size: cover;
-	background-position: center;
+	background-position: center; */
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0;
-	width: 100vw;
 	font-family: Arial, Helvetica, sans-serif;
-}
-h1 {
-	color: white;
 }
 .register-form {
 	align-items: center;
@@ -23,7 +19,8 @@ h1 {
 	font-weight: bold;
    	padding: 2em;
    	margin: 1em;
-    border-radius: 1em;
+    box-shadow: 0em 0em 20px 0px #cfcfcf;
+    border-radius: .5em;
 	flex-direction: column;
 	justify-content: center;
    	width: 25em;

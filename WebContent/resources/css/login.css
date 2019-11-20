@@ -1,21 +1,22 @@
 .login-container {
 	align-items: center;
-	background-image: url("#{resource['images/login-background.jpg']}");
-	background-attachment: fixed;
+/* 	background-image: url("#{resource['images/login-background.jpg']}"); */
+/* 	background-attachment: fixed;
 	background-size: cover;
-	background-position: center;
+	background-position: center; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	height: 100vh;
 	margin: 0;
-	width: 100vw;
 	font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
 	color: white;
 }
 .login-form {
+    border-radius: .5em;
+    box-shadow: 0em 0em 20px 0px #cfcfcf;	
 	align-items: center;
     background-color: #ffffffd9;
     border-color: black;

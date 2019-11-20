@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @ViewScoped
@@ -29,6 +30,7 @@ public class LoginBean implements Serializable {
 	public void loginUser() {
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
 	}
+
 
 	public Usuario getUser() {
 		return this.user;

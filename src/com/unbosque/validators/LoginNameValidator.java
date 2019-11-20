@@ -13,18 +13,18 @@ import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 
 
-@FacesValidator("com.unbosque.validators.LoginValidator")
-public class LoginValidator implements Validator {
+@FacesValidator("com.unbosque.validators.LoginNameValidator")
+public class LoginNameValidator implements Validator {
 	
 	private static int minLenght = 5; // OPTION
 	private static int maxLenght = 8; // OPTION
 	
-	public LoginValidator() {}
+	public LoginNameValidator() {}
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		String nameValue = value.toString();
-		if(nameValue.length() <= LoginValidator.minLenght && nameValue.length() >= LoginValidator.maxLenght) {
+		if(nameValue.length() <= LoginNameValidator.minLenght && nameValue.length() >= LoginNameValidator.maxLenght) {
 			FacesMessage msg = 
 				new FacesMessage(null, "El usuario debe contener entre 5 y 8 caracteres.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
