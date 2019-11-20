@@ -18,16 +18,16 @@
 			
 				<h:panelGrid columnClasses="acent">
 					<p:dataScroller for="paginatedTable" maxPages="10" fastStep="5" />
-					<p:dataTable value="#{userListBean.usersList}" var="user" id="paginatedTable" width="1000px" rows="10">
+					<p:dataTable var="users" value="#{userListBean.usersList}"  id="paginatedTable"  width="1000px" rows="10">
 					
 					 <f:facet name="header"><h:outputText value="#{lbl.tableTitle}"/></f:facet>
 						
-							<h:column sortBy="#{userBean.usuario.id}">
-						       <f:facet name="header"><h:outputText value="#{lbl.id}"/></f:facet><h:outputText value="#{userBean.usuario.id}" />
+							<h:column sortBy="#{users.id}">
+						       <f:facet name="header"><h:outputText value="#{lbl.id}"/></f:facet><h:outputText value="#{users.id}" />
 							</h:column>
 							
-							<h:column sortBy="#{userBean.usuario.login}">
-							   <f:facet name="header"><h:outputText value="#{lbl.login}" /></f:facet><h:outputText value="#{userBean.usuario.login}" />
+							<h:column sortBy="#{users.login}">
+							   <f:facet name="header"><h:outputText value="#{lbl.login}" /></f:facet><h:outputText value="#{users.login}" />
 							</h:column>
 							
 							<h:column>
@@ -35,28 +35,28 @@
 							</h:column>
 							
 							<h:column>
-							<f:facet name="header"><h:outputText value="#{lbl.names}" /></f:facet><h:outputText value="#{userBean.usuario.apellidosNombres}" />
+							<f:facet name="header"><h:outputText value="#{lbl.names}" /></f:facet><h:outputText value="#{users.apellidosNombres}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header"><h:outputText value="#{lbl.mail}" /></f:facet><h:outputText value="#{userBean.usuario.correo}" />
+								<f:facet name="header"><h:outputText value="#{lbl.mail}" /></f:facet><h:outputText value="#{users.correo}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header"><h:outputText value="#{lbl.phone}" /></f:facet><h:outputText value="#{userBean.usuario.celular}" />
+								<f:facet name="header"><h:outputText value="#{lbl.phone}" /></f:facet><h:outputText value="#{users.celular}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header">}<h:outputText value="#{lbl.lastPassword}" /></f:facet><h:outputText value="#{userBean.usuario.fechaUltimoPassword}" />
+								<f:facet name="header">}<h:outputText value="#{lbl.lastPassword}" /></f:facet><h:outputText value="#{users.fechaUltimoPassword}" />
 							</h:column>
 							
 							<h:column>
-								<f:facet name="header"><h:outputText value="#{lbl.userTipe}"  /></f:facet><h:outputText value="#{userBean.usuario.tipoUsuario}" />
+								<f:facet name="header"><h:outputText value="#{lbl.userTipe}"  /></f:facet><h:outputText value="#{users.tipoUsuario}" />
 							</h:column>
 							
 							<h:column>
-							    <f:facet name="header"><h:outputText value="#{lbl.status}" /></f:facet><h:outputText value="Activo" rendered="#{'A' eq usuario.activo}" />
-							    <h:outputText value="Inactivo" rendered="#{'I' eq usuario.activo}" />
+							    <f:facet name="header"><h:outputText value="#{lbl.status}" /></f:facet><h:outputText value="Activo" rendered="#{'A' eq users.activo}" />
+							    <h:outputText value="Inactivo" rendered="#{'I' eq users.activo}" />
 							</h:column>
 							
 							<h:column>

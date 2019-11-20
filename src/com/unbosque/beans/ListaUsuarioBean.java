@@ -22,8 +22,19 @@ public class ListaUsuarioBean {
 		this.user = new Usuario();
 	}
 
+	public ListaUsuarioBean(Usuario user) {
+		this.user = user;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public DataModel getUsersList() {
+		List<Object> list = new UsuarioDAOImpl().list();
+		userList = new ListDataModel((List<Usuario>) (Object) list);
+		return userList;
+	}
+
 	public String getUserUpdateReady() {
-		user = (Usuario) (userList.getRowData());
+		user = (Usuario) this.getUsersList().getRowData();
 		/*
 		 * Here goes the redirection web page after user selects the edit info option in
 		 * the WebContent File
@@ -50,13 +61,6 @@ public class ListaUsuarioBean {
 
 	public void setUser(Usuario user) {
 		this.user = user;
-	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public DataModel getUsersList() {
-		List<Object> list = new UsuarioDAOImpl().list();
-		userList = new ListDataModel(list);
-		return userList;
 	}
 
 }

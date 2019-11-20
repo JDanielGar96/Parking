@@ -5,13 +5,14 @@ import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Usuario;
 
-import java.util.Date;
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class UsuarioDAOImpl implements Dao {
-    	
+
 	@Override
 	public boolean save(Object object) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -28,7 +29,7 @@ public class UsuarioDAOImpl implements Dao {
 
 	@Override
 	public Object get(long id) {
-		try {			
+		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Usuario object = (Usuario) session.load(Usuario.class, id);
 			session.close();
@@ -37,7 +38,7 @@ public class UsuarioDAOImpl implements Dao {
 			return null;
 		}
 	}
-	
+
 	public Object getByEmail(String email) {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -47,14 +48,15 @@ public class UsuarioDAOImpl implements Dao {
 			return null;
 		}
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object> list() {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
-			@SuppressWarnings("rawtypes")
-			List list = session.createQuery("from Usuario").list();
+			Query query = session.createQuery("FROM Usuario");
+			List<Object> list = query.list();
 			transaction.commit();
 			return list;
 		} catch (Exception e) {
@@ -64,7 +66,7 @@ public class UsuarioDAOImpl implements Dao {
 
 	@Override
 	public boolean remove(Object object) {
-		try {			
+		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction t = session.beginTransaction();
 			Usuario removedObject = (Usuario) object;
@@ -78,13 +80,13 @@ public class UsuarioDAOImpl implements Dao {
 
 	@Override
 	public boolean update(Object object) {
-		try {			
+		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			Usuario updatedObject = (Usuario) object;
 			session.update(updatedObject);
 			transaction.commit();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 		return true;
