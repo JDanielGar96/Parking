@@ -1,6 +1,6 @@
 package com.unbosque.dao.impl;
 
-import com.unbosque.dao.Dao;
+import com.unbosque.dao.DaoGeneral;
 import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Reserva;
@@ -9,7 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class ReservaDAOImpl implements Dao {
+public class ReservaDAOImpl implements DaoGeneral {
 
 	@Override
 	public boolean save(Object object) {
