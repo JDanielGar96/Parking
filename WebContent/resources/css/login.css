@@ -11,9 +11,6 @@
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 }
-h1 {
-	color: white;
-}
 .login-form {
     border-radius: .5em;
     box-shadow: 0em 0em 20px 0px #cfcfcf;	

@@ -1,6 +1,6 @@
 package com.unbosque.dao.impl;
 
-import com.unbosque.dao.DaoGeneral;
+import com.unbosque.dao.DaoUser;
 import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Usuario;
@@ -11,7 +11,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UsuarioDAOImpl implements DaoGeneral {
+public class UsuarioDAOImpl implements DaoUser {
+	
 	@Override
 	public boolean save(Object object) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -32,16 +33,6 @@ public class UsuarioDAOImpl implements DaoGeneral {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Usuario object = (Usuario) session.load(Usuario.class, id);
 			session.close();
-			return object;
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public Object getByEmail(String email) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			Usuario object = (Usuario) session.load(Usuario.class, email);
 			return object;
 		} catch (Exception e) {
 			return null;
@@ -89,5 +80,54 @@ public class UsuarioDAOImpl implements DaoGeneral {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Object getByLogin(String login) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createSQLQuery("from usuario where login = :login").addEntity(Usuario.class);
+			List result = query.setString("login", login).list();
+			return (Object) result.get(0);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	@Override
+	public Object getByEmail(String email) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createSQLQuery("from usuario where email = :email").addEntity(Usuario.class);
+			List result = query.setString("email", email).list();
+			return (Object) result.get(0);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+
+	@Override
+	public boolean login(String login, String password) {
+        Transaction transaction = null;
+        Usuario user = null;
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			Object userObject = (Object) session.createSQLQuery("FROM usuario WHERE login = :login")
+					.setParameter("login", login)
+					.uniqueResult();
+			user = (Usuario) userObject;
+			if(user.getClave().equals(password)) {
+				return true;
+			}
+			transaction.commit();
+		} catch (Exception e) {
+            if (transaction != null) {
+            	transaction.rollback();
+            }
+            e.printStackTrace();
+		}
+		return false;
 	}
 }

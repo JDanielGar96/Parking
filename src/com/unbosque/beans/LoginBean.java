@@ -2,8 +2,10 @@ package com.unbosque.beans;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
@@ -27,8 +29,25 @@ public class LoginBean implements Serializable {
 		this.user = new Usuario();
 	}
 
-	public void loginUser() {
+	public String loginUser() {
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
+		String userName = user.getLogin();
+		String password = user.getClave();
+        boolean result = implementation.login(userName, password);
+        if (result) {
+            // Http Session and store username
+            HttpSession session = Util.getSession();
+            session.setAttribute("userName", userName);
+            return "home";
+        } else {
+ 
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Login no valido",
+                    "Porfavor, intenta de nuevo"));
+            return "login";
+        }
 	}
 
 
