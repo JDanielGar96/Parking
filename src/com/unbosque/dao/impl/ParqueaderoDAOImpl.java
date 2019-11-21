@@ -2,7 +2,6 @@ package com.unbosque.dao.impl;
 
 import com.unbosque.dao.Dao;
 import com.unbosque.util.HibernateUtil;
-
 import com.unbosque.entity.Parqueadero;
 
 import java.util.List;
@@ -38,15 +37,12 @@ public class ParqueaderoDAOImpl implements Dao {
 	
 	@Override
 	public List<Object> list() {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			Transaction transaction = session.beginTransaction();
-			List list = session.createQuery("from Parqueadero").list();
-			transaction.commit();
-			return list;
-		} catch (Exception e) {
-			return null;
-		}
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		List list = session.createQuery("from Parqueadero").list();
+		System.out.println(list);
+		transaction.commit();
+		return list;
 	}
 
 

@@ -3,8 +3,7 @@ package com.unbosque.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import com.unbosque.entity.Usuario;
-import com.unbosque.entity.Auditoria;
+import com.unbosque.entity.*;
 
 @SuppressWarnings("deprecation")
 public class HibernateUtil {
@@ -23,6 +22,7 @@ public class HibernateUtil {
 				AnnotationConfiguration ac = new AnnotationConfiguration();
 				ac.addAnnotatedClass(Usuario.class);
 				ac.addAnnotatedClass(Auditoria.class);
+				ac.addAnnotatedClass(Parqueadero.class);
 				sessionFactory = ac.configure().buildSessionFactory();
 
 			} catch (Throwable ex) {
