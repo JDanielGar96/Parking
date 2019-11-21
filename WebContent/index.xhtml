@@ -9,10 +9,16 @@
 		<h:outputStylesheet library="css" name="index.css"  />
 	</h:head>
 	<h:body>
-		<ui:insert name="header">
-			<ui:include src="/template/common/header.xhtml"></ui:include>
-		</ui:insert>
-		<h1>Selecciona un parqueadero:</h1>
-		<h:graphicImage library="images" name="map.png" alt="logo" styleClass="map"/>
+		<div class="container">
+			<h:graphicImage library="images" name="logo.svg" alt="logo" styleClass="logo"/>
+			<h1>Bienvenido</h1>
+			<div class="buttons">
+				<p:link outcome="user/register" value="Comenzar" styleClass="register" />
+				<p:separator styleClass="separator" />
+				<p:link outcome="user/login" value="Ingresar" styleClass="login" />
+			</div>
+		</div>
+		<h1></h1>
+		
 	</h:body>
 </ui:composition>

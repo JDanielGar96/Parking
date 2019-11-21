@@ -1,6 +1,6 @@
 package com.unbosque.dao.impl;
 
-import com.unbosque.dao.Dao;
+import com.unbosque.dao.DaoGeneral;
 import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Vehiculo;
@@ -9,7 +9,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class VehiculoDAOImpl implements Dao {
+public class VehiculoDAOImpl implements DaoGeneral {
     	
 	@Override
 	public boolean save(Object object) {

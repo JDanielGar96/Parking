@@ -18,20 +18,19 @@ header {
 	margin: 0 1em;
 	font-family: Arial, Helvetica, sans-serif;
 }
-.register, .login {
+.logout {
 	border-radius: .5em;
 	padding: .5em;
+	background-color: white;
+	cursor: pointer;
     font-weight: bold;
     text-decoration: none;
     margin: 0 1em;
 }
-.login:hover {
-	text-decoration: underline;
-}
-.register:hover  {
+.logout:hover  {
 	background-color: #e9fdff;
 }
-.register {
+.logout {
 	color: #42f5b6;
 	border: 2px solid #42f5b6;
 }

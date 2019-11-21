@@ -1,39 +1,40 @@
 package com.unbosque.beans;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.ActionListener;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 
-@ManagedBean(name = "userListBean", eager = true)
+@ManagedBean(name = "userListBean")
 @SessionScoped
-public class ListaUsuarioBean implements Serializable {
+public class ListaUsuarioBean {
 
 	private Usuario user;
 	@SuppressWarnings("rawtypes")
 	private DataModel userList;
 
+	public ListaUsuarioBean() {
+		this.user = new Usuario();
+	}
+
+	public ListaUsuarioBean(Usuario user) {
+		this.user = user;
+	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public DataModel getUsersList() {
 		List<Object> list = new UsuarioDAOImpl().list();
-		userList = new ListDataModel(list);
-		return (DataModel<Usuario>) userList;
+		userList = new ListDataModel((List<Usuario>) (Object) list);
+		return userList;
 	}
 
 	public String getUserUpdateReady() {
-		user = (Usuario) (userList.getRowData());
+		user = (Usuario) this.getUsersList().getRowData();
 		/*
 		 * Here goes the redirection web page after user selects the edit info option in
 		 * the WebContent File
@@ -52,6 +53,14 @@ public class ListaUsuarioBean implements Serializable {
 		 * WebContent File
 		 */
 		return "/user/index.xhtml?faces-redirect=true";
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 
 }
