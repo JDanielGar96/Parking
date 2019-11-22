@@ -39,13 +39,19 @@ public class UsuarioDAOImpl implements DaoUser {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object> list() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
-		List list = session.createQuery("from Usuario").list();
-		transaction.commit();
-		return list;
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			Query query = session.createQuery("FROM Usuario");
+			List<Object> list = query.list();
+			transaction.commit();
+			return list;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
