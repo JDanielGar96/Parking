@@ -1,0 +1,107 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Gestión de Parqueaderos</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:dataTable id="tbusuario" var="usuario"
+			value="#{usuarioBean.listarUsuario}" style="width: 70%"
+			emptyMessage="No hay registros disponibles" paginator="true"
+			rows="10" paginatorPosition="top"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+					<h:outputText value="Lista de Usuarios" />
+				</f:facet>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+						<h:outputText value="#{usuario.id}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Login" />
+					</f:facet>
+						<h:outputText value="#{usuario.login}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Clave" />
+					</f:facet>
+						<h:outputText value="#{usuario.clave}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Tarjeta de Credito" />
+					</f:facet>
+						<h:outputText value="#{usuario.tcredito}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Apellidos y Nombres" />
+					</f:facet>
+						<h:outputText value="#{usuario.apellidosNombres}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Correo" />
+					</f:facet>
+						<h:outputText value="#{usuario.correo}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Celular" />
+					</f:facet>
+						<h:outputText value="#{usuario.celular}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Dirección" />
+					</f:facet>
+						<h:outputText value="#{usuario.direccion}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Password" />
+					</f:facet>
+						<h:outputText value="#{usuario.fechaUltimoPassword}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Activo" />
+					</f:facet>
+						<h:outputText value="#{usuario.activo}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Intentos" />
+					</f:facet>
+						<h:outputText value="#{usuario.intentos}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo Usuario" />
+					</f:facet>
+						<h:outputText value="#{usuario.tipoUsuario}" /> 
+				</p:column>	
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Modificar" />
+					</f:facet>
+					<h:commandButton action="#{usuarioBean.prepararModificarUsuario}" value="Modificar"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Eliminar" />
+					</f:facet>
+					<h:commandButton action="#{usuarioBean.eliminarUsuario}" value="Eliminar"/>
+				</p:column>													
+			</p:dataTable>
+			<h:commandButton action="#{usuarioBean.prepararAdicionarUsuario}" value="Crear"/>
+		</h:form>
+	</h:body>
+</html>

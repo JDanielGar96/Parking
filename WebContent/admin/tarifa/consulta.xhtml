@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Gestión de Parqueaderos</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:dataTable id="tbtarifa" var="tarifa"
+			value="#{tarifaBean.listarTarifa}" style="width: 70%"
+			emptyMessage="No hay registros disponibles" paginator="true"
+			rows="10" paginatorPosition="top"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+					<h:outputText value="Lista de Tarifas" />
+				</f:facet>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+						<h:outputText value="#{tarifa.id}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo Cobro" />
+					</f:facet>
+						<h:outputText value="#{tarifa.descripcionTipoCobro}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Valor Tarifa" />
+					</f:facet>
+						<h:outputText value="#{tarifa.valorTarifa}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Descuento" />
+					</f:facet>
+						<h:outputText value="#{tarifa.descuento}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Estado" />
+					</f:facet>
+						<h:outputText value="#{tarifa.estado}" /> 
+				</p:column>	
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Modificar" />
+					</f:facet>
+					<h:commandButton action="#{tarifaBean.prepararModificarTarifa}" value="Modificar"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Eliminar" />
+					</f:facet>
+					<h:commandButton action="#{tarifaBean.eliminarTarifa}" value="Eliminar"/>
+				</p:column>													
+			</p:dataTable>
+			<h:commandButton action="#{tarifaBean.prepararAdicionarTarifa}" value="Crear"/>
+		</h:form>
+	</h:body>
+</html>

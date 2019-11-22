@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Gestión de Auditorias</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:dataTable id="tbauditoria" var="auditoria"
+			value="#{auditoriaBean.listarAuditoria}" style="width: 70%"
+			emptyMessage="No hay registros disponibles" paginator="true"
+			rows="10" paginatorPosition="top"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+					<h:outputText value="Lista de Auditoria" />
+				</f:facet>
+				<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+					<h:outputText value="#{auditoria.id}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="UsuarioId" />
+					</f:facet>
+						<h:outputText value="#{auditoria.userId}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Crud" />
+					</f:facet>
+						<h:outputText value="#{auditoria.operationCrud}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Table Name" />
+					</f:facet>
+						<h:outputText value="#{auditoria.tableName}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Table Id" />
+					</f:facet>
+						<h:outputText value="#{auditoria.tableId}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Date" />
+					</f:facet>
+						<h:outputText value="#{auditoria.createDate}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Address Ip" />
+					</f:facet>
+						<h:outputText value="#{auditoria.addressIP}" /> 
+				</p:column>	
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Modificar" />
+					</f:facet>
+					<h:commandButton action="#{auditoriaBean.prepararModificarAuditoria}" value="Modificar"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Eliminar" />
+					</f:facet>
+					<h:commandButton action="#{auditoriaBean.eliminarauditoria}" value="Eliminar"/>
+				</p:column>													
+			</p:dataTable>
+			<h:commandButton action="#{auditoriaBean.prepararAdicionarAuditoria}" value="Crear"/>
+		</h:form>
+	</h:body>
+</html>

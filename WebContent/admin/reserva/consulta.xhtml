@@ -7,87 +7,77 @@
 	</h:head>
 	<h:body>
 		<h:form>
-			<p:dataTable id="tbparqueadero" var="parqueadero"
-			value="#{parqueaderoBean.listarParqueadero}" style="width: 70%"
+			<p:dataTable id="tbreserva" var="reserva"
+			value="#{reservaBean.listarReserva}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="Lista de Parqueaderos" />
+					<h:outputText value="Lista de Reservas" />
 				</f:facet>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Id" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.id}" />
+						<h:outputText value="#{reserva.id}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Empresa" />
+						<h:outputText value="Tipo Servicio" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.idEmpresa}" />
+						<h:outputText value="#{reserva.tipoServicio}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Parqueadero" />
+						<h:outputText value="Fecha Reserva" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.nombreParqueadero}" />
+						<h:outputText value="#{reserva.fechaHoraReserva}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Ciudad" />
+						<h:outputText value="Fecha Llegada" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.ciudad}" />
+						<h:outputText value="#{reserva.fechaHoraLlegada}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Correo" />
+						<h:outputText value="Tiempo Estimado" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.correo}" />
+						<h:outputText value="#{reserva.tiempoEstimado}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Disponibilidad" />
+						<h:outputText value="Valor Cobro" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.disponibilidad}" />
+						<h:outputText value="#{reserva.valorCobro}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Servicio" />
+						<h:outputText value="Tipo Cobro" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.servicio}" />
+						<h:outputText value="#{reserva.tipoCobro}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Fidelizacion" />
+						<h:outputText value="Activo" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.fidelizacion}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Estado" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.estado}" />
+						<h:outputText value="#{reserva.activo}" /> 
 				</p:column>	
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Modificar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueadero}" value="Modificar"/>
-					</h:form>
+					<h:commandButton action="#{reservaBean.prepararModificarReserva}" value="Modificar"/>
 				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Eliminar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
-					</h:form>
+					<h:commandButton action="#{reservaBean.eliminarReserva}" value="Eliminar"/>
 				</p:column>													
 			</p:dataTable>
-			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
+			<h:commandButton action="#{reservaBean.prepararAdicionarReserva}" value="Crear"/>
 		</h:form>
 	</h:body>
 </html>

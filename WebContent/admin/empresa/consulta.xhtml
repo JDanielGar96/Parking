@@ -3,91 +3,75 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	<h:head>
-		<title>Gestión de Parqueaderos</title>
+		<title>Gestión de Empresa</title>
 	</h:head>
 	<h:body>
 		<h:form>
-			<p:dataTable id="tbparqueadero" var="parqueadero"
-			value="#{parqueaderoBean.listarParqueadero}" style="width: 70%"
+			<p:dataTable id="tbempresa" var="empresa"
+			value="#{empresaBean.listarEmpresa}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="Lista de Parqueaderos" />
+					<h:outputText value="Lista de Empresas" />
 				</f:facet>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Id" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.id}" />
+						<h:outputText value="#{empresa.id}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Empresa" />
+						<h:outputText value="Nit" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.idEmpresa}" />
+						<h:outputText value="#{empresa.nitEmpresa}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Parqueadero" />
+						<h:outputText value="Razón Social" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.nombreParqueadero}" />
+						<h:outputText value="#{empresa.razonSocialEmpresa}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Ciudad" />
+						<h:outputText value="Telefonos" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.ciudad}" />
+						<h:outputText value="#{empresa.telefonosEmpresa}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Correo" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.correo}" />
+						<h:outputText value="#{empresa.correoEmpresa}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Disponibilidad" />
+						<h:outputText value="Dirección" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.disponibilidad}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Servicio" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.servicio}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Fidelizacion" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.fidelizacion}" />
+						<h:outputText value="#{empresa.direccionEmpresa}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Estado" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.estado}" />
+						<h:outputText value="#{empresa.estadoEmpresa}" /> 
 				</p:column>	
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Modificar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueadero}" value="Modificar"/>
-					</h:form>
+					<h:commandButton action="#{empresaBean.prepararModificarEmpresa}" value="Modificar"/>
 				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Eliminar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
-					</h:form>
+					<h:commandButton action="#{empresaBean.eliminarEmpresa}" value="Eliminar"/>
 				</p:column>													
 			</p:dataTable>
-			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
+			<h:commandButton action="#{empresaBean.prepararAdicionarEmpresa}" value="Crear"/>
 		</h:form>
 	</h:body>
 </html>

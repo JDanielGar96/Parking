@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Gestión de Vehiculos</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<p:dataTable id="tbvehiculo" var="vehiculo"
+			value="#{vehiculoBean.listarVehiculo}" style="width: 70%"
+			emptyMessage="No hay registros disponibles" paginator="true"
+			rows="10" paginatorPosition="top"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+				<f:facet name="header">
+					<h:outputText value="Lista de Vehiculos" />
+				</f:facet>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.id}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Placa" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.placa}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo Vehiculo" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.tipo}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Marca" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.marca}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Modelo" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.modelo}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Color" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.color}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Estado" />
+					</f:facet>
+						<h:outputText value="#{vehiculo.estado}" /> 
+				</p:column>
+	
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Modificar" />
+					</f:facet>
+					<h:commandButton action="#{vehiculoBean.prepararModificarVehiculo}" value="Modificar"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Eliminar" />
+					</f:facet>
+					<h:commandButton action="#{vehiculoBean.eliminarVehiculo}" value="Eliminar"/>
+				</p:column>													
+			</p:dataTable>
+			<h:commandButton action="#{vehiculoBean.prepararAdicionarVehiculo}" value="Crear"/>
+		</h:form>
+	</h:body>
+</html>

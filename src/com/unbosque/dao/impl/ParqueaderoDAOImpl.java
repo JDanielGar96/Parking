@@ -40,7 +40,6 @@ public class ParqueaderoDAOImpl implements DaoGeneral {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 		List list = session.createQuery("from Parqueadero").list();
-		System.out.println(list);
 		transaction.commit();
 		return list;
 	}

@@ -32,13 +32,13 @@
 				<h:outputLabel value="Servicio" />
 				<h:inputText value="#{parqueaderoBean.parqueadero.servicio}" />								
 				<h:outputLabel value="Fidelizacion" />
-				<h:selectOneMenu value="#{parqueaderoBean.parqueadero.fidelizacion}" />
+				<h:inputText value="#{parqueaderoBean.parqueadero.fidelizacion}" />
 				<h:outputLabel value="Estado" />
-				<h:selectOneMenu value="#{parqueaderoBean.parqueadero.estado}" />
+				<h:inputText value="#{parqueaderoBean.parqueadero.estado}" />
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{ParqueaderoBean.modificarParqueadero}"
-							value="Modificar Parqueadero" />
+							value="Modificar" />
 						<br />
 						<h:commandLink action="consulta" value="Regresar" />
 					</h:panelGroup>

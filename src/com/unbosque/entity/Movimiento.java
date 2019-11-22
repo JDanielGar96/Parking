@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
+
 /**
  * The persistent class for the movimiento database table.
  * 

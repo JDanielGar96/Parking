@@ -3,79 +3,85 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	<h:head>
-		<title>Gestión de Parqueaderos</title>
+		<title>Gestión de Movimiento</title>
 	</h:head>
 	<h:body>
 		<h:form>
-			<p:dataTable id="tbparqueadero" var="parqueadero"
-			value="#{parqueaderoBean.listarParqueadero}" style="width: 70%"
+			<p:dataTable id="tbmovimiento" var="movimiento"
+			value="#{movimientoBean.listarMovimiento}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
 				<f:facet name="header">
-					<h:outputText value="Lista de Parqueaderos" />
+					<h:outputText value="Lista de Movimientos" />
 				</f:facet>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Id" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.id}" />
+						<h:outputText value="#{movimiento.id}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Empresa" />
+						<h:outputText value="Placa" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.idEmpresa}" />
+						<h:outputText value="#{movimiento.placa}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Parqueadero" />
+						<h:outputText value="Tipo Parqueadero" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.nombreParqueadero}" />
+						<h:outputText value="#{movimiento.tipoParqueadero}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Ciudad" />
+						<h:outputText value="Fecha Reserva" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.ciudad}" />
+						<h:outputText value="#{movimiento.fechaHoraReserva}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Correo" />
+						<h:outputText value="Fecha Llegada" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.correo}" />
+						<h:outputText value="#{movimiento.fechaHoraLlegada}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Disponibilidad" />
+						<h:outputText value="Fecha Salida" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.disponibilidad}" />
+						<h:outputText value="#{movimiento.fechaHoraSalida}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Servicio" />
+						<h:outputText value="Tiempo" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.servicio}" />
+						<h:outputText value="#{movimiento.tiempo}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Fidelizacion" />
+						<h:outputText value="Valor" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.fidelizacion}" />
+						<h:outputText value="#{movimiento.valorCobro}" /> 
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Estado" />
+						<h:outputText value="Tipo Cobro" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.estado}" />
-				</p:column>	
+						<h:outputText value="#{movimiento.tipoCobro}" /> 
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Activo" />
+					</f:facet>
+						<h:outputText value="#{movimiento.activo}" /> 
+				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Modificar" />
 					</f:facet>
 					<h:form>
-						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueadero}" value="Modificar"/>
+						<h:commandButton action="#{movimientoBean.prepararModificarMovimiento}" value="Modificar"/>
 					</h:form>
 				</p:column>
 				<p:column>
@@ -83,11 +89,11 @@
 						<h:outputText value="Eliminar" />
 					</f:facet>
 					<h:form>
-						<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
+						<h:commandButton action="#{movimientoBean.eliminarMovimiento}" value="Eliminar"/>
 					</h:form>
 				</p:column>													
 			</p:dataTable>
-			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
+			<h:commandButton action="#{movimientoBean.prepararAdicionarMovimiento}" value="Crear"/>
 		</h:form>
 	</h:body>
 </html>

@@ -2,20 +2,20 @@ package com.unbosque.dao.impl;
 
 import com.unbosque.dao.DaoGeneral;
 import com.unbosque.util.HibernateUtil;
-import com.unbosque.entity.Auditoria;
+import com.unbosque.entity.Usuario;
 
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class AuditoriaDAOImpl implements DaoGeneral {
-	
+public class UserDAOImpl implements DaoGeneral {
+    	
 	@Override
 	public boolean save(Object object) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		try {
-			Auditoria savedObject = (Auditoria) object;
+			Usuario savedObject = (Usuario) object;
 			session.save(savedObject);
 			t.commit();
 		} catch (Exception e) {
@@ -28,7 +28,7 @@ public class AuditoriaDAOImpl implements DaoGeneral {
 	public Object get(long id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
-			Auditoria object = (Auditoria) session.load(Auditoria.class, id);
+			Usuario object = (Usuario) session.load(Usuario.class, id);
 			return object;
 		} catch (Exception e) {
 			return null;
@@ -37,15 +37,11 @@ public class AuditoriaDAOImpl implements DaoGeneral {
 	
 	@Override
 	public List<Object> list() {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			Transaction transaction = session.beginTransaction();
-			List list = session.createQuery("from Auditoria").list();
-			transaction.commit();
-			return list;
-		} catch (Exception e) {
-			return null;
-		}
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		List list = session.createQuery("from Usuario").list();
+		transaction.commit();
+		return list;
 	}
 
 
@@ -54,7 +50,7 @@ public class AuditoriaDAOImpl implements DaoGeneral {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction t = session.beginTransaction();
-			Auditoria removedObject = (Auditoria) object;
+			Usuario removedObject = (Usuario) object;
 			session.delete(removedObject);
 			t.commit();
 		} catch (Exception e) {
@@ -68,7 +64,7 @@ public class AuditoriaDAOImpl implements DaoGeneral {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
-			Auditoria updatedObject = (Auditoria) object;
+			Usuario updatedObject = (Usuario) object;
 			session.update(updatedObject);
 			transaction.commit();
 		} catch(Exception e) {

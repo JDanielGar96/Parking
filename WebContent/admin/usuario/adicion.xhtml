@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gestión de Usuario</title>
+</h:head>
+<h:body>
+	<h1>Gestión de Usuario</h1>
+	<h:form>
+		<p:panel>
+			<h:panelGrid id="panel" columns="2" border="1" cellpadding="10"
+				cellspacing="1">
+				<f:facet name="header">
+					<h:outputText value="Registro de Usuario" />
+				</f:facet>
+				<h:outputLabel value="Id" />
+				<h:inputText value="#{usuarioBean.usuario.id}" />
+				<h:outputLabel value="Login" />
+				<h:inputText value="#{usuarioBean.usuario.login}" />
+				<h:outputLabel value="Clave" />
+				<h:inputText value="#{usuarioBean.usuario.clave}" />
+				<h:outputLabel value="Tarjeta de Credito" />
+				<h:inputText value="#{usuarioBean.usuario.tcredito}" />
+				<h:outputLabel value="Apellidos y Nombres" />
+				<h:inputText value="#{usuarioBean.usuario.apellidosNombres}" />
+				<h:outputLabel value="Correo" />
+				<h:inputText value="#{usuarioBean.usuario.correo}" />
+				<h:outputLabel value="Celular" />
+				<h:inputText value="#{usuarioBean.usuario.celular}" />
+				<h:outputLabel value="Dirección" />
+				<h:inputText value="#{usuarioBean.usuario.direccion}" />
+				<h:outputLabel value="Fecha Password" />
+				<h:inputText value="#{usuarioBean.usuario.fechaUltimoPassword}" />
+				<h:outputLabel value="Activo" />
+				<h:inputText value="#{usuarioBean.usuario.activo}" />
+				<h:outputLabel value="Intentos" />
+				<h:inputText value="#{usuarioBean.usuario.intentos}" />
+				<h:outputLabel value="Tipo Usuario" />
+				<h:inputText value="#{usuarioBean.usuario.tipoUsuario}" />
+				<f:facet name="footer">
+					<h:panelGroup style="display:block; text-align:center">
+						<h:commandButton action="#{usuarioBean.adicionarUsuario}"
+							value="Registrar" />
+						<br />
+						<h:commandLink action="consulta" value="Regresar" />
+					</h:panelGroup>
+				</f:facet>
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
