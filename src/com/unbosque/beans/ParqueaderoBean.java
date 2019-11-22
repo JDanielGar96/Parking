@@ -2,7 +2,7 @@ package com.unbosque.beans;
 
 import com.unbosque.dao.impl.ParqueaderoDAOImpl;
 import com.unbosque.entity.Parqueadero;
-import com.unbosque.dao.Dao;
+import com.unbosque.dao.DaoGeneral;
 
 import java.util.Date;
 import java.util.List;
@@ -20,33 +20,33 @@ public class ParqueaderoBean {
 	public String prepararAdicionarParqueadero() {
 		parqueadero = new Parqueadero();
 		parqueadero.setEstado("A");
-		return "/parqueadero/registroNuevo.xhtml?faces-redirect=true";
+		return "/admin/parqueadero/adicion.xhtml?faces-redirect=true";
 	}
 
 	public String prepararModificarParqueadero() {
 		parqueadero = (Parqueadero) (listaParqueadero.getRowData());
-		return "/parqueadero/modificarRegistro.xhtml?faces-redirect=true";
+		return "/admin/parqueadero/edicion.xhtml?faces-redirect=true";
 	}
 
 	public String eliminarParqueadero() {
 		Parqueadero parqueaderoTemp = (Parqueadero) (listaParqueadero.getRowData());
-		Dao dao = new ParqueaderoDAOImpl();
+		DaoGeneral dao = new ParqueaderoDAOImpl();
 		parqueaderoTemp.setEstado("I");
 		dao.update(parqueaderoTemp);
 		// dao.remove(usuarioTemp);
-		return "/parqueadero/nuevaConsultaRich.xhtml?faces-redirect=true";
+		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
 	}
 
 	public String adicionarParqueadero() {
-		Dao dao = new ParqueaderoDAOImpl();
+		DaoGeneral dao = new ParqueaderoDAOImpl();
 		dao.save(parqueadero);
-		return "/parqueadero/nuevaConsultaRich.xhtml?faces-redirect=true";
+		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
 	}
 
 	public String modificarParqueadero() {
-		Dao dao = new ParqueaderoDAOImpl();
+		DaoGeneral dao = new ParqueaderoDAOImpl();
 		dao.update(parqueadero);
-		return "/parqueadero/nuevaConsultaRich.xhtml?faces-redirect=true";
+		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
 	}
 
 	public Parqueadero getParqueadero() {
@@ -58,7 +58,6 @@ public class ParqueaderoBean {
 	}
 
 	public DataModel getListarParqueadero() {
-		System.out.println("Prueba");
 		List<Object> lista = new ParqueaderoDAOImpl().list();
 		listaParqueadero = new ListDataModel(lista);
 		return listaParqueadero;

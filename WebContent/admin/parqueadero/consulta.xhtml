@@ -74,22 +74,16 @@
 					<f:facet name="header">
 						<h:outputText value="Modificar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueadero}" value="Registrar"/>
-					</h:form>
+					<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Modificar"/>
 				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Eliminar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
-					</h:form>
+					<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
 				</p:column>													
 			</p:dataTable>
-			<h:form>
-				<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
-			</h:form>
+			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
 		</h:form>
 	</h:body>
 </html>
