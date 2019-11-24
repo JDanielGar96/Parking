@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: Arial, Helvetica, sans-serif;
+	height:auto;
+	width: 100vw;
+}
+.google-map {
+	width: 75%;
+    height: 20em;
+}
+.gmnoprint {
+	display: none;
+}
+.gm-style-cc, .gm-fullscreen-control, .gm-svpc {
+	display: none;
+}
+.gm-bundled-control-on-bottom .gmnoprint, .gm-bundled-control-on-bottom {
+	display: block !important;
+} 
+.gm-bundled-control-on-bottom .gmnoprint:last-child {
+	display: none !important;
+}

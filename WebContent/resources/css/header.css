@@ -1,21 +1,21 @@
 header {
 	background-color: #f3f3f3;
-	padding: 1em;
+	padding: 1em 0;
     display: flow-root;
-	width: 100%;
+	width: 100vw;
 	display: flex;
     justify-content: space-between;
 }
 .logo {
 	width: 3em;
 	float: left;
+	margin: 0 3em;
 }
 .buttons {
 	display: flex;
 	float: right;
 	align-items: center;
 	justify-content: center;
-	margin: 0 1em;
 	font-family: Arial, Helvetica, sans-serif;
 }
 .logout {
@@ -25,7 +25,7 @@ header {
 	cursor: pointer;
     font-weight: bold;
     text-decoration: none;
-    margin: 0 1em;
+    margin: 0 3em;
 }
 .logout:hover  {
 	background-color: #e9fdff;

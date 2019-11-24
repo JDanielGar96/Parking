@@ -38,10 +38,8 @@ public class AuthFilter implements Filter {
             
             //  Filter by type of user
             String requestUrl = req.getRequestURI();
-            System.out.println(requestUrl);
             
             if(session != null && session.getAttribute("userName") != null) {
-            	System.out.println("La sesion no es nula.");
             	if(this.validateUserAuth(requestUrl, session) || this.validatePublicUrls(requestUrl)) {
             		chain.doFilter(request, response);
             	} else {
@@ -50,7 +48,6 @@ public class AuthFilter implements Filter {
             				"/" + userType.toLowerCase() + "/home.xhtml");
             	}
             } else {
-            	System.out.println("Al menos entre aquí.");
             	if(this.validateUrls(requestUrl) || this.validatePublicUrls(requestUrl)) {
             		chain.doFilter(request, response);
             	} else {

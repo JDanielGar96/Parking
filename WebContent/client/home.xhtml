@@ -11,10 +11,24 @@
 		<title>Home</title>
 		<h:outputStylesheet library="css" name="general.css"  />
 		<h:outputStylesheet library="css" name="header.css"  />
+		<h:outputStylesheet library="css" name="clientHome.css"  />
+		<h:outputScript library="js" name="googleMaps.js" />
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCgKZ1ZD7HsYiNEJSGgltNc2R_nkpPKFsc"></script>
 	</h:head>
 	<h:body>
 		<ui:insert name="header">
 			<ui:include src="/template/common/header.xhtml"></ui:include>
 		</ui:insert>
+		<div class="container">
+			<h1>Busca un parqueadero:</h1> 
+
+	      	<p:gmap widgetVar="w_gmap" center="#{clienteBean.latitud}, #{clienteBean.longitud}" zoom="5" type="ROADMAP" styleClass="google-map"/>
+	      	<h:form id="ubicationForm">
+	      		<h:inputHidden id="latitud" value="#{clienteBean.latitud}" />
+	      		<h:inputHidden id="longitud" value="#{clienteBean.longitud}" />
+	      		<h:inputHidden id="zoom" value="#{clienteBean.longitud}" />
+	      		<p:commandButton value="Mostrar Ubicación" action="#{clienteBean.mostrarUbicacion}" />
+	      	</h:form>
+		</div>
 	</h:body>
 </ui:composition>
