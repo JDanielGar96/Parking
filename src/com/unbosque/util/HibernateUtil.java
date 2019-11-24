@@ -2,7 +2,6 @@ package com.unbosque.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-
 import com.unbosque.entity.*;
 
 @SuppressWarnings("deprecation")
@@ -20,9 +19,14 @@ public class HibernateUtil {
 			try {
 				@SuppressWarnings("deprecation")
 				AnnotationConfiguration ac = new AnnotationConfiguration();
-				ac.addAnnotatedClass(Usuario.class);
 				ac.addAnnotatedClass(Auditoria.class);
+				ac.addAnnotatedClass(Empresa.class);
+				ac.addAnnotatedClass(Movimiento.class);
+				ac.addAnnotatedClass(Parametro.class);
 				ac.addAnnotatedClass(Parqueadero.class);
+				ac.addAnnotatedClass(Tarifa.class);
+				ac.addAnnotatedClass(Usuario.class);
+				ac.addAnnotatedClass(Vehiculo.class);
 				sessionFactory = ac.configure().buildSessionFactory();
 
 			} catch (Throwable ex) {
