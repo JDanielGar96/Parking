@@ -26,18 +26,18 @@ public class Parqueadero implements Serializable {
 	private String correo;
 	@Column(name = "disponibilidad", nullable = false, length = 2)
 	private int disponibilidad;
-	@Column(name = "servicio", nullable = false, length = 45)
-	private String servicio;
-	@Column(name = "fidelizacion", nullable = false, length = 1)
-	private String fidelizacion;
 	@Column(name = "estado", nullable = false, length = 1)
 	private String estado;
+	@Column(name = "latitud", nullable = false, length = 20)
+	private double latitud;
+	@Column(name = "longitud", nullable = false, length = 20)
+	private double longitud;
 
 	public Parqueadero() {
 	}
 
 	public Parqueadero(int id, int idEmpresa, String nombreParqueadero, String ciudad, String correo,
-			int disponibilidad, String servicio, String fidelizacion, String estado) {
+			int disponibilidad, String estado, double latitud, double longitud) {
 		super();
 		this.id = id;
 		this.idEmpresa = idEmpresa;
@@ -45,9 +45,9 @@ public class Parqueadero implements Serializable {
 		this.ciudad = ciudad;
 		this.correo = correo;
 		this.disponibilidad = disponibilidad;
-		this.servicio = servicio;
-		this.fidelizacion = fidelizacion;
 		this.estado = estado;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 
 	public int getId() {
@@ -98,20 +98,20 @@ public class Parqueadero implements Serializable {
 		this.disponibilidad = disponibilidad;
 	}
 
-	public String getServicio() {
-		return servicio;
+	public double getLatitud() {
+		return latitud;
 	}
 
-	public void setServicio(String servicio) {
-		this.servicio = servicio;
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
 	}
 
-	public String getFidelizacion() {
-		return fidelizacion;
+	public double getLongitud() {
+		return longitud;
 	}
 
-	public void setFidelizacion(String fidelizacion) {
-		this.fidelizacion = fidelizacion;
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
 	}
 
 	public String getEstado() {
