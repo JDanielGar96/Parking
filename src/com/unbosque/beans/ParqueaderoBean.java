@@ -58,9 +58,10 @@ public class ParqueaderoBean {
 		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
 	}
 	
-	public MapModel obtenerMarcadoresParqueaderos {
-		 = new DefaultMapModel();
-	}
+//	public MapModel obtenerMarcadoresParqueaderos {
+//		modeloMapa = new DefaultMapModel();
+//		
+//	}
 
 	public Parqueadero getParqueadero() {
 		return parqueadero;
