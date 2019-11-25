@@ -1,7 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+
+<ui:insert name="header">
+	<ui:include src="/template/common/header.xhtml"></ui:include>
+</ui:insert>
+
 	<h:head>
 		<title>Gestión de Parqueaderos</title>
 	</h:head>
@@ -78,6 +84,9 @@
 				</p:column>													
 			</p:dataTable>
 			<h:commandButton action="#{reservaBean.prepararAdicionarReserva}" value="Crear"/>
+			
+			     <br></br>
+		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
 		</h:form>
 	</h:body>
 </html>
