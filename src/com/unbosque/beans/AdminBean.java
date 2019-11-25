@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 @SessionScoped
 public class AdminBean {
 
-	String[] opciones;
+	String opcion;
 	private Calendar calendar;
 	private String tiempo;
 	private String fecha;
@@ -27,86 +27,79 @@ public class AdminBean {
 	public void init() {
 
 		this.fechaHora();
-
-		// lista de opciones utilizando Arrays
-		opciones = new String[5];
-		opciones[0] = "1. Auditoria - adicion";
-		opciones[1] = "2. Auditoria - consulta";
-		opciones[2] = "3. Auditoria - edicion";
+		opcion = "";
 
 	}
 
 	public String direccionar() {
 		System.out.println("Redireccionando administrador...");
 
-		if (opciones != null) {
-			for (int i = 0; i <= opciones.length; i++) {
+		if (opcion != null) {
 
-				switch (opciones[i]) {
+			switch (opcion) {
 
-				case "0":
-					return "/admin/auditoria/adicion.xhtml?faces-redirect=true";
-				case "1":
-					return "/admin/auditoria/consulta.xhtml?faces-redirect=true";
-				case "3":
-					return "/admin/auditoria/edicion.xhtml?faces-redirect=true";
+			case "1":
+				return "/admin/auditoria/adicion.xhtml?faces-redirect=true";
+			case "2":
+				return "/admin/auditoria/consulta.xhtml?faces-redirect=true";
+			case "3":
+				return "/admin/auditoria/edicion.xhtml?faces-redirect=true";
 
-//				case "EmpresaUno":
-//					return "/admin/empresa/adicion.xhtml?faces-redirect=true";
-//				case "EmpresaDos":
-//					return "/admin/empresa/consulta.xhtml?faces-redirect=true";
-//				case "EmpresaTres":
-//					return "/admin/empresa/edicion.xhtml?faces-redirect=true";
-//
-//				case "MovimientoUno":
-//					return "/admin/movimiento/adicion.xhtml?faces-redirect=true";
-//				case "MovimientoDos":
-//					return "/admin/movimiento/consulta.xhtml?faces-redirect=true";
-//				case "MovimientoTres":
-//					return "/admin/movimiento/edicion.xhtml?faces-redirect=true";
-//
-//				case "ParametroUno":
-//					return "/admin/parametro/adicion.xhtml?faces-redirect=true";
-//				case "ParametroDos":
-//					return "/admin/parametro/consulta.xhtml?faces-redirect=true";
-//				case "ParametroTres":
-//					return "/admin/parametro/edicion.xhtml?faces-redirect=true";
-//
-//				case "ParqueaderoUno":
-//					return "/admin/parqueadero/adicion.xhtml?faces-redirect=true";
-//				case "ParqueaderoDos":
-//					return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
-//				case "ParqueaderoTres":
-//					return "/admin/parqueadero/edicion.xhtml?faces-redirect=true";
-//
-//				case "ReservaUno":
-//					return "/admin/reserva/adicion.xhtml?faces-redirect=true";
-//				case "ReservaDos":
-//					return "/admin/reserva/consulta.xhtml?faces-redirect=true";
-//				case "ReservaTres":
-//					return "/admin/reserva/edicion.xhtml?faces-redirect=true";
-//
-//				case "TarifaUno":
-//					return "/admin/tarifa/adicion.xhtml?faces-redirect=true";
-//				case "TarifaDos":
-//					return "/admin/tarifa/consulta.xhtml?faces-redirect=true";
-//				case "TarifaTres":
-//					return "/admin/tarifa/edicion.xhtml?faces-redirect=true";
-//
-//				case "UsuarioUno":
-//					return "/admin/usuario/adicion.xhtml?faces-redirect=true";
-//				case "UsuarioDos":
-//					return "/admin/usuario/consulta.xhtml?faces-redirect=true";
-//				case "UsuarioTres":
-//					return "/admin/usuario/edicion.xhtml?faces-redirect=true";
-//
-//				case "VehiculoUno":
-//					return "/admin/vehiculo/adicion.xhtml?faces-redirect=true";
-//				case "VehiculoDos":
-//					return "/admin/vehiculo/consulta.xhtml?faces-redirect=true";
-//				case "VehiculoTres":
-//					return "/admin/vehiculo/edicion.xhtml?faces-redirect=true";
-				}
+			case "4":
+				return "/admin/empresa/adicion.xhtml?faces-redirect=true";
+			case "5":
+				return "/admin/empresa/consulta.xhtml?faces-redirect=true";
+			case "6":
+				return "/admin/empresa/edicion.xhtml?faces-redirect=true";
+
+			case "7":
+				return "/admin/movimiento/adicion.xhtml?faces-redirect=true";
+			case "8":
+				return "/admin/movimiento/consulta.xhtml?faces-redirect=true";
+			case "9":
+				return "/admin/movimiento/edicion.xhtml?faces-redirect=true";
+
+			case "10":
+				return "/admin/parametro/adicion.xhtml?faces-redirect=true";
+			case "11":
+				return "/admin/parametro/consulta.xhtml?faces-redirect=true";
+			case "12":
+				return "/admin/parametro/edicion.xhtml?faces-redirect=true";
+
+			case "13":
+				return "/admin/parqueadero/adicion.xhtml?faces-redirect=true";
+			case "14":
+				return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
+			case "15":
+				return "/admin/parqueadero/edicion.xhtml?faces-redirect=true";
+
+			case "16":
+				return "/admin/reserva/adicion.xhtml?faces-redirect=true";
+			case "17":
+				return "/admin/reserva/consulta.xhtml?faces-redirect=true";
+			case "18":
+				return "/admin/reserva/edicion.xhtml?faces-redirect=true";
+
+			case "19":
+				return "/admin/tarifa/adicion.xhtml?faces-redirect=true";
+			case "20":
+				return "/admin/tarifa/consulta.xhtml?faces-redirect=true";
+			case "21":
+				return "/admin/tarifa/edicion.xhtml?faces-redirect=true";
+
+			case "22":
+				return "/admin/usuario/adicion.xhtml?faces-redirect=true";
+			case "23":
+				return "/admin/usuario/consulta.xhtml?faces-redirect=true";
+			case "24":
+				return "/admin/usuario/edicion.xhtml?faces-redirect=true";
+
+			case "25":
+				return "/admin/vehiculo/adicion.xhtml?faces-redirect=true";
+			case "26":
+				return "/admin/vehiculo/consulta.xhtml?faces-redirect=true";
+			case "27":
+				return "/admin/vehiculo/edicion.xhtml?faces-redirect=true";
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -125,15 +118,15 @@ public class AdminBean {
 				+ calendar.get(Calendar.SECOND);
 		fecha = calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/"
 				+ calendar.get(Calendar.YEAR);
-		horaFecha = tiempo + fecha;
+		horaFecha = tiempo + " " + fecha;
 	}
 
-	public String[] getOpciones() {
-		return opciones;
+	public String getOpcion() {
+		return opcion;
 	}
 
-	public void setOpciones(String[] opciones) {
-		this.opciones = opciones;
+	public void setOpcion(String opcion) {
+		this.opcion = opcion;
 	}
 
 	public String getTiempo() {
