@@ -8,7 +8,6 @@ import javax.faces.context.FacesContext;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import javax.annotation.PostConstruct;
 
 @ManagedBean(name = "adminBean")
 @SessionScoped
@@ -23,7 +22,6 @@ public class AdminBean {
 	public AdminBean() {
 	}
 
-	@PostConstruct
 	public void init() {
 
 		this.fechaHora();

@@ -11,11 +11,15 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.MapModel;
+
 @ManagedBean
 @SessionScoped
 public class ParqueaderoBean {
 	private Parqueadero parqueadero;
 	private DataModel listaParqueadero;
+	private MapModel modeloMapa;
 
 	public String prepararAdicionarParqueadero() {
 		parqueadero = new Parqueadero();
@@ -25,7 +29,7 @@ public class ParqueaderoBean {
 	
 	public String prepararModificarParqueaderoUser() {
 		parqueadero = (Parqueadero) (listaParqueadero.getRowData());
-		return "/client/parqueadero/edicion.xhtml?faces-redirect=true";
+		return "/client/movimiento/edicion.xhtml?faces-redirect=true";
 	}
 	
 	public String prepararModificarParqueadero() {
@@ -52,6 +56,10 @@ public class ParqueaderoBean {
 		DaoGeneral dao = new ParqueaderoDAOImpl();
 		dao.update(parqueadero);
 		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
+	}
+	
+	public MapModel obtenerMarcadoresParqueaderos {
+		 = new DefaultMapModel();
 	}
 
 	public Parqueadero getParqueadero() {

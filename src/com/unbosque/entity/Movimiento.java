@@ -19,10 +19,10 @@ public class Movimiento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false, length = 5)
 	private int id;
+	@Column(name = "parqueaderoId", nullable = false, length = 5)
+	private int parqueaderoId;
 	@Column(name = "placa", nullable = false, length = 6)
 	private String placa;
-	@Column(name = "tipoParqueadero", nullable = false, length = 20)
-	private String tipoParqueadero;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaHoraReserva", nullable = false)
 	private Date fechaHoraReserva;
@@ -32,30 +32,24 @@ public class Movimiento implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaHoraSalida", nullable = false)
 	private Date fechaHoraSalida;
-	@Column(name = "tiempo", nullable = false)
-	private Time tiempo;
 	@Column(name = "valorCobro", nullable = false, length = 8)
 	private int valorCobro;
-	@Column(name = "tipoCobro", nullable = false, length = 5)
-	private int tipoCobro;
 	@Column(name = "activo", nullable = false, length = 1)
 	private String activo;
 
 	public Movimiento() {
 	}
 
-	public Movimiento(int id, String placa, String tipoParqueadero, Date fechaHoraReserva, Date fechaHoraLlegada,
-			Date fechaHoraSalida, Time tiempo, int valorCobro, int tipoCobro, String activo) {
+	public Movimiento(int id, int parqueaderoId, String placa, Date fechaHoraReserva, Date fechaHoraLlegada,
+			Date fechaHoraSalida, int valorCobro, String activo) {
 		super();
 		this.id = id;
+		this.parqueaderoId = parqueaderoId;
 		this.placa = placa;
-		this.tipoParqueadero = tipoParqueadero;
 		this.fechaHoraReserva = fechaHoraReserva;
 		this.fechaHoraLlegada = fechaHoraLlegada;
 		this.fechaHoraSalida = fechaHoraSalida;
-		this.tiempo = tiempo;
 		this.valorCobro = valorCobro;
-		this.tipoCobro = tipoCobro;
 		this.activo = activo;
 	}
 
@@ -67,20 +61,19 @@ public class Movimiento implements Serializable {
 		this.id = id;
 	}
 
+	public int getParqueaderoId() {
+		return parqueaderoId;
+	}
+	
+	public void setParqueaderoId(int parqueaderoId) {
+		this.parqueaderoId = parqueaderoId;
+	}
 	public String getPlaca() {
 		return placa;
 	}
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
-	}
-
-	public String getTipoParqueadero() {
-		return tipoParqueadero;
-	}
-
-	public void setTipoParqueadero(String tipoParqueadero) {
-		this.tipoParqueadero = tipoParqueadero;
 	}
 
 	public Date getFechaHoraReserva() {
@@ -107,28 +100,12 @@ public class Movimiento implements Serializable {
 		this.fechaHoraSalida = fechaHoraSalida;
 	}
 
-	public Time getTiempo() {
-		return tiempo;
-	}
-
-	public void setTiempo(Time tiempo) {
-		this.tiempo = tiempo;
-	}
-
 	public int getValorCobro() {
 		return valorCobro;
 	}
 
 	public void setValorCobro(int valorCobro) {
 		this.valorCobro = valorCobro;
-	}
-
-	public int getTipoCobro() {
-		return tipoCobro;
-	}
-
-	public void setTipoCobro(int tipoCobro) {
-		this.tipoCobro = tipoCobro;
 	}
 
 	public String getActivo() {

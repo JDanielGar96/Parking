@@ -18,18 +18,6 @@
 				</f:facet>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Id" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.id}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Empresa" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.idEmpresa}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
 						<h:outputText value="Parqueadero" />
 					</f:facet>
 					<h:outputText value="#{parqueadero.nombreParqueadero}" />
@@ -42,25 +30,13 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Correo" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.correo}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
 						<h:outputText value="Disponibilidad" />
 					</f:facet>
 					<h:outputText value="#{parqueadero.disponibilidad}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Estado" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.estado}" />
-				</p:column>	
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Modificar" />
+						<h:outputText value="Reservar" />
 					</f:facet>
 					<h:form>
 						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueaderoUser}" value="Reservar"/>

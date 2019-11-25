@@ -16,8 +16,8 @@ public class Parqueadero implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false, length = 5)
 	private int id;
-	@Column(name = "idEmpresa", nullable = false, length = 5)
-	private int idEmpresa;
+	@Column(name = "propietario", nullable = false, length = 5)
+	private int propietario;
 	@Column(name = "nombreParqueadero", nullable = false, length = 30)
 	private String nombreParqueadero;
 	@Column(name = "ciudad", nullable = false, length = 30)
@@ -36,11 +36,11 @@ public class Parqueadero implements Serializable {
 	public Parqueadero() {
 	}
 
-	public Parqueadero(int id, int idEmpresa, String nombreParqueadero, String ciudad, String correo,
+	public Parqueadero(int id, int propietario, String nombreParqueadero, String ciudad, String correo,
 			int disponibilidad, String estado, double latitud, double longitud) {
 		super();
 		this.id = id;
-		this.idEmpresa = idEmpresa;
+		this.propietario = propietario;
 		this.nombreParqueadero = nombreParqueadero;
 		this.ciudad = ciudad;
 		this.correo = correo;
@@ -58,12 +58,12 @@ public class Parqueadero implements Serializable {
 		this.id = id;
 	}
 
-	public int getIdEmpresa() {
-		return idEmpresa;
+	public int getPropietario() {
+		return propietario;
 	}
 
-	public void setIdEmpresa(int idEmpresa) {
-		this.idEmpresa = idEmpresa;
+	public void setPropietario(int propietario) {
+		this.propietario = propietario;
 	}
 
 	public String getNombreParqueadero() {

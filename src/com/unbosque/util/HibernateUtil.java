@@ -20,7 +20,6 @@ public class HibernateUtil {
 				@SuppressWarnings("deprecation")
 				AnnotationConfiguration ac = new AnnotationConfiguration();
 				ac.addAnnotatedClass(Auditoria.class);
-				ac.addAnnotatedClass(Empresa.class);
 				ac.addAnnotatedClass(Movimiento.class);
 				ac.addAnnotatedClass(Parametro.class);
 				ac.addAnnotatedClass(Parqueadero.class);
