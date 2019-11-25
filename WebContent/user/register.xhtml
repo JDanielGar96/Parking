@@ -37,9 +37,8 @@
 					id="password"
 					requiredMessage="La clave es requerida."
 					maxlength="8"
-					validatorMessage="El password debe tener minimo 5 caracteres."
 				>
-					<f:validateLength minimum="5" />
+					<f:validator validatorId="com.unbosque.validators.PasswordValidator" />
 				</p:password>
 			</div>
 			<p:message for="password" />

@@ -27,11 +27,15 @@
 	      		<h:inputHidden id="latitud" value="#{clienteBean.latitud}" />
 	      		<h:inputHidden id="longitud" value="#{clienteBean.longitud}" />
 	      		<h:inputHidden id="zoom" value="#{clienteBean.longitud}" />
-	      		<p:commandButton value="Mostrar Ubicación" action="#{clienteBean.mostrarUbicacion}" />
+	      		<p:commandButton value="Mostrar Ubicación" styleClass="ubication-button" action="#{clienteBean.mostrarUbicacion}" onclick="getGeocolocation()" />
 	      	</h:form>
+	      	
+			<h2>Lista de parqueaderos</h2>
+			
+			<ui:insert name="consulta">
+				<ui:include src="/client/parqueadero/consulta.xhtml"></ui:include>
+			</ui:insert>
 		</div>
-		<ui:insert name="header">
-			<ui:include src="/client/parqueadero/consulta.xhtml"></ui:include>
-		</ui:insert>
+		
 	</h:body>
 </ui:composition>

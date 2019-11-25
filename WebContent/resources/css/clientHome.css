@@ -23,3 +23,19 @@
 .gm-bundled-control-on-bottom .gmnoprint:last-child {
 	display: none !important;
 }
+h2 {
+	width: 75%;
+}
+.ubication-button {
+	margin: 1em;
+}
+
+.parking-class {
+	margin-bottom: 1em;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: Arial, Helvetica, sans-serif;
+}
