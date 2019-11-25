@@ -18,11 +18,10 @@
 		<h:outputLabel>Has inciado sesión a las:  </h:outputLabel><h:outputText value = "#{adminBean.horaFecha}"/>
 		<br></br>
 		<br></br>
-			
-		    <f:facet name="header">
-				<h:outputText value="Lista de opciones" />
-			</f:facet>
-			
+		
+			<p:panel id="basic" header="Seleccione una opción" footer="Lista de opciones" style="margin-bottom:20px">
+            <h:panelGrid columns="2" cellpadding="10">
+                  
 			<p:selectOneMenu id="opcion" value="#{adminBean.opcion}"  style="width:125px">
 			
             <f:selectItem itemLabel="1. Auditoria - adicion" itemValue="1" />
@@ -61,15 +60,13 @@
             <f:selectItem itemLabel="26. Vehiculo - consulta" itemValue="26" />
             <f:selectItem itemLabel="27. Vehiculo - editar" itemValue="27" />
 
-            <f:facet name="footer">
-               <p:separator />
-               <h:outputText value="Listado de opciones" style="font-weight:bold;"/>
-            </f:facet>
-        </p:selectOneMenu>
+            </p:selectOneMenu>
 			
-			<h:commandButton value="ir" action = "#{adminBean.direccionar}"/>
-			
-			
+	        </h:panelGrid>
+            </p:panel>
+
+		    <f:commandButton value="ir" action = "#{adminBean.direccionar}"/>
+		    		
 		</h:form>
 	</h:body>
 </ui:composition>
