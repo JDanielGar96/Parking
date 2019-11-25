@@ -10,6 +10,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import com.unbosque.util.Encriptacion;
 
 public class UsuarioDAOImpl implements DaoUser {
 	
@@ -110,6 +111,7 @@ public class UsuarioDAOImpl implements DaoUser {
 	@Override
 	public String login(String login, String password) {
         Transaction transaction = null;
+        Encriptacion enc = new Encriptacion();
         Usuario user = null;
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -118,7 +120,7 @@ public class UsuarioDAOImpl implements DaoUser {
 					.setString("login", login)
 					.uniqueResult();
 			user = (Usuario) userObject;
-			if(user.getClave().equals(password)) {
+			if(user.getClave().equals(enc.encriptar(password))) {
 				return user.getTipoUsuario();
 			}
 			transaction.commit();

@@ -34,7 +34,6 @@ public class LoginNameValidator implements Validator {
 		List<Object> userList = implementation.list();
 		for(Object userObject: userList) { // TODO WARN
 			Usuario user = (Usuario) userObject;
-			System.out.println("Validando Email...");
 			if(user.getLogin().equalsIgnoreCase(nameValue)) {
 				FacesMessage msg = 
 					new FacesMessage(null, "El login solicitado ya existe.");

@@ -27,11 +27,9 @@ public class LoginBean implements Serializable {
 		 * Create new user to validate parameters in the database
 		 */
 		this.user = new Usuario();
-		System.out.println("Hola");
 	}
 
 	public String loginUser() {
-		System.out.println("Realizando el logueo...");
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
 		String userName = user.getLogin();
 		String password = user.getClave();
@@ -54,7 +52,8 @@ public class LoginBean implements Serializable {
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Credenciales no validos",
-                    "Porfavor, intenta de nuevo"));
+                    "Porfavor, intenta de nuevo")
+            );
         }
         return null;
 	}
