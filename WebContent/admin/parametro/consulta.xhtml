@@ -1,71 +1,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<title>Gestión de Parametros</title>
-	</h:head>
-	<h:body>
-		<h:form>
-			<p:dataTable id="tbparametro" var="parametro"
+
+<ui:insert name="header">
+	<ui:include src="/template/common/header.xhtml"></ui:include>
+</ui:insert>
+
+<h:head>
+	<title>Gestión de Parametros</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:dataTable id="tbparametro" var="parametro"
 			value="#{parametroBean.listarParametro}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">
+				<h:outputText value="Lista de Parametros" />
+			</f:facet>
+			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Lista de Parametros" />
+					<h:outputText value="Id" />
 				</f:facet>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Id" />
-					</f:facet>
-						<h:outputText value="#{parametro.id}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Nombre" />
-					</f:facet>
-						<h:outputText value="#{parametro.nombreParametro}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Descripción" />
-					</f:facet>
-						<h:outputText value="#{parametro.descripcion}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Valor Texto" />
-					</f:facet>
-						<h:outputText value="#{parametro.valorTexto}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Valor Numerico" />
-					</f:facet>
-						<h:outputText value="#{parametro.valorNumerico}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Estado" />
-					</f:facet>
-						<h:outputText value="#{parametro.estado}" /> 
-				</p:column>	
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Modificar" />
-					</f:facet>
-					<h:commandButton action="#{parametroBean.prepararModificarParametro}" value="Modificar"/>
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Eliminar" />
-					</f:facet>
-					<h:commandButton action="#{parametroBean.eliminarParametro}" value="Eliminar"/>
-				</p:column>													
-			</p:dataTable>
-			<h:commandButton action="#{parametroBean.prepararAdicionarParametro}" value="Crear"/>
-		</h:form>
-	</h:body>
+				<h:outputText value="#{parametro.id}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nombre" />
+				</f:facet>
+				<h:outputText value="#{parametro.nombreParametro}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Descripción" />
+				</f:facet>
+				<h:outputText value="#{parametro.descripcion}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Valor Texto" />
+				</f:facet>
+				<h:outputText value="#{parametro.valorTexto}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Valor Numerico" />
+				</f:facet>
+				<h:outputText value="#{parametro.valorNumerico}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Estado" />
+				</f:facet>
+				<h:outputText value="#{parametro.estado}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Modificar" />
+				</f:facet>
+				<h:commandButton
+					action="#{parametroBean.prepararModificarParametro}"
+					value="Modificar" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Eliminar" />
+				</f:facet>
+				<h:commandButton action="#{parametroBean.eliminarParametro}"
+					value="Eliminar" />
+			</p:column>
+		</p:dataTable>
+		<h:commandButton action="#{parametroBean.prepararAdicionarParametro}"
+			value="Crear" />
+
+		<br></br>
+		<p:link outcome="/admin/home.xhtml" value="Regresar" />
+	</h:form>
+</h:body>
 </html>

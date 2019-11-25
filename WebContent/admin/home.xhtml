@@ -5,6 +5,10 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:a4j="http://pfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+    
+        <ui:insert name="header">
+			<ui:include src="/template/common/header.xhtml"></ui:include>
+		</ui:insert>
 
 	<h:head>
 		<title>Gestión Administrativa</title>
@@ -22,7 +26,7 @@
 			<p:panel id="basic" header="Seleccione una opción" footer="Lista de opciones" style="margin-bottom:20px">
             <h:panelGrid columns="2" cellpadding="10">
                   
-			<p:selectOneMenu id="opcion" value="#{adminBean.opcion}"  style="width:125px">
+			<p:selectOneMenu id="opcion" value="#{adminBean.opcion}"  style="width:20em">
 			
             <f:selectItem itemLabel="1. Auditoria - adicion" itemValue="1" />
             <f:selectItem itemLabel="2. Auditoria - consulta" itemValue="2" />
@@ -61,12 +65,12 @@
             <f:selectItem itemLabel="27. Vehiculo - editar" itemValue="27" />
 
             </p:selectOneMenu>
+            
+            <h:commandButton value="ir" action = "#{adminBean.direccionar}" style="width:5em" />
 			
 	        </h:panelGrid>
             </p:panel>
 
-		    <f:commandButton value="ir" action = "#{adminBean.direccionar}"/>
-		    		
 		</h:form>
 	</h:body>
 </ui:composition>

@@ -1,9 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+
+<ui:insert name="header">
+	<ui:include src="/template/common/header.xhtml"></ui:include>
+</ui:insert>
 
 <h:head>
 	<title>Gestión de Parametro</title>
@@ -34,7 +39,8 @@
 						<h:commandButton action="#{parametroBean.modificarParametro}"
 							value="Modificar" />
 						<br />
-						<h:commandLink action="consulta" value="Regresar" />
+				 <br></br>
+		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
 					</h:panelGroup>
 				</f:facet>
 			</h:panelGrid>
