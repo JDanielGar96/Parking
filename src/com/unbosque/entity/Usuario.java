@@ -61,6 +61,14 @@ public class Usuario implements Serializable {
 		this.intentos = intentos;
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	public void aumentarIntentos() {
+		this.intentos += 1;
+	}
+	
+	public void restablecerIntentos() {
+		this.intentos = 0;
+	}
 
 	public int getId() {
 		return id;
