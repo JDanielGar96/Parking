@@ -33,29 +33,41 @@ public class LoginBean implements Serializable {
 		UsuarioDAOImpl implementation = new UsuarioDAOImpl();
 		String userName = user.getLogin();
 		String password = user.getClave();
-        String result = implementation.login(userName, password);
-        if (result != null) {
-            // Http Session and store username
-            HttpSession session = Util.getSession();
-            session.setAttribute("userName", userName);
-            session.setAttribute("userType", result);
-            switch(result) {
-            case "ADMIN":
-            	return "/admin/home.xhtml?faces-redirect=true";
-            case "OWNER":
-            	return "/owner/home.xhtml?faces-redirect=true";
-            case "CLIENT":
-            	return "/client/home.xhtml?faces-redirect=true";
-            }           
+        String response = implementation.login(userName, password);
+        if (response != null) {
+
+            if(response.equalsIgnoreCase("ADMIN") || 
+            		response.equalsIgnoreCase("OWNER") || 
+            		response.equalsIgnoreCase("CLIENT")) {
+                // Http Session and store username
+                HttpSession session = Util.getSession();
+                session.setAttribute("userName", userName);
+                session.setAttribute("userType", response);
+            	return "/"+ response.toLowerCase() +"/home.xhtml?faces-redirect=true";
+            } else if(response.equalsIgnoreCase("PASSWORD")) {
+            	FacesContext.getCurrentInstance().addMessage(
+        			null,
+        			new FacesMessage(FacesMessage.SEVERITY_WARN,
+            					"Credenciales no validos",
+            					"Porfavor, intenta de nuevo")
+    			);
+            } else {
+        		FacesContext.getCurrentInstance().addMessage(
+    				null,
+    				new FacesMessage(FacesMessage.SEVERITY_WARN,
+        						"Excedio el numero de intentos",
+        						"Porfavor, contacte a un administrador")
+    			);   	
+            }
         } else {
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Credenciales no validos",
-                    "Porfavor, intenta de nuevo")
-            );
+    		FacesContext.getCurrentInstance().addMessage(
+    				null,
+    				new FacesMessage(FacesMessage.SEVERITY_WARN,
+    						"Error",
+    						"Ocurrio un error inesperado")
+			);
         }
-        return null;
+        return "/";
 	}
 	
 	

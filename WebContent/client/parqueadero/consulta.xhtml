@@ -8,7 +8,7 @@
 	<h:body>
 		<h:form class="parking-class">
 			<p:dataTable id="tbparqueadero" var="parqueadero"
-			value="#{parqueaderoBean.listarParqueadero}" style="width: 70%"
+			value="#{clienteBean.listaParqueaderos}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -39,7 +39,7 @@
 						<h:outputText value="Reservar" />
 					</f:facet>
 					<h:form>
-						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueaderoUser}" value="Reservar"/>
+						<h:commandButton action="#{clienteBean.iniciarMovimiento}" value="Reservar"/>
 					</h:form>
 				</p:column>												
 			</p:dataTable>

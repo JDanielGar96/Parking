@@ -27,11 +27,6 @@ public class ParqueaderoBean {
 		return "/admin/parqueadero/adicion.xhtml?faces-redirect=true";
 	}
 	
-	public String prepararModificarParqueaderoUser() {
-		parqueadero = (Parqueadero) (listaParqueadero.getRowData());
-		return "/client/movimiento/edicion.xhtml?faces-redirect=true";
-	}
-	
 	public String prepararModificarParqueadero() {
 		parqueadero = (Parqueadero) (listaParqueadero.getRowData());
 		return "/admin/parqueadero/edicion.xhtml?faces-redirect=true";

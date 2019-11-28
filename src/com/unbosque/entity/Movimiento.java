@@ -19,6 +19,8 @@ public class Movimiento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false, length = 5)
 	private int id;
+	@Column(name = "loginCliente", nullable = false, length = 8)
+	private String loginCliente;
 	@Column(name = "parqueaderoId", nullable = false, length = 5)
 	private int parqueaderoId;
 	@Column(name = "placa", nullable = false, length = 6)
@@ -68,6 +70,15 @@ public class Movimiento implements Serializable {
 	public void setParqueaderoId(int parqueaderoId) {
 		this.parqueaderoId = parqueaderoId;
 	}
+	
+	public String getLoginCliente() {
+		return this.loginCliente;
+	}
+	
+	public void setLoginClient(String loginCliente) {
+		this.loginCliente = loginCliente;
+	}
+	
 	public String getPlaca() {
 		return placa;
 	}

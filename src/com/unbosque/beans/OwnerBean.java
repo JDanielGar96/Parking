@@ -1,6 +1,6 @@
 package com.unbosque.beans;
 
-import javax.annotation.PostConstruct;
+//import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,7 +14,7 @@ public class OwnerBean {
 	public OwnerBean() {
 	}
 
-	@PostConstruct
+//	@PostConstruct
 	public void init() {
 		opcion = "";
 

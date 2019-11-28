@@ -110,20 +110,44 @@ public class UsuarioDAOImpl implements DaoUser {
 
 	@Override
 	public String login(String login, String password) {
+		/*
+		 *  Retorna el tipo de usuario si el password es correcto
+		 *  si no es correcto retorna un error dependiendo de los intentos
+		 *  realizados por el usuario.
+		 */	
         Transaction transaction = null;
         Encriptacion enc = new Encriptacion();
         Usuario user = null;
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
+			
 			Object userObject = (Object) session.createQuery("FROM Usuario WHERE login = :login")
 					.setString("login", login)
 					.uniqueResult();
+			
 			user = (Usuario) userObject;
-			if(user.getClave().equals(enc.encriptar(password))) {
-				return user.getTipoUsuario();
-			}
+			
 			transaction.commit();
+			if(user.getIntentos() < 3) {
+				if(user.getClave().equals(enc.encriptar(password))) {
+					if(user.getIntentos() != 0) {
+						user.restablecerIntentos();
+					}
+					System.out.println("Logeo correcto");
+					return user.getTipoUsuario();
+				}
+				user.aumentarIntentos();
+				this.update(user);
+				System.out.println("Logeo incorrecto");
+				return "PASSWORD";
+			}
+			
+			user.aumentarIntentos();
+			this.update(user);
+		
+			System.out.println("Se excedieron los intentos");
+			return "INTENTOS";		
 		} catch (Exception e) {
             if (transaction != null) {
             	transaction.rollback();

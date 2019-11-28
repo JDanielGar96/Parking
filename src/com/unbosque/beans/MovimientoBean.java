@@ -2,6 +2,8 @@ package com.unbosque.beans;
 
 import com.unbosque.dao.impl.MovimientoDAOImpl;
 import com.unbosque.entity.Movimiento;
+import com.unbosque.entity.Parqueadero;
+import com.unbosque.entity.Usuario;
 import com.unbosque.dao.DaoGeneral;
 
 import java.util.Date;
@@ -16,7 +18,18 @@ import javax.faces.model.ListDataModel;
 public class MovimientoBean {
 	private Movimiento movimiento;
 	private DataModel listaMovimiento;
-
+	
+	public String crearMovimientoUsuario() {
+		this.movimiento = new Movimiento();
+		DaoGeneral dao = new MovimientoDAOImpl();
+		this.movimiento.setActivo("Activo");
+		this.movimiento.setFechaHoraReserva(new Date());
+		dao.save(this.movimiento);
+		return "/cliente/home.xhtml?faces-redirect=true";
+	}
+	
+	
+	
 	public String prepararAdicionarMovimiento() {
 		movimiento = new Movimiento();
 		movimiento.setActivo("A");

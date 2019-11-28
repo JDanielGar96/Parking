@@ -15,6 +15,21 @@
 	    	flex-direction: column;
 	    }
 	    p.second{ color: red; }
+	    .submit-button {
+			color: #42f5b6;
+			cursor: pointer;
+			background-color: #fff !important;
+		 	border-radius: .5em;
+			border: 2px solid #42f5b6 !important;
+			font-size: 1em;
+		   	font-weight: bold;
+			margin: 1em;
+		}
+		.panel-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	</style>
 </h:head>
 <h:body style="margin: 0">
@@ -23,24 +38,38 @@
 	</ui:insert>
 	<h1>Gestión de Movimiento</h1>
 	<h:form>
+		<p:growl id="message" showDetail="true" />
 		<h:panelGrid id="panel" columns="2" border="1" cellpadding="10"
 			cellspacing="1">
 			<f:facet name="header">
 				<h3>Registrar Datos</h3>
 			</f:facet>
+			
+			<p:outputLabel value="Nombre parqueadero" />
+			<p:inputText value="#{clienteBean.parqueadero.nombreParqueadero}" disabled="true"/>
+			
 			<p:outputLabel value="Placa" />
-			<p:inputText value="#{movimientoBean.movimiento.placa}" />
+			<p:inputText 
+				value="#{clienteBean.movimiento.placa}" 
+				requiredMessage="La placa es requerida."
+				validatorMessage="Placa no valida."
+				required="true"
+			>
+				<f:validateRegex pattern="[a-zA-Z]{3}[0-9]{3}|[a-zA-Z]{3}[0-9]{2}[a-zA-Z]" />  
+			</p:inputText>
+			
 			<f:facet name="footer">
-				<h:panelGroup style="display:block; text-align:center">
-				    <p:commandButton value="Confirmar" action="#{clienteBean.crearMovimiento}" update="message">
-				        <p:confirm header="Confirmacion" message="Recuerda que debes estar en los proximos 30 minutos o se cancelara tu reserva." icon="pi pi-exclamation-triangle" />
+				<h:panelGroup styleClass="panel-container">
+					
+					<p:link outcome="/client/home.xhtml" value="Regresar" />
+				    <p:commandButton styleClass="submit-button" value="Confirmar" action="#{clienteBean.crearMovimiento}" update="message">
+				        <p:confirm header="Confirmacion" message="¿Estás seguro de realizar la reserva?" icon="pi pi-exclamation-triangle" />
 				    </p:commandButton>
 				     
 				    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 				        <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
 				        <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
 				    </p:confirmDialog>    
-					<p:link outcome="/client/home.xhtml" value="Regresar" />
 				</h:panelGroup>
 			</f:facet>
 		</h:panelGrid>
