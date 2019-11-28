@@ -1,5 +1,6 @@
 package com.unbosque.beans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -7,7 +8,6 @@ import javax.faces.context.FacesContext;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 
 @ManagedBean(name = "adminBean")
 @SessionScoped
@@ -22,6 +22,7 @@ public class AdminBean {
 	public AdminBean() {
 	}
 
+	@PostConstruct
 	public void init() {
 
 		this.fechaHora();
@@ -98,6 +99,11 @@ public class AdminBean {
 				return "/admin/vehiculo/consulta.xhtml?faces-redirect=true";
 			case "27":
 				return "/admin/vehiculo/edicion.xhtml?faces-redirect=true";
+
+			case "28":
+				return "/admin/estadisticas/estadisticas.xhtml?faces-redirect=true";
+			case "29":
+				return "/admin/reportes/resportes.xhtml?faces-redirect=true";
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -118,7 +124,7 @@ public class AdminBean {
 				+ calendar.get(Calendar.YEAR);
 		horaFecha = tiempo + " " + fecha;
 	}
-
+	
 	public String getOpcion() {
 		return opcion;
 	}
