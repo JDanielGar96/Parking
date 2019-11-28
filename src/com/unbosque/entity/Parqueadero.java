@@ -49,6 +49,14 @@ public class Parqueadero implements Serializable {
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
+	
+	public void sumarDisponibilidad() {
+		this.disponibilidad += 1;
+	}
+	
+	public void restarDisponibilidad() {
+		this.disponibilidad -= 1;
+	}
 
 	public int getId() {
 		return id;

@@ -1,14 +1,15 @@
 package com.unbosque.dao.impl;
 
-import com.unbosque.dao.DaoGeneral;
+import com.unbosque.dao.DaoParqueadero;
 import com.unbosque.util.HibernateUtil;
 import com.unbosque.entity.Parqueadero;
+import com.unbosque.entity.Usuario;
 
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class ParqueaderoDAOImpl implements DaoGeneral {
+public class ParqueaderoDAOImpl implements DaoParqueadero {
     	
 	@Override
 	public boolean save(Object object) {
@@ -40,6 +41,18 @@ public class ParqueaderoDAOImpl implements DaoGeneral {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 		List list = session.createQuery("from Parqueadero").list();
+		transaction.commit();
+		return list;
+	}
+	
+	@Override
+	public List<Object> listAvaliables() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		
+		List list = session
+				.createQuery("FROM Parqueadero WHERE disponibilidad > 0").list();
+		
 		transaction.commit();
 		return list;
 	}
