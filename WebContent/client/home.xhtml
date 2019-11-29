@@ -43,10 +43,16 @@
 	      		<p:commandButton value="Mi ubicación" styleClass="ubication-button" action="#{clienteBean.mostrarUbicacion}" onclick="getGeocolocation()" />
 	      	</h:form>
 	      	
-			<h2>Lista de parqueaderos</h2>
+	      	<br />
 			
 			<ui:insert name="consulta">
 				<ui:include src="/client/parqueadero/consulta.xhtml"></ui:include>
+			</ui:insert>
+		
+			<br />
+			
+			<ui:insert name="consulta">
+				<ui:include src="/client/movimiento/consulta.xhtml"></ui:include>
 			</ui:insert>
 		</div>
 		

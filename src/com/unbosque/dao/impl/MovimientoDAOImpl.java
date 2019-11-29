@@ -1,15 +1,18 @@
 package com.unbosque.dao.impl;
 
-import com.unbosque.dao.DaoGeneral;
+import com.unbosque.dao.DaoMovimiento;
 import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Movimiento;
+import com.unbosque.entity.Usuario;
 
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class MovimientoDAOImpl implements DaoGeneral {
+public class MovimientoDAOImpl implements DaoMovimiento {
     	
 	@Override
 	public boolean save(Object object) {
@@ -76,5 +79,19 @@ public class MovimientoDAOImpl implements DaoGeneral {
 			return false;
 		}
 		return true;
+	}
+	
+	@Override
+	public List<Object> listByClient(String login) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		
+		Query query = session.createSQLQuery(
+				"SELECT * FROM Movimiento"
+				+ " WHERE loginCliente = :login").addEntity(Movimiento.class);
+		List result = query.setString("login", login).list();
+		
+		transaction.commit();
+		return result;
 	}
 }

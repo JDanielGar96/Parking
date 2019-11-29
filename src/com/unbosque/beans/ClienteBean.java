@@ -40,6 +40,7 @@ public class ClienteBean {
 
 	
 	private DataModel<Parqueadero> listaParqueadero;
+	private DataModel<Movimiento> listaMovimiento;
 
 	public ClienteBean() { }
 	
@@ -50,7 +51,6 @@ public class ClienteBean {
 	}
 	
 	public String iniciarMovimientoMapa(Parqueadero parqueadero) {
-		System.out.println(parqueadero == null);
 		this.parqueadero = parqueadero;
 		movimiento = new Movimiento();
 		return "/client/movimiento/crear.xhtml?faces-redirect=true";
@@ -78,11 +78,26 @@ public class ClienteBean {
 		return "/client/home.xhtml?faces-redirect=true";
 	}
 	
+	public String nombreParqueadero(int id) {
+		Object parqueaderoObj = new ParqueaderoDAOImpl().get(id);
+		return ((Parqueadero) parqueaderoObj).getNombreParqueadero();
+		
+	}
+	
 	public DataModel getListaParqueaderos() {
 		List<Object> lista = new ParqueaderoDAOImpl().listAvaliables();
 		listaParqueadero = new ListDataModel(lista);
 		return listaParqueadero;
 	}
+	
+	public DataModel getListaMovimientos() {
+		HttpSession session = Util.getSession();
+        String login = (String) session.getAttribute("userName");
+		List<Object> movimientos = new MovimientoDAOImpl().listByClient(login);
+		listaMovimiento = new ListDataModel(movimientos);
+		return listaMovimiento;
+	}
+	
 
 	public Usuario getUsuario() {
 		return usuario;
