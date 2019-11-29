@@ -26,7 +26,7 @@ public class MovimientoDAOImpl implements DaoGeneral {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Movimiento object = (Movimiento) session.load(Movimiento.class, id);

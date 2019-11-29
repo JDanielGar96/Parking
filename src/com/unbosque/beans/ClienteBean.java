@@ -1,6 +1,5 @@
 package com.unbosque.beans;
 
-import com.unbosque.dao.impl.UserDAOImpl;
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.DaoGeneral;
 
@@ -14,10 +13,18 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
 import com.unbosque.entity.Movimiento;
 import com.unbosque.entity.Parqueadero;
 import com.unbosque.dao.impl.MovimientoDAOImpl;
 import com.unbosque.dao.impl.ParqueaderoDAOImpl;
+import com.unbosque.util.Email;
+import com.unbosque.util.Util;
 
 @ManagedBean
 @SessionScoped
@@ -30,6 +37,7 @@ public class ClienteBean {
 	
 	private Parqueadero parqueadero;
 	private Movimiento movimiento;
+
 	
 	private DataModel<Parqueadero> listaParqueadero;
 
@@ -37,6 +45,13 @@ public class ClienteBean {
 	
 	public String iniciarMovimiento() {
 		parqueadero = (Parqueadero) (listaParqueadero.getRowData());
+		movimiento = new Movimiento();
+		return "/client/movimiento/crear.xhtml?faces-redirect=true";
+	}
+	
+	public String iniciarMovimientoMapa(Parqueadero parqueadero) {
+		System.out.println(parqueadero == null);
+		this.parqueadero = parqueadero;
 		movimiento = new Movimiento();
 		return "/client/movimiento/crear.xhtml?faces-redirect=true";
 	}
@@ -68,7 +83,7 @@ public class ClienteBean {
 		listaParqueadero = new ListDataModel(lista);
 		return listaParqueadero;
 	}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

@@ -26,7 +26,7 @@ public class VehiculoDAOImpl implements DaoGeneral {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Vehiculo object = (Vehiculo) session.load(Vehiculo.class, id);

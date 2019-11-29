@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.unbosque.entity.Usuario;
+import com.unbosque.util.Util;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 import javax.servlet.http.HttpSession;
 
@@ -55,7 +56,7 @@ public class LoginBean implements Serializable {
         		FacesContext.getCurrentInstance().addMessage(
     				null,
     				new FacesMessage(FacesMessage.SEVERITY_WARN,
-        						"Excedio el numero de intentos",
+        						"Excedió el número de intentos",
         						"Porfavor, contacte a un administrador")
     			);   	
             }

@@ -1,4 +1,4 @@
-package com.unbosque.beans;
+package com.unbosque.util;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;

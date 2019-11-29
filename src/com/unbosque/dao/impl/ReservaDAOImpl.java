@@ -26,7 +26,7 @@ public class ReservaDAOImpl implements DaoGeneral {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Reserva object = (Reserva) session.load(Reserva.class, id);

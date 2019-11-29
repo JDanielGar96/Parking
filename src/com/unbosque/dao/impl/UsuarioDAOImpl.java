@@ -5,11 +5,17 @@ import com.unbosque.util.HibernateUtil;
 
 import com.unbosque.entity.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import com.unbosque.util.Email;
 import com.unbosque.util.Encriptacion;
 
 public class UsuarioDAOImpl implements DaoUser {
@@ -29,7 +35,7 @@ public class UsuarioDAOImpl implements DaoUser {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Usuario object = (Usuario) session.load(Usuario.class, id);
@@ -133,6 +139,7 @@ public class UsuarioDAOImpl implements DaoUser {
 				if(user.getClave().equals(enc.encriptar(password))) {
 					if(user.getIntentos() != 0) {
 						user.restablecerIntentos();
+						this.update(user);
 					}
 					System.out.println("Logeo correcto");
 					return user.getTipoUsuario();
@@ -141,13 +148,36 @@ public class UsuarioDAOImpl implements DaoUser {
 				this.update(user);
 				System.out.println("Logeo incorrecto");
 				return "PASSWORD";
+			} else {
+				if(user.getIntentos() == 3) {
+
+	        		Email email = new Email();
+	        		ArrayList<String> recipesList = new ArrayList<String>();
+	        		recipesList.add(user.getCorreo());
+	        		
+	        		// Send User!! 
+	        		String content = "<!DOCTYPE html><html><body>"
+	        				+ "<h1>Cliente de Sophyparking:</h1>"
+	        				+ "<p>Tu cuenta se bloqueo por razones de seguridad, razon: <b> Contraseña incorrecta multiples veces </b>"
+	        				+ "</body></html>";
+	        		email.sendEmail(recipesList, "Alerta de seguridad SophyParking", content);
+	        		
+	        		// Send Email!! 
+	        		recipesList = new ArrayList<String>();
+	        		recipesList.add(email.getEmail());
+	        		
+	        		content = "<!DOCTYPE html><html><body>"
+	        				+ "<h1>Admin de Sophyparking:</h1>"
+	        				+ "<p>La cuenta del cliente con usuario " + user.getLogin() + " se bloqueo por razones de seguridad, razon: <b> Contraseña incorrecta multiples veces </b>"
+	        				+ "</body></html>";
+	        		email.sendEmail(recipesList, "Alerta de seguridad SophyParking", content);
+				}
+				user.aumentarIntentos();
+				this.update(user);
+				System.out.println("Se excedieron los intentos");
+				return "INTENTOS";		
 			}
 			
-			user.aumentarIntentos();
-			this.update(user);
-		
-			System.out.println("Se excedieron los intentos");
-			return "INTENTOS";		
 		} catch (Exception e) {
             if (transaction != null) {
             	transaction.rollback();
