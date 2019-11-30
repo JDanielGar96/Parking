@@ -4,22 +4,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:a4j="http://pfaces.org/a4j"
-    xmlns:p="http://primefaces.org/ui">
-    
-        <ui:insert name="header">
-			<ui:include src="/template/common/header.xhtml"></ui:include>
-		</ui:insert>
-		
+	xmlns:a4j="http://pfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+
+	<ui:insert name="header">
+		<ui:include src="/template/common/header.xhtml"></ui:include>
+	</ui:insert>
+
 	<h:head>
 		<title>Estadísticas</title>
 	</h:head>
 
 	<h:body>
-	<h:form>
-		<p:chart type="line" model="#{estadisticasBean.lineModel1}"	style="height:300px;" />
-		<br /><br />
-		<p:chart type="line" model="#{estadisticasBean.lineModel2}" 	style="height:300px;" />
+		<h:form>
+			<p:panel>
+				<p:barChart value="#{graftBean.grafModeloCart}" />
+			</p:panel>>
+			<br></br>
+			<br></br>
+			<p:chart type="bar" model="#{grafBean.grafModeloBar}" style="height:300px"/>
+            <br /><br />
+            <br /><br />
 		</h:form>
 	</h:body>
 </ui:composition>
