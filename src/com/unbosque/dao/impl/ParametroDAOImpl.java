@@ -26,7 +26,7 @@ public class ParametroDAOImpl implements DaoGeneral {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Parametro object = (Parametro) session.load(Parametro.class, id);

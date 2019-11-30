@@ -22,20 +22,37 @@
 		<div class="container">
 			<h1>Busca un parqueadero:</h1> 
 
-	      	<p:gmap widgetVar="w_gmap" center="#{clienteBean.latitud}, #{clienteBean.longitud}" zoom="5" type="ROADMAP" styleClass="google-map"/>
+	      	<p:gmap widgetVar="w_gmap" center="#{clienteBean.latitud}, #{clienteBean.longitud}" zoom="5" model="#{mapaBean.modeloMapa}" type="ROADMAP" styleClass="google-map">
+	      		<p:ajax event="overlaySelect" listener="#{mapaBean.onMarkerSelect}" />
+    		    <p:gmapInfoWindow id="infoWindow">
+		            <p:outputPanel style="text-align: center; display: block; margin: auto">
+		                    <b><h:outputText value="#{mapaBean.parqueadero.nombreParqueadero}" /></b>
+		                    <hr/>
+		                    <div>
+			                    <h:outputText value="Cupos: #{mapaBean.parqueadero.disponibilidad}" />
+		                    </div>
+		                    <p:commandButton value="Reservar" styleClass="ubication-button" action="#{clienteBean.iniciarMovimientoMapa(mapaBean.parqueadero)}" />
+		            </p:outputPanel>
+		        </p:gmapInfoWindow>
+	      	</p:gmap>
 	      	<h:form id="ubicationForm">
 	      		<h:inputHidden id="latitud" value="#{clienteBean.latitud}" />
 	      		<h:inputHidden id="longitud" value="#{clienteBean.longitud}" />
 	      		<h:inputHidden id="zoom" value="#{clienteBean.longitud}" />
 	      		
-	      		<p:commandButton value="Mostrar Ubicación" styleClass="ubication-button" action="#{clienteBean.mostrarUbicacion}" onclick="getGeocolocation()" />
-	      		
+	      		<p:commandButton value="Mi ubicación" styleClass="ubication-button" action="#{clienteBean.mostrarUbicacion}" onclick="getGeocolocation()" />
 	      	</h:form>
 	      	
-			<h2>Lista de parqueaderos</h2>
+	      	<br />
 			
 			<ui:insert name="consulta">
 				<ui:include src="/client/parqueadero/consulta.xhtml"></ui:include>
+			</ui:insert>
+		
+			<br />
+			
+			<ui:insert name="consulta">
+				<ui:include src="/client/movimiento/consulta.xhtml"></ui:include>
 			</ui:insert>
 		</div>
 		

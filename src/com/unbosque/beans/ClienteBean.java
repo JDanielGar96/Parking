@@ -1,6 +1,5 @@
 package com.unbosque.beans;
 
-import com.unbosque.dao.impl.UserDAOImpl;
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.DaoGeneral;
 
@@ -14,10 +13,18 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
 import com.unbosque.entity.Movimiento;
 import com.unbosque.entity.Parqueadero;
 import com.unbosque.dao.impl.MovimientoDAOImpl;
 import com.unbosque.dao.impl.ParqueaderoDAOImpl;
+import com.unbosque.util.Email;
+import com.unbosque.util.Util;
 
 @ManagedBean
 @SessionScoped
@@ -30,13 +37,21 @@ public class ClienteBean {
 	
 	private Parqueadero parqueadero;
 	private Movimiento movimiento;
+
 	
 	private DataModel<Parqueadero> listaParqueadero;
+	private DataModel<Movimiento> listaMovimiento;
 
 	public ClienteBean() { }
 	
 	public String iniciarMovimiento() {
 		parqueadero = (Parqueadero) (listaParqueadero.getRowData());
+		movimiento = new Movimiento();
+		return "/client/movimiento/crear.xhtml?faces-redirect=true";
+	}
+	
+	public String iniciarMovimientoMapa(Parqueadero parqueadero) {
+		this.parqueadero = parqueadero;
 		movimiento = new Movimiento();
 		return "/client/movimiento/crear.xhtml?faces-redirect=true";
 	}
@@ -63,12 +78,27 @@ public class ClienteBean {
 		return "/client/home.xhtml?faces-redirect=true";
 	}
 	
+	public String nombreParqueadero(int id) {
+		Object parqueaderoObj = new ParqueaderoDAOImpl().get(id);
+		return ((Parqueadero) parqueaderoObj).getNombreParqueadero();
+		
+	}
+	
 	public DataModel getListaParqueaderos() {
 		List<Object> lista = new ParqueaderoDAOImpl().listAvaliables();
 		listaParqueadero = new ListDataModel(lista);
 		return listaParqueadero;
 	}
 	
+	public DataModel getListaMovimientos() {
+		HttpSession session = Util.getSession();
+        String login = (String) session.getAttribute("userName");
+		List<Object> movimientos = new MovimientoDAOImpl().listByClient(login);
+		listaMovimiento = new ListDataModel(movimientos);
+		return listaMovimiento;
+	}
+	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

@@ -25,7 +25,7 @@ public class AuditoriaDAOImpl implements DaoGeneral {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Auditoria object = (Auditoria) session.load(Auditoria.class, id);

@@ -26,7 +26,7 @@ public class TarifaDAOImpl implements DaoGeneral {
 	}
 
 	@Override
-	public Object get(long id) {
+	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Tarifa object = (Tarifa) session.load(Tarifa.class, id);

@@ -5,7 +5,7 @@ import java.util.List;
 public interface DaoGeneral {
 	public boolean save(Object object);
 	
-	public Object get(long id);
+	public Object get(int id);
 
 	public List<Object> list();
 

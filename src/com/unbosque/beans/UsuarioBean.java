@@ -1,8 +1,10 @@
 package com.unbosque.beans;
 
-import com.unbosque.dao.impl.UserDAOImpl;
 import com.unbosque.entity.Usuario;
 import com.unbosque.dao.DaoGeneral;
+
+import com.unbosque.dao.impl.UsuarioDAOImpl;
+
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -29,7 +31,7 @@ public class UsuarioBean {
 
 	public String eliminarUsuario() {
 		Usuario usuarioTemp = (Usuario) (listaUsuario.getRowData());
-		DaoGeneral dao = new UserDAOImpl();
+		DaoGeneral dao = new UsuarioDAOImpl();
 		usuarioTemp.setActivo("I");
 		dao.update(usuarioTemp);
 		// dao.remove(usuarioTemp);
@@ -37,13 +39,13 @@ public class UsuarioBean {
 	}
 
 	public String adicionarUsuario() {
-		DaoGeneral dao = new UserDAOImpl();
+		DaoGeneral dao = new UsuarioDAOImpl();
 		dao.save(usuario);
 		return "/admin/usuario/consulta.xhtml?faces-redirect=true";
 	}
 
 	public String modificarUsuario() {
-		DaoGeneral dao = new UserDAOImpl();
+		DaoGeneral dao = new UsuarioDAOImpl();
 		dao.update(usuario);
 		return "/admin/usuario/consulta.xhtml?faces-redirect=true";
 	}
@@ -57,7 +59,7 @@ public class UsuarioBean {
 	}
 
 	public DataModel getListarUsuario() {
-		List<Object> lista = new UserDAOImpl().list();
+		List<Object> lista = new UsuarioDAOImpl().list();
 		listaUsuario = new ListDataModel(lista);
 		return listaUsuario;
 	}
