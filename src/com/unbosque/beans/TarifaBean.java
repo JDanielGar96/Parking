@@ -2,9 +2,7 @@ package com.unbosque.beans;
 
 import com.unbosque.dao.impl.TarifaDAOImpl;
 import com.unbosque.entity.Tarifa;
-import com.unbosque.dao.DaoGeneral;
 
-import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,9 +14,12 @@ import javax.faces.model.ListDataModel;
 public class TarifaBean {
 	private Tarifa tarifa;
 	private DataModel listaTarifa;
-
-	public String prepararAdicionarTarifa() {
+	
+	public TarifaBean() {
 		tarifa = new Tarifa();
+	}
+	
+	public String prepararAdicionarTarifa() {
 		tarifa.setEstado("A");
 		return "/admin/tarifa/adicion.xhtml?faces-redirect=true";
 	}
@@ -30,7 +31,7 @@ public class TarifaBean {
 
 	public String eliminarTarifa() {
 		Tarifa tarifaTemp = (Tarifa) (listaTarifa.getRowData());
-		DaoGeneral dao = new TarifaDAOImpl();
+		TarifaDAOImpl dao = new TarifaDAOImpl();
 		tarifaTemp.setEstado("I");
 		dao.update(tarifaTemp);
 		// dao.remove(usuarioTemp);
@@ -38,13 +39,13 @@ public class TarifaBean {
 	}
 
 	public String adicionarTarifa() {
-		DaoGeneral dao = new TarifaDAOImpl();
+		TarifaDAOImpl dao = new TarifaDAOImpl();
 		dao.save(tarifa);
 		return "/admin/tarifa/consulta.xhtml?faces-redirect=true";
 	}
 
 	public String modificarTarifa() {
-		DaoGeneral dao = new TarifaDAOImpl();
+		TarifaDAOImpl dao = new TarifaDAOImpl();
 		dao.update(tarifa);
 		return "/admin/tarifa/consulta.xhtml?faces-redirect=true";
 	}

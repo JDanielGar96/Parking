@@ -3,6 +3,7 @@ package com.unbosque.dao;
 import java.util.List;
 
 public interface DaoGeneral {
+	
 	public boolean save(Object object);
 	
 	public Object get(int id);

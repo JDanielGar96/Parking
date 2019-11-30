@@ -1,8 +1,8 @@
 package com.unbosque.beans;
 
 import com.unbosque.dao.impl.ParqueaderoDAOImpl;
+import com.unbosque.entity.Empresa;
 import com.unbosque.entity.Parqueadero;
-import com.unbosque.dao.DaoGeneral;
 
 import java.util.Date;
 import java.util.List;
@@ -20,9 +20,12 @@ public class ParqueaderoBean {
 	private Parqueadero parqueadero;
 	private DataModel listaParqueadero;
 	private MapModel modeloMapa;
-
-	public String prepararAdicionarParqueadero() {
+	
+	public ParqueaderoBean() {
 		parqueadero = new Parqueadero();
+	}
+	
+	public String prepararAdicionarParqueadero() {
 		parqueadero.setEstado("A");
 		return "/admin/parqueadero/adicion.xhtml?faces-redirect=true";
 	}
@@ -34,7 +37,7 @@ public class ParqueaderoBean {
 
 	public String eliminarParqueadero() {
 		Parqueadero parqueaderoTemp = (Parqueadero) (listaParqueadero.getRowData());
-		DaoGeneral dao = new ParqueaderoDAOImpl();
+		ParqueaderoDAOImpl dao = new ParqueaderoDAOImpl();
 		parqueaderoTemp.setEstado("I");
 		dao.update(parqueaderoTemp);
 		// dao.remove(usuarioTemp);
@@ -42,21 +45,16 @@ public class ParqueaderoBean {
 	}
 
 	public String adicionarParqueadero() {
-		DaoGeneral dao = new ParqueaderoDAOImpl();
+		ParqueaderoDAOImpl dao = new ParqueaderoDAOImpl();
 		dao.save(parqueadero);
 		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
 	}
 
 	public String modificarParqueadero() {
-		DaoGeneral dao = new ParqueaderoDAOImpl();
+		ParqueaderoDAOImpl dao = new ParqueaderoDAOImpl();
 		dao.update(parqueadero);
 		return "/admin/parqueadero/consulta.xhtml?faces-redirect=true";
 	}
-	
-//	public MapModel obtenerMarcadoresParqueaderos {
-//		modeloMapa = new DefaultMapModel();
-//		
-//	}
 
 	public Parqueadero getParqueadero() {
 		return parqueadero;

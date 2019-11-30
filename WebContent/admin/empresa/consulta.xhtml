@@ -1,4 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
@@ -6,6 +9,9 @@
 		<title>Gestión de Empresa</title>
 	</h:head>
 	<h:body>
+	<ui:insert name="header">
+			<ui:include src="/template/common/header.xhtml"></ui:include>
+	</ui:insert>
 		<h:form>
 			<p:dataTable id="tbempresa" var="empresa"
 			value="#{empresaBean.listarEmpresa}" style="width: 70%"
@@ -72,6 +78,8 @@
 				</p:column>													
 			</p:dataTable>
 			<h:commandButton action="#{empresaBean.prepararAdicionarEmpresa}" value="Crear"/>
+			<br></br>
+			<p:link outcome="/admin/home.xhtml" value="Regresar" />
 		</h:form>
 	</h:body>
 </html>

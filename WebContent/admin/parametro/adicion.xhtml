@@ -24,23 +24,23 @@
 				</f:facet>
 				<h:outputLabel value="Id" />
 				<h:inputText value="#{parametroBean.parametro.id}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Nombre" />
 				<h:inputText value="#{parametroBean.parametro.nombreParametro}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Descripción" />
 				<h:inputText value="#{parametroBean.parametro.descripcion}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Valor" />
 				<h:inputText value="#{parametroBean.parametro.valorTexto}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Numerico" />
 				<h:inputText value="#{parametroBean.parametro.valorNumerico}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Estado" />
 				<h:inputText value="#{parametroBean.parametro.estado}" />
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{parametroBean.adicionarParametro}"
 							value="Registrar" />
 						<br />
-                 <br></br>
-		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
+                <br></br>
+		        <p:link outcome="/admin/home.xhtml" value="Regresar" />
 					</h:panelGroup>
 				</f:facet>
 			</h:panelGrid>

@@ -62,22 +62,9 @@
 					</f:facet>
 						<h:outputText value="#{auditoria.addressIP}" /> 
 				</p:column>	
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Modificar" />
-					</f:facet>
-					<h:commandButton action="#{auditoriaBean.prepararModificarAuditoria}" value="Modificar"/>
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Eliminar" />
-					</f:facet>
-					<h:commandButton action="#{auditoriaBean.eliminarauditoria}" value="Eliminar"/>
-				</p:column>													
-			</p:dataTable>
-			<h:commandButton action="#{auditoriaBean.prepararAdicionarAuditoria}" value="Crear"/>
 			<br></br>
 			<p:link outcome="/admin/home.xhtml" value="Regresar" />
+			</p:dataTable>
 		</h:form>
 	</h:body>
 </html>

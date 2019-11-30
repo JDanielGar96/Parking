@@ -5,15 +5,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-	<ui:insert name="header">
-			<ui:include src="/template/common/header.xhtml"></ui:include>
-	</ui:insert>
-
 <h:head>
 	<title>Gestión de Empresa</title>
 </h:head>
 <h:body>
+	<ui:insert name="header">
+			<ui:include src="/template/common/header.xhtml"></ui:include>
+	</ui:insert>
 	<h1>Gestión de Empresa</h1>
 	<h:form>
 		<p:panel>
@@ -22,20 +20,21 @@
 				<f:facet name="header">
 					<h:outputText value="Registro de Empresa" />
 				</f:facet>
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{empresaBean.empresa.id}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Nit" />
 				<h:inputText value="#{empresaBean.empresa.nitEmpresa}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Razón Social" />
 				<h:inputText value="#{empresaBean.empresa.razonSocialEmpresa}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Teléfono" />
 				<h:inputText value="#{empresaBean.empresa.telefonosEmpresa}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Correo Empresa" />
 				<h:inputText value="#{empresaBean.empresa.correoEmpresa}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Dirección Empresa" />
 				<h:inputText value="#{empresaBean.empresa.direccionEmpresa}" />
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{empresaBean.empresa.estadoEmpresa}" />
+				<h:outputLabel value="Estado Empresa" />
+				<h:selectOneMenu value="#{empresaBean.empresa.estadoEmpresa}">
+					<f:selectItem itemLabel="Activo" itemValue="A" />
+					<f:selectItem itemLabel="Inactivo" itemValue="F" />
+				</h:selectOneMenu>
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{empresaBean.adicionarEmpresa}"

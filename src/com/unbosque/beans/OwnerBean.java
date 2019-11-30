@@ -1,15 +1,22 @@
 package com.unbosque.beans;
 
+import java.util.Date;
+
 //import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import com.unbosque.entity.Movimiento;
+import com.unbosque.dao.DaoGeneral;
+import com.unbosque.dao.impl.MovimientoDAOImpl;
 
 @ManagedBean(name = "ownerBean")
 @SessionScoped
 public class OwnerBean {
 	String opcion;
+	MovimientoDAOImpl movimientodao;
+	Movimiento movimiento;
 
 	public OwnerBean() {
 	}
@@ -41,7 +48,23 @@ public class OwnerBean {
 		}
 		return null;
 	}
-
+	
+	public String ingresoVehiculo(int idreserva) {
+		System.out.println("Ingreso Vehículo..." + idreserva);
+		movimiento = new Movimiento();
+		movimientodao = new MovimientoDAOImpl();
+		movimiento = (Movimiento) (movimientodao.get(idreserva));
+		movimiento.setFechaHoraLlegada(new Date());
+		modificarMovimiento();
+		return null;
+	}
+	
+	public String modificarMovimiento() {
+		DaoGeneral dao = new MovimientoDAOImpl();
+		dao.update(movimiento);
+		return "/admin/movimiento/consulta.xhtml?faces-redirect=true";
+	}
+	
 	public String getOpcion() {
 		return opcion;
 	}
@@ -49,5 +72,13 @@ public class OwnerBean {
 	public void setOpcion(String opcion) {
 		this.opcion = opcion;
 	}
+	
+	public Movimiento getMovimiento() {
+		return movimiento;
+	}
 
+	public void setMovimiento(Movimiento movimiento) {
+		this.movimiento = movimiento;
+	}
+	
 }

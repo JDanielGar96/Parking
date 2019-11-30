@@ -12,7 +12,7 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            90
+            100000000
         </session-timeout>
     </session-config>
     <welcome-file-list>

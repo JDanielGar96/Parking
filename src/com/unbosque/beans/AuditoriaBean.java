@@ -2,7 +2,7 @@ package com.unbosque.beans;
 
 import com.unbosque.dao.impl.AuditoriaDAOImpl;
 import com.unbosque.entity.Auditoria;
-import com.unbosque.dao.DaoGeneral;
+import com.unbosque.entity.Empresa;
 
 import java.util.Date;
 import java.util.List;
@@ -17,8 +17,11 @@ public class AuditoriaBean {
 	private Auditoria auditoria;
 	private DataModel listaAuditoria;
 
-	public String prepararAdicionarAuditoria() {
+	public AuditoriaBean() {
 		auditoria = new Auditoria();
+	}
+	
+	public String prepararAdicionarAuditoria() {
 		return "/admin/auditoria/adicion.xhtml?faces-redirect=true";
 	}
 
@@ -27,23 +30,9 @@ public class AuditoriaBean {
 		return "/admin/auditoria/edicion.xhtml?faces-redirect=true";
 	}
 
-	public String eliminarAuditoria() {
-		Auditoria auditoriaTemp = (Auditoria) (listaAuditoria.getRowData());
-		DaoGeneral dao = new AuditoriaDAOImpl();
-		dao.update(auditoriaTemp);
-		// dao.remove(auditoriaTemp);
-		return "/admin/auditoria/consulta.xhtml?faces-redirect=true";
-	}
-
 	public String adicionarAuditoria() {
-		DaoGeneral dao = new AuditoriaDAOImpl();
+		AuditoriaDAOImpl dao = new AuditoriaDAOImpl();
 		dao.save(auditoria);
-		return "/admin/auditoria/consulta.xhtml?faces-redirect=true";
-	}
-
-	public String modificarAuditoria() {
-		DaoGeneral dao = new AuditoriaDAOImpl();
-		dao.update(auditoria);
 		return "/admin/auditoria/consulta.xhtml?faces-redirect=true";
 	}
 

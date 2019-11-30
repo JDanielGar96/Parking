@@ -2,9 +2,7 @@ package com.unbosque.beans;
 
 import com.unbosque.dao.impl.ParametroDAOImpl;
 import com.unbosque.entity.Parametro;
-import com.unbosque.dao.DaoGeneral;
 
-import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,9 +14,12 @@ import javax.faces.model.ListDataModel;
 public class ParametroBean {
 	private Parametro parametro;
 	private DataModel listaParametro;
-
-	public String prepararAdicionarParametro() {
+	
+	public ParametroBean() {
 		parametro = new Parametro();
+	}
+	
+	public String prepararAdicionarParametro() {
 		parametro.setEstado("A");
 		return "/admin/parametro/adicion.xhtml?faces-redirect=true";
 	}
@@ -30,7 +31,7 @@ public class ParametroBean {
 
 	public String eliminarParametro() {
 		Parametro parametroTemp = (Parametro) (listaParametro.getRowData());
-		DaoGeneral dao = new ParametroDAOImpl();
+		ParametroDAOImpl dao = new ParametroDAOImpl();
 		parametroTemp.setEstado("I");
 		dao.update(parametroTemp);
 		// dao.remove(usuarioTemp);
@@ -38,13 +39,13 @@ public class ParametroBean {
 	}
 
 	public String adicionarParametro() {
-		DaoGeneral dao = new ParametroDAOImpl();
+		ParametroDAOImpl dao = new ParametroDAOImpl();
 		dao.save(parametro);
 		return "/admin/parametro/consulta.xhtml?faces-redirect=true";
 	}
 
 	public String modificarParametro() {
-		DaoGeneral dao = new ParametroDAOImpl();
+		ParametroDAOImpl dao = new ParametroDAOImpl();
 		dao.update(parametro);
 		return "/admin/parametro/consulta.xhtml?faces-redirect=true";
 	}

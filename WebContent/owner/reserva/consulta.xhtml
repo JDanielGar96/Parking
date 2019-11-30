@@ -8,85 +8,78 @@
 	<ui:include src="/template/common/header.xhtml"></ui:include>
 </ui:insert>
 
-	<h:head>
-		<title>Gestión de Parqueaderos</title>
-	</h:head>
-	<h:body>
-		<h:form>
-			<p:dataTable id="tbreserva" var="reserva"
-			value="#{reservaBean.listarReserva}" style="width: 70%"
+<h:head>
+	<title>Gestión de Movimiento</title>
+	<style>
+		body {
+			align-items: center;
+			justify-content: center;
+			display: flex;
+			width: 100vw;			
+		}
+	</style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:dataTable id="tbmovimiento" var="movimiento"
+			value="#{movimientoBean.listarMovimiento}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
+			<f:facet name="header">
+				<h:outputText value="Lista de Movimientos" />
+			</f:facet>
+			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Lista de Reservas" />
+					<h:outputText value="Id" />
 				</f:facet>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Id" />
-					</f:facet>
-						<h:outputText value="#{reserva.id}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Tipo Servicio" />
-					</f:facet>
-						<h:outputText value="#{reserva.tipoServicio}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Fecha Reserva" />
-					</f:facet>
-						<h:outputText value="#{reserva.fechaHoraReserva}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Fecha Llegada" />
-					</f:facet>
-						<h:outputText value="#{reserva.fechaHoraLlegada}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Tiempo Estimado" />
-					</f:facet>
-						<h:outputText value="#{reserva.tiempoEstimado}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Valor Cobro" />
-					</f:facet>
-						<h:outputText value="#{reserva.valorCobro}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Tipo Cobro" />
-					</f:facet>
-						<h:outputText value="#{reserva.tipoCobro}" /> 
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Activo" />
-					</f:facet>
-						<h:outputText value="#{reserva.activo}" /> 
-				</p:column>	
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Modificar" />
-					</f:facet>
-					<h:commandButton action="#{reservaBean.prepararModificarReserva}" value="Modificar"/>
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Eliminar" />
-					</f:facet>
-					<h:commandButton action="#{reservaBean.eliminarReserva}" value="Eliminar"/>
-				</p:column>													
-			</p:dataTable>
-			<h:commandButton action="#{reservaBean.prepararAdicionarReserva}" value="Crear"/>
-			
-			     <br></br>
-		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
-		</h:form>
-	</h:body>
+				<h:outputText value="#{movimiento.id}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Placa" />
+				</f:facet>
+				<h:outputText value="#{movimiento.placa}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Fecha Reserva" />
+				</f:facet>
+				<h:outputText value="#{movimiento.fechaHoraReserva}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Fecha Ingreso" />
+				</f:facet>
+				<h:outputText value="#{movimiento.fechaHoraLlegada}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Fecha Salida" />
+				</f:facet>
+				<h:outputText value="#{movimiento.fechaHoraSalida}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Estado" />
+				</f:facet>
+				<h:outputText value="#{movimiento.activo}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Ingresar" />
+				</f:facet>
+				<h:commandButton action="#{movimientoBean.ingresoVehiculo}" value="Ingresar" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Salir" />
+				</f:facet>
+				<h:commandButton action="#{movimientoBean.salidaVehiculo}" value="Salida" />
+			</p:column>
+		</p:dataTable>
+		<p:link outcome="/owner/home.xhtml" value="Regresar" />
+	</h:form>
+</h:body>
 </html>

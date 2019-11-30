@@ -22,10 +22,8 @@
 				<f:facet name="header">
 					<h:outputText value="Registro de parqueadero" />
 				</f:facet>
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{parqueaderoBean.parqueadero.id}" />
 				<h:outputLabel value="Empresa" />
-				<h:inputText value="#{parqueaderoBean.parqueadero.idEmpresa}" />
+				<h:inputText value="#{parqueaderoBean.parqueadero.propietario}" />
 				<h:outputLabel value="Nombre Parqueadero" />
 				<h:inputText value="#{parqueaderoBean.parqueadero.nombreParqueadero}" />
 				<h:outputLabel value="Ciudad" />
@@ -34,10 +32,10 @@
 				<h:inputText value="#{parqueaderoBean.parqueadero.correo}" />
 				<h:outputLabel value="Disponibilidad" />
 				<h:inputText value="#{parqueaderoBean.parqueadero.disponibilidad}" />				
-				<h:outputLabel value="Servicio" />
-				<h:inputText value="#{parqueaderoBean.parqueadero.servicio}" />								
-				<h:outputLabel value="Fidelizacion" />
-				<h:inputText value="#{parqueaderoBean.parqueadero.fidelizacion}" />
+				<h:outputLabel value="Latitud" />
+				<h:inputText value="#{parqueaderoBean.parqueadero.latitud}" />								
+				<h:outputLabel value="Longitud" />
+				<h:inputText value="#{parqueaderoBean.parqueadero.longitud}" />
 				<h:outputLabel value="Estado" />
 				<h:inputText value="#{parqueaderoBean.parqueadero.estado}" />
 				<f:facet name="footer">

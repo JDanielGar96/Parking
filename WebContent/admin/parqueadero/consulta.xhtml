@@ -32,7 +32,7 @@
 					<f:facet name="header">
 						<h:outputText value="Empresa" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.idEmpresa}" />
+					<h:outputText value="#{parqueadero.propietario}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
@@ -64,17 +64,22 @@
 					</f:facet>
 					<h:outputText value="#{parqueadero.servicio}" />
 				</p:column>
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Fidelizacion" />
-					</f:facet>
-					<h:outputText value="#{parqueadero.fidelizacion}" />
-				</p:column>
-				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Estado" />
 					</f:facet>
 					<h:outputText value="#{parqueadero.estado}" />
+				</p:column>	
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Latitud" />
+					</f:facet>
+					<h:outputText value="#{parqueadero.latitud}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Longitud" />
+					</f:facet>
+					<h:outputText value="#{parqueadero.longitud}" />
 				</p:column>	
 				<p:column>
 					<f:facet name="header">
