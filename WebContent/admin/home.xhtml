@@ -4,7 +4,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:a4j="http://pfaces.org/a4j" xmlns:p="http://primefaces.org/ui">
+	xmlns:a4j="http://pfaces.org/a4j"
+    xmlns:p="http://primefaces.org/ui">
     
         <ui:insert name="header">
 			<ui:include src="/template/common/header.xhtml"></ui:include>
@@ -17,9 +18,10 @@
 	<h:body>
 		<h:form>
 		<h:outputLabel>Sea bienvenido a la página de administración.</h:outputLabel>
+			
 		<br></br>
 		<br></br>
-		<h:outputLabel>Has inciado sesión a las:  </h:outputLabel><h:outputText value = "#{adminBean.horaFecha}"/>
+		<h:outputText value = "#{adminBean.horaFecha}"/>
 		<br></br>
 		<br></br>
 		
@@ -55,6 +57,13 @@
             <f:selectItem itemLabel="26. Vehiculo - consulta" itemValue="26" />
 
             </p:selectOneMenu>
+            
+		    <p:selectOneMenu id="opcionDos" value="#{adminBean.opcion}"  style="width:20em">
+
+				<f:selectItem itemLabel="1. Estadísticas" itemValue="28" />
+				<f:selectItem itemLabel="2. Reportes" itemValue="29" />
+
+			</p:selectOneMenu>            
             
             <h:commandButton value="ir" action = "#{adminBean.direccionar}" style="width:5em" />
 			
