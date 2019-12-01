@@ -26,6 +26,8 @@ public class Parqueadero implements Serializable {
 	private String correo;
 	@Column(name = "disponibilidad", nullable = false, length = 2)
 	private int disponibilidad;
+	@Column(name = "tipoParqueadero", nullable = false, length = 11)
+	private String tipoParqueadero;
 	@Column(name = "estado", nullable = false, length = 1)
 	private String estado;
 	@Column(name = "latitud", nullable = false, length = 20)
@@ -37,7 +39,7 @@ public class Parqueadero implements Serializable {
 	}
 
 	public Parqueadero(int id, int propietario, String nombreParqueadero, String ciudad, String correo,
-			int disponibilidad, String estado, double latitud, double longitud) {
+			int disponibilidad, String tipoParqueadero, String estado, double latitud, double longitud) {
 		super();
 		this.id = id;
 		this.propietario = propietario;
@@ -45,6 +47,7 @@ public class Parqueadero implements Serializable {
 		this.ciudad = ciudad;
 		this.correo = correo;
 		this.disponibilidad = disponibilidad;
+		this.tipoParqueadero = tipoParqueadero;
 		this.estado = estado;
 		this.latitud = latitud;
 		this.longitud = longitud;
@@ -104,6 +107,14 @@ public class Parqueadero implements Serializable {
 
 	public void setDisponibilidad(int disponibilidad) {
 		this.disponibilidad = disponibilidad;
+	}	
+	
+	public String getTipoParqueadero() {
+		return tipoParqueadero;
+	}
+
+	public void setTipoParqueadero(String tipoParqueadero) {
+		this.tipoParqueadero = tipoParqueadero;
 	}
 
 	public double getLatitud() {

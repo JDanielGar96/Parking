@@ -20,6 +20,7 @@ public class TarifaBean {
 	}
 	
 	public String prepararAdicionarTarifa() {
+		tarifa = new Tarifa();
 		tarifa.setEstado("A");
 		return "/admin/tarifa/adicion.xhtml?faces-redirect=true";
 	}

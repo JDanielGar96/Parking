@@ -28,7 +28,6 @@ public class MovimientoBean {
 	}
 	
 	public String crearMovimientoUsuario() {
-		this.movimiento = new Movimiento();
 		MovimientoDAOImpl dao = new MovimientoDAOImpl();
 		this.movimiento.setActivo("Activo");
 		this.movimiento.setFechaHoraReserva(new Date());
@@ -37,6 +36,7 @@ public class MovimientoBean {
 	}
 	
 	public String prepararAdicionarMovimiento() {
+		this.movimiento = new Movimiento();
 		movimiento.setActivo("A");
 		return "/admin/movimiento/adicion.xhtml?faces-redirect=true";
 	}

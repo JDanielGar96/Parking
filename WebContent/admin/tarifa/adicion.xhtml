@@ -22,22 +22,23 @@
 				<f:facet name="header">
 					<h:outputText value="Registro de Tarifa" />
 				</f:facet>
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{tarifaBean.tarifa.id}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Descripción de Cobro" />
 				<h:inputText value="#{tarifaBean.tarifa.descripcionTipoCobro}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Valor Tarifa" />
 				<h:inputText value="#{tarifaBean.tarifa.valorTarifa}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Descuento Tarifa" />
 				<h:inputText value="#{tarifaBean.tarifa.descuento}" />
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{tarifaBean.tarifa.estado}" />
+				<h:outputLabel value="Estado" />
+				<h:selectOneMenu value="#{tarifaBean.tarifa.estado}" >
+					<f:selectItem itemLabel="Activo" itemValue="A" />
+					<f:selectItem itemLabel="Inactivo" itemValue="I" />
+				</h:selectOneMenu>
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{tarifaBean.adicionarTarifa}"
 							value="Registrar" />
 			     <br></br>
-		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
+		         <p:link outcome="/admin/tarifa/consulta.xhtml" value="Regresar" />
 					</h:panelGroup>
 				</f:facet>
 			</h:panelGrid>

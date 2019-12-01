@@ -60,10 +60,11 @@
 				</p:column>
 				<p:column>
 					<f:facet name="header">
-						<h:outputText value="Servicio" />
+						<h:outputText value="Tipo Parqueadero" />
 					</f:facet>
-					<h:outputText value="#{parqueadero.servicio}" />
+					<h:outputText value="#{parqueadero.tipoParqueadero}" />
 				</p:column>
+				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Estado" />
 					</f:facet>
@@ -85,23 +86,19 @@
 					<f:facet name="header">
 						<h:outputText value="Modificar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.prepararModificarParqueadero}" value="Modificar"/>
-					</h:form>
+					<h:commandButton action="#{parqueaderoBean.prepararModificarParqueadero}" value="Modificar"/>
 				</p:column>
 				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Eliminar" />
 					</f:facet>
-					<h:form>
-						<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
-					</h:form>
+					<h:commandButton action="#{parqueaderoBean.eliminarParqueadero}" value="Eliminar"/>
 				</p:column>													
 			</p:dataTable>
-			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
-			
 			 <br></br>
-		     <p:link outcome="/admin/home.xhtml" value="Regresar" />
+			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
+			<br></br>
+		    <p:link outcome="/admin/home.xhtml" value="Regresar" />
 		</h:form>
 	</h:body>
 </html>

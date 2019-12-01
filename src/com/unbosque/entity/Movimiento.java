@@ -34,6 +34,8 @@ public class Movimiento implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaHoraSalida", nullable = false)
 	private Date fechaHoraSalida;
+	@Column(name = "Tiempo", nullable = false, length = 8)
+	private int tiempo;
 	@Column(name = "valorCobro", nullable = false, length = 8)
 	private int valorCobro;
 	@Column(name = "activo", nullable = false, length = 1)

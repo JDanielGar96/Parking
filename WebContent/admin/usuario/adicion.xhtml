@@ -23,8 +23,6 @@
 				<f:facet name="header">
 					<h:outputText value="Registro de Usuario" />
 				</f:facet>
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{usuarioBean.usuario.id}" />
 				<h:outputLabel value="Login" />
 				<h:inputText value="#{usuarioBean.usuario.login}" />
 				<h:outputLabel value="Clave" />
@@ -41,12 +39,19 @@
 				<h:inputText value="#{usuarioBean.usuario.direccion}" />
 				<h:outputLabel value="Fecha Password" />
 				<h:inputText value="#{usuarioBean.usuario.fechaUltimoPassword}" />
-				<h:outputLabel value="Activo" />
-				<h:inputText value="#{usuarioBean.usuario.activo}" />
 				<h:outputLabel value="Intentos" />
 				<h:inputText value="#{usuarioBean.usuario.intentos}" />
 				<h:outputLabel value="Tipo Usuario" />
-				<h:inputText value="#{usuarioBean.usuario.tipoUsuario}" />
+				<h:selectOneMenu value="#{usuarioBean.usuario.tipoUsuario}" >
+					<f:selectItem itemLabel="Admin" itemValue="ADMIN" />
+					<f:selectItem itemLabel="Propietario" itemValue="OWNER" />
+					<f:selectItem itemLabel="Cliente" itemValue="CLIENTE" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Estado" />
+				<h:selectOneMenu value="#{usuarioBean.usuario.activo}" >
+					<f:selectItem itemLabel="Activo" itemValue="A" />
+					<f:selectItem itemLabel="Inactivo" itemValue="I" />
+				</h:selectOneMenu>
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{usuarioBean.adicionarUsuario}"

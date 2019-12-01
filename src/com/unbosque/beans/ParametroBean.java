@@ -1,6 +1,7 @@
 package com.unbosque.beans;
 
 import com.unbosque.dao.impl.ParametroDAOImpl;
+import com.unbosque.entity.Empresa;
 import com.unbosque.entity.Parametro;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ParametroBean {
 	}
 	
 	public String prepararAdicionarParametro() {
+		parametro = new Parametro();
 		parametro.setEstado("A");
 		return "/admin/parametro/adicion.xhtml?faces-redirect=true";
 	}

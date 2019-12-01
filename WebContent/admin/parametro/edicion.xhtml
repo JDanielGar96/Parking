@@ -22,25 +22,26 @@
 				<f:facet name="header">
 					<h:outputText value="Registro de Parametro" />
 				</f:facet>
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{parametroBean.parametro.id}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Nombre" />
 				<h:inputText value="#{parametroBean.parametro.nombreParametro}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Descripción" />
 				<h:inputText value="#{parametroBean.parametro.descripcion}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Valor Cadena" />
 				<h:inputText value="#{parametroBean.parametro.valorTexto}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Valor Numerico" />
 				<h:inputText value="#{parametroBean.parametro.valorNumerico}" />
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{parametroBean.parametro.estado}" />
+				<h:outputLabel value="Estado" />
+				<h:selectOneMenu value="#{parametroBean.parametro.estado}">
+					<f:selectItem itemLabel="Activo" itemValue="A" />
+					<f:selectItem itemLabel="Inactivo" itemValue="F" />
+				</h:selectOneMenu>
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{parametroBean.modificarParametro}"
 							value="Modificar" />
 						<br />
-				 <br></br>
-		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
+                <br></br>
+		        <p:link outcome="/admin/parametro/consulta.xhtml" value="Regresar" />
 					</h:panelGroup>
 				</f:facet>
 			</h:panelGrid>

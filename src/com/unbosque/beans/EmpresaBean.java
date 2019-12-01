@@ -2,6 +2,7 @@ package com.unbosque.beans;
 
 import com.unbosque.dao.impl.EmpresaDAOImpl;
 import com.unbosque.entity.Empresa;
+import com.unbosque.entity.Usuario;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +21,7 @@ public class EmpresaBean {
 	}
 
 	public String prepararAdicionarEmpresa() {
+		empresa = new Empresa();
 		return "/admin/empresa/adicion.xhtml?faces-redirect=true";
 	}
 

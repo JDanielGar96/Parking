@@ -22,30 +22,35 @@
 				<f:facet name="header">
 					<h:outputText value="Registro de Usuario" />
 				</f:facet>
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{usuarioBean.usuario.id}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Login" />
 				<h:inputText value="#{usuarioBean.usuario.login}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Clave" />
 				<h:inputText value="#{usuarioBean.usuario.clave}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Tarjeta de Credito" />
 				<h:inputText value="#{usuarioBean.usuario.tcredito}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Apellidos y Nombres" />
 				<h:inputText value="#{usuarioBean.usuario.apellidosNombres}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Correo" />
 				<h:inputText value="#{usuarioBean.usuario.correo}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Celular" />
 				<h:inputText value="#{usuarioBean.usuario.celular}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Dirección" />
 				<h:inputText value="#{usuarioBean.usuario.direccion}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Fecha Password" />
 				<h:inputText value="#{usuarioBean.usuario.fechaUltimoPassword}" />
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{usuarioBean.usuario.activo}" />
-				<h:outputLabel value="Id" />
+				<h:outputLabel value="Intentos" />
 				<h:inputText value="#{usuarioBean.usuario.intentos}" />
-				<h:outputLabel value="Id" />
-				<h:inputText value="#{usuarioBean.usuario.tipoUsuario}" />
+				<h:outputLabel value="Tipo Usuario" />
+				<h:selectOneMenu value="#{usuarioBean.usuario.tipoUsuario}" >
+					<f:selectItem itemLabel="Admin" itemValue="ADMIN" />
+					<f:selectItem itemLabel="Propietario" itemValue="OWNER" />
+					<f:selectItem itemLabel="Cliente" itemValue="CLIENTE" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Estado" />
+				<h:selectOneMenu value="#{usuarioBean.usuario.activo}" >
+					<f:selectItem itemLabel="Activo" itemValue="A" />
+					<f:selectItem itemLabel="Inactivo" itemValue="I" />
+				</h:selectOneMenu>
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<h:commandButton action="#{usuarioBean.modificarUsuario}"

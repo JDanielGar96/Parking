@@ -26,6 +26,7 @@ public class ParqueaderoBean {
 	}
 	
 	public String prepararAdicionarParqueadero() {
+		parqueadero = new Parqueadero();
 		parqueadero.setEstado("A");
 		return "/admin/parqueadero/adicion.xhtml?faces-redirect=true";
 	}

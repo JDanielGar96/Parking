@@ -30,15 +30,21 @@
 			</p:column>
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Placa" />
+					<h:outputText value="login" />
 				</f:facet>
-				<h:outputText value="#{movimiento.placa}" />
+				<h:outputText value="#{movimiento.loginCliente}" />
 			</p:column>
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Tipo Parqueadero" />
+					<h:outputText value="Id Parqueadero" />
 				</f:facet>
-				<h:outputText value="#{movimiento.tipoParqueadero}" />
+				<h:outputText value="#{movimiento.parqueaderoId}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Placa" />
+				</f:facet>
+				<h:outputText value="#{movimiento.placa}" />
 			</p:column>
 			<p:column>
 				<f:facet name="header">
@@ -72,12 +78,6 @@
 			</p:column>
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Tipo Cobro" />
-				</f:facet>
-				<h:outputText value="#{movimiento.tipoCobro}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Activo" />
 				</f:facet>
 				<h:outputText value="#{movimiento.activo}" />
@@ -102,9 +102,6 @@
 				</h:form>
 			</p:column>
 		</p:dataTable>
-		<h:commandButton
-			action="#{movimientoBean.prepararAdicionarMovimiento}" value="Crear" />
-
 		<br></br>
 		<p:link outcome="/admin/home.xhtml" value="Regresar" />
 	</h:form>
