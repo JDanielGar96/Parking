@@ -26,4 +26,8 @@
 	        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
 	        <param-value>6LeEBsMUAAAAAFZ474uO0I1BW4TAB4aORM6946NJ</param-value>
 	</context-param>
+	<context-param>
+	   <param-name>primefaces.FONT_AWESOME</param-name>
+	   <param-value>true</param-value>
+	</context-param>
 </web-app>
