@@ -25,7 +25,6 @@ public class HibernateUtil {
 				ac.addAnnotatedClass(Parqueadero.class);
 				ac.addAnnotatedClass(Tarifa.class);
 				ac.addAnnotatedClass(Usuario.class);
-				ac.addAnnotatedClass(Vehiculo.class);
 				ac.addAnnotatedClass(Empresa.class);
 				sessionFactory = ac.configure().buildSessionFactory();
 
