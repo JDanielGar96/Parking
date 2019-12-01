@@ -9,9 +9,37 @@
 	<h:head>
 		<meta http-equiv="Content-Type"
 			content="text/html; charset=ISO-8859-1" />
-		<title>Home</title>
+		<title>Propietario</title>
 		<h:outputStylesheet library="css" name="general.css" />
 		<h:outputStylesheet library="css" name="header.css" />
+		<style>
+			body {
+				margin: 0;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			h1 {
+				text-align: center;
+			}
+			h2, h3 {
+				margin: 1em;
+			}
+			form div {
+			    display: flex;
+			    justify-content: left;
+			    align-items: center;
+			    flex-wrap: wrap;
+    		}
+    		.adm-button {
+			    align-items: center;
+				border: 2px solid #00b6de !important;
+				background-color: white !important; 
+    			display: flex;
+			    justify-content: space-evenly;
+    			height: 3em;
+    			margin: 2%;
+    			width: 20%;
+    		}
+		</style>
 	</h:head>
 
 
@@ -19,28 +47,14 @@
 		<ui:include src="/template/common/header.xhtml"></ui:include>
 	</ui:insert>
 	<h:body>
+		<h1>Bienvenido propietario.</h1>
 		<h:form>
-			<br></br>
-			<br></br>
-			<br></br>
-			<br></br>
-			<p:panel id="basic" header="Seleccione una opción" footer="Lista de opciones" style="margin-bottom:20px">
-				<h:panelGrid columns="2" cellpadding="10">
-				
-					<p:selectOneMenu id="opcion" value="#{ownerBean.opcion}"
-						style="width:20em">
-
-						<f:selectItem itemLabel="1. Mi cuenta parqueadero " itemValue="1" />
-						<f:selectItem itemLabel="2. Mirar mis movimientos" itemValue="2" />
-						<f:selectItem itemLabel="3. Gestionar reservas" itemValue="3" />
-
-					</p:selectOneMenu>
-					
-					<h:commandButton value="ir" action="#{ownerBean.direccionar}"
-						style="width:5em" />
-
-				</h:panelGrid>
-			</p:panel>
+			<h2>General:</h2>
+			<div>
+	            <p:linkButton styleClass="adm-button" value="Parqueaderos" icon="fa fa-map" outcome="/owner/parqueadero/edicion.xhtml"/>
+	            <p:linkButton styleClass="adm-button" value="Movimientos" icon="fa fa-ticket" outcome="/admin/movimiento/consulta.xhtml"/>
+	            <p:linkButton styleClass="adm-button" value="Reservas" icon="fa fa-wpforms" outcome="/admin/reserva/consulta.xhtml"/>
+			</div>
 		</h:form>
 	</h:body>
 </ui:composition>
