@@ -4,9 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
-	<h:form>
+	<h:form class="parking-class">
 		<p:dataTable id="tbmovimiento" var="movimiento"
-			value="#{movimientoBean.listarMovimiento}" style="width: 70%"
+			value="#{clienteBean.listaMovimientos}" style="width: 70%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
