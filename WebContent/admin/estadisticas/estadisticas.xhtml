@@ -16,14 +16,18 @@
 
 	<h:body>
 		<h:form>
-			<p:panel>
-				<p:barChart value="#{graftBean.grafModeloCart}" />
-			</p:panel>>
+
+			<p:fieldset legend="Bar Chart">
+				<p:chart type="bar" model="#{graficaBean.grafModeloBarMov}" style="height:300px" />
+			</p:fieldset>
+			
 			<br></br>
 			<br></br>
-			<p:chart type="bar" model="#{grafBean.grafModeloBar}" style="height:300px"/>
-            <br /><br />
-            <br /><br />
+
+			<p:fieldset legend="Bar Chart">
+				<p:chart type="bar" model="#{graficaBean.grafModeloBarUsu}" style="height:300px" />
+			</p:fieldset>
+
 		</h:form>
 	</h:body>
 </ui:composition>
