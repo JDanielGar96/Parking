@@ -63,6 +63,18 @@
 			</p:column>
 			<p:column>
 				<f:facet name="header">
+					<h:outputText value="Tiempo" />
+				</f:facet>
+				<h:outputText value="#{movimiento.tiempo}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{movimiento.valorCobro}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
 					<h:outputText value="Estado" />
 				</f:facet>
 				<h:outputText value="#{movimiento.activo}" />
@@ -71,13 +83,13 @@
 				<f:facet name="header">
 					<h:outputText value="Ingresar" />
 				</f:facet>
-				<h:commandButton action="#{clienteBean.ingresoVehiculo}" value="Ingresar" />
+				<h:commandButton action="#{movimientoBean.ingresoVehiculo}" value="Ingresar" />
 			</p:column>
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Salir" />
 				</f:facet>
-				<h:commandButton action="#{clienteBean.salidaVehiculo}" value="Salida" />
+				<h:commandButton action="#{movimientoBean.salidaVehiculo}" value="Salida" />
 			</p:column>
 		</p:dataTable>
 		<p:link outcome="/owner/home.xhtml" value="Regresar" />

@@ -1,10 +1,13 @@
 package com.unbosque.beans;
 
 import com.unbosque.dao.impl.MovimientoDAOImpl;
+import com.unbosque.dao.impl.ParqueaderoDAOImpl;
 import com.unbosque.entity.Movimiento;
+import com.unbosque.entity.Parqueadero;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,6 +18,7 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class MovimientoBean {
 	private Movimiento movimiento;
+	private Parqueadero parqueadero;
 	private DataModel listaMovimiento;
 	
 	public MovimientoBean() {
@@ -58,7 +62,38 @@ public class MovimientoBean {
 		return listaMovimiento;
 	}
 	
-//	ERM
+	public String ingresoVehiculo() {		
+		Movimiento movimientoTemp = (Movimiento) (listaMovimiento.getRowData());
+		MovimientoDAOImpl dao = new MovimientoDAOImpl();
+		if(movimientoTemp.getFechaHoraLlegada()== null) {
+			movimientoTemp.setFechaHoraLlegada(new Date());
+			movimientoTemp.setActivo("E");
+			dao.update(movimientoTemp);
+		}
+		return null;
+	}
+	
+	public String salidaVehiculo() {		
+		Movimiento movimientoTemp = (Movimiento) (listaMovimiento.getRowData());
+		MovimientoDAOImpl dao = new MovimientoDAOImpl();
+		movimientoTemp.setFechaHoraSalida(new Date());
+		movimientoTemp.setActivo("I");
+		long sal=movimientoTemp.getFechaHoraSalida().getTime();
+		long res=movimientoTemp.getFechaHoraReserva().getTime();
+		long resta= (sal-res);
+		int minutes = (int) TimeUnit.MILLISECONDS.toMinutes(resta);
+		movimientoTemp.setValorCobro(minutes*60);
+		movimientoTemp.setTiempo(minutes);
+		dao.update(movimientoTemp);
+		System.out.println("Hola mundo PPPPPP");
+		
+		ParqueaderoDAOImpl implementacionParq = new ParqueaderoDAOImpl();
+		Object parqueaderoObj = new ParqueaderoDAOImpl().get(movimientoTemp.getParqueaderoId());
+		parqueadero=(Parqueadero) parqueaderoObj;
+		parqueadero.sumarDisponibilidad();
+		implementacionParq.update(parqueadero);
+		return null;
+	}
 	
 	public Movimiento getMovimiento(int id) {
 		MovimientoDAOImpl dao = new MovimientoDAOImpl();

@@ -30,6 +30,7 @@ public class ParqueaderoDAOImpl implements DaoParqueadero {
 	@Override
 	public Object get(int id) {
 		try {			
+			Object obj = new Object();
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Parqueadero object = (Parqueadero) session.load(Parqueadero.class, id);
 			System.out.println(object == null);

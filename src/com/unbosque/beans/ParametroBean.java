@@ -1,7 +1,6 @@
 package com.unbosque.beans;
 
 import com.unbosque.dao.impl.ParametroDAOImpl;
-import com.unbosque.entity.Empresa;
 import com.unbosque.entity.Parametro;
 
 import java.util.List;
