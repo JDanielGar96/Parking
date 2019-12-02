@@ -158,7 +158,7 @@ public class UsuarioDAOImpl implements DaoUser {
 	        		// Send User!! 
 	        		String content = "<!DOCTYPE html><html><body>"
 	        				+ "<h1>Cliente de Sophyparking:</h1>"
-	        				+ "<p>Tu cuenta se bloqueo por razones de seguridad, razon: <b> Contraseña incorrecta multiples veces </b>"
+	        				+ "<p>Tu cuenta se bloqueo por razones de seguridad, razon: <b> Contraseï¿½a incorrecta multiples veces </b>"
 	        				+ "</body></html>";
 	        		email.sendEmail(recipesList, "Alerta de seguridad SophyParking", content);
 	        		
@@ -168,7 +168,7 @@ public class UsuarioDAOImpl implements DaoUser {
 	        		
 	        		content = "<!DOCTYPE html><html><body>"
 	        				+ "<h1>Admin de Sophyparking:</h1>"
-	        				+ "<p>La cuenta del cliente con usuario " + user.getLogin() + " se bloqueo por razones de seguridad, razon: <b> Contraseña incorrecta multiples veces </b>"
+	        				+ "<p>La cuenta del cliente con usuario " + user.getLogin() + " se bloqueo por razones de seguridad, razon: <b> Contraseï¿½a incorrecta multiples veces </b>"
 	        				+ "</body></html>";
 	        		email.sendEmail(recipesList, "Alerta de seguridad SophyParking", content);
 				}
