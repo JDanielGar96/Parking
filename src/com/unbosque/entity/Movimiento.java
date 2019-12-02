@@ -44,15 +44,17 @@ public class Movimiento implements Serializable {
 	public Movimiento() {
 	}
 
-	public Movimiento(int id, int parqueaderoId, String placa, Date fechaHoraReserva, Date fechaHoraLlegada,
-			Date fechaHoraSalida, int valorCobro, String activo) {
+	public Movimiento(int id, String loginCliente, int parqueaderoId, String placa, Date fechaHoraReserva, Date fechaHoraLlegada,
+			Date fechaHoraSalida, int tiempo, int valorCobro, String activo) {
 		super();
 		this.id = id;
+		this.loginCliente = loginCliente;
 		this.parqueaderoId = parqueaderoId;
 		this.placa = placa;
 		this.fechaHoraReserva = fechaHoraReserva;
 		this.fechaHoraLlegada = fechaHoraLlegada;
 		this.fechaHoraSalida = fechaHoraSalida;
+		this.tiempo = tiempo;
 		this.valorCobro = valorCobro;
 		this.activo = activo;
 	}
@@ -111,6 +113,14 @@ public class Movimiento implements Serializable {
 
 	public void setFechaHoraSalida(Date fechaHoraSalida) {
 		this.fechaHoraSalida = fechaHoraSalida;
+	}
+	
+	public int getTiempo() {
+		return this.tiempo;
+	}
+	
+	public void setTiempo(int tiempo) {
+		this.tiempo = tiempo;
 	}
 
 	public int getValorCobro() {
