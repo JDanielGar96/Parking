@@ -10,11 +10,12 @@
 
 	<h:head>
 		<title>Gestión de Parqueaderos</title>
+		<h:outputStylesheet library="css" name="forms.css"  />
 	</h:head>
 	<h:body>
 		<h:form>
 			<p:dataTable id="tbusuario" var="usuario"
-			value="#{usuarioBean.listarUsuario}" style="width: 70%"
+			value="#{usuarioBean.listarUsuario}" style="width: 90%"
 			emptyMessage="No hay registros disponibles" paginator="true"
 			rows="10" paginatorPosition="top"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -107,7 +108,7 @@
 					<h:commandButton action="#{usuarioBean.eliminarUsuario}" value="Eliminar"/>
 				</p:column>													
 			</p:dataTable>
-			<h:commandButton action="#{usuarioBean.prepararAdicionarUsuario}" value="Crear"/>
+			<h:commandButton styleClass="button" action="#{usuarioBean.prepararAdicionarUsuario}" value="Crear"/>
 			
 				 <br></br>
 		         <p:link outcome="/admin/home.xhtml" value="Regresar" />

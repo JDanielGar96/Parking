@@ -42,26 +42,26 @@
 			<ui:include src="/template/common/header.xhtml"></ui:include>
 		</ui:insert>
 		<h3 style="float: right">#{adminBean.horaFecha}</h3>
-		<h1>Bienvenido a la p�gina de administraci�n.</h1>
+		<h1>Bienvenido a la pagina de administracion.</h1>
 		<h:form>
 			<h2>General:</h2>
 			<div>
-				<p:linkButton styleClass="adm-button" value="Usuario" icon="fa fa-user" outcome="/admin/usuario/consulta.xhtml"/>
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/usuario/consulta.xhtml">Usuario</h:outputLink> 
 			</div>
 			<div>
-	            <p:linkButton styleClass="adm-button" value="Parqueadero" icon="fa fa-map" outcome="/admin/parqueadero/consulta.xhtml"/>
-	            <p:linkButton styleClass="adm-button" value="Movimiento" icon="fa fa-ticket" outcome="/admin/movimiento/consulta.xhtml"/>
-	            <p:linkButton styleClass="adm-button" value="Tarifa" icon="fa fa-wpforms" outcome="/admin/tarifa/consulta.xhtml"/>
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/parqueadero/consulta.xhtml">Parqueadero</h:outputLink> 
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/movimiento/consulta.xhtml">Movimiento</h:outputLink> 
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/tarifa/consulta.xhtml">Tarifa</h:outputLink> 
 			</div>
 			<div>
-	            <p:linkButton styleClass="adm-button" value="Estad�sticas" icon="fa fa-bar-chart" outcome="/index.xhtml"/>
-	            <p:linkButton styleClass="adm-button" value="Reportes" icon="fa fa-book" outcome="/index.xhtml"/>
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/parqueadero/consulta.xhtml">Estadisticas</h:outputLink> 
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/movimiento/consulta.xhtml">Reportes</h:outputLink> 
 			</div>
 			<h2>Otros:</h2>
             <div>
-	            <p:linkButton styleClass="adm-button" value="Parametro" outcome="/admin/parametro/consulta.xhtml"/>
-				<p:linkButton styleClass="adm-button" value="Empresa" outcome="/admin/empresa/consulta.xhtml"/>
-				<p:linkButton styleClass="adm-button" value="Auditoria" outcome="/admin/auditoria/consulta.xhtml"/>
+        		<h:outputLink styleClass="adm-button" value="/SophyParking/admin/parametro/consulta.xhtml">Parametro</h:outputLink> 
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/empresa/consulta.xhtml">Empresa</h:outputLink> 
+				<h:outputLink styleClass="adm-button" value="/SophyParking/admin/auditoria/consulta.xhtml">Auditoria</h:outputLink> 
             </div>
 		</h:form>
 	</h:body>
