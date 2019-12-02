@@ -76,22 +76,24 @@ public class MovimientoBean {
 	public String salidaVehiculo() {		
 		Movimiento movimientoTemp = (Movimiento) (listaMovimiento.getRowData());
 		MovimientoDAOImpl dao = new MovimientoDAOImpl();
-		movimientoTemp.setFechaHoraSalida(new Date());
-		movimientoTemp.setActivo("I");
-		long sal=movimientoTemp.getFechaHoraSalida().getTime();
-		long res=movimientoTemp.getFechaHoraReserva().getTime();
-		long resta= (sal-res);
-		int minutes = (int) TimeUnit.MILLISECONDS.toMinutes(resta);
-		movimientoTemp.setValorCobro(minutes*60);
-		movimientoTemp.setTiempo(minutes);
-		dao.update(movimientoTemp);
-		System.out.println("Hola mundo PPPPPP");
-		
-		ParqueaderoDAOImpl implementacionParq = new ParqueaderoDAOImpl();
-		Object parqueaderoObj = new ParqueaderoDAOImpl().get(movimientoTemp.getParqueaderoId());
-		parqueadero=(Parqueadero) parqueaderoObj;
-		parqueadero.sumarDisponibilidad();
-		implementacionParq.update(parqueadero);
+		if(movimientoTemp.getFechaHoraSalida()== null) {
+			movimientoTemp.setFechaHoraSalida(new Date());
+			movimientoTemp.setActivo("I");
+			long sal=movimientoTemp.getFechaHoraSalida().getTime();
+			long res=movimientoTemp.getFechaHoraReserva().getTime();
+			long resta= (sal-res);
+			int minutes = (int) TimeUnit.MILLISECONDS.toMinutes(resta);
+			movimientoTemp.setValorCobro(minutes*60);
+			movimientoTemp.setTiempo(minutes);
+			dao.update(movimientoTemp);
+			System.out.println("Hola mundo PPPPPP");
+			
+			ParqueaderoDAOImpl implementacionParq = new ParqueaderoDAOImpl();
+			Object parqueaderoObj = new ParqueaderoDAOImpl().get(movimientoTemp.getParqueaderoId());
+			parqueadero=(Parqueadero) parqueaderoObj;
+			parqueadero.sumarDisponibilidad();
+			implementacionParq.updateAvaliability(parqueadero.getId(), parqueadero.getDisponibilidad());
+		}
 		return null;
 	}
 	
