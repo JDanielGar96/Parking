@@ -53,6 +53,7 @@ public class ClienteBean {
 	
 	public String iniciarMovimientoMapa(Parqueadero parqueadero) {
 		this.parqueadero = parqueadero;
+		System.out.println(this.parqueadero.getCorreo());
 		movimiento = new Movimiento();
 		return "/client/movimiento/crear.xhtml?faces-redirect=true";
 	}
@@ -61,6 +62,11 @@ public class ClienteBean {
 		MovimientoDAOImpl implementacionMov = new MovimientoDAOImpl();
 		ParqueaderoDAOImpl implementacionParq = new ParqueaderoDAOImpl();
 		
+		parqueadero.restarDisponibilidad();
+		
+		int disponibilidad = parqueadero.getDisponibilidad();
+		int idParqueadero = parqueadero.getId();
+	
         HttpSession session = Util.getSession();
         
         String login = (String) session.getAttribute("userName");
@@ -68,13 +74,14 @@ public class ClienteBean {
         Date date = new Date();
 		
 		movimiento.setLoginClient(login);
+		movimiento.setTiempo(0);
 		movimiento.setParqueaderoId(parqueadero.getId());
 		movimiento.setFechaHoraReserva(date);
 		movimiento.setActivo("A");
+		
 		implementacionMov.save(movimiento);
 		
-		parqueadero.restarDisponibilidad();
-		implementacionParq.update(parqueadero);
+		implementacionParq.updateAvaliability(idParqueadero, disponibilidad);
 		
 		return "/client/home.xhtml?faces-redirect=true";
 	}
@@ -99,7 +106,7 @@ public class ClienteBean {
 		return listaMovimiento;
 	}
 	
-//	Gestión de Parqueadero Owner
+//	Gestion de Parqueadero Owner
 	
 	public String ingresoVehiculo() {		
 		Movimiento movimientoTemp = (Movimiento) (listaMovimiento.getRowData());
@@ -131,7 +138,7 @@ public class ClienteBean {
 		return null;
 	}
 	
-//	Termina Gestión de Parqueadero Owner
+//	Termina Gestiï¿½n de Parqueadero Owner
 	
 	
 

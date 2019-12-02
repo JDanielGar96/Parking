@@ -2,10 +2,12 @@ package com.unbosque.dao.impl;
 
 import com.unbosque.dao.DaoParqueadero;
 import com.unbosque.util.HibernateUtil;
+import com.unbosque.entity.Movimiento;
 import com.unbosque.entity.Parqueadero;
-import com.unbosque.entity.Usuario;
 
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -29,7 +31,6 @@ public class ParqueaderoDAOImpl implements DaoParqueadero {
 	public Object get(int id) {
 		try {			
 			Session session = HibernateUtil.getSessionFactory().openSession();
-			System.out.println("Id:" + id);
 			Parqueadero object = (Parqueadero) session.load(Parqueadero.class, id);
 			System.out.println(object == null);
 			return object;
@@ -81,6 +82,28 @@ public class ParqueaderoDAOImpl implements DaoParqueadero {
 			Transaction transaction = session.beginTransaction();
 			Parqueadero updatedObject = (Parqueadero) object;
 			session.update(updatedObject);
+			transaction.commit();
+		} catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean updateAvaliability(int id, int disponibilidad) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			Query query = session.createSQLQuery("SELECT * FROM Parqueadero "
+							+ "WHERE id = :id").addEntity(Parqueadero.class);
+			Parqueadero parqueadero = (Parqueadero) query.setInteger("id", id)
+					.uniqueResult();
+			
+			parqueadero.setDisponibilidad(disponibilidad);
+			
+			session.update(parqueadero);
+			
 			transaction.commit();
 		} catch(Exception e) {
 			return false;
