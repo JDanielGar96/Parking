@@ -70,13 +70,13 @@
 				<f:facet name="header">
 					<h:outputText value="Ingresar" />
 				</f:facet>
-				<h:commandButton action="#{movimientoBean.ingresoVehiculo}" value="Ingresar" />
+				<h:commandButton action="#{clienteBean.ingresoVehiculo}" value="Ingresar" />
 			</p:column>
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Salir" />
 				</f:facet>
-				<h:commandButton action="#{movimientoBean.salidaVehiculo}" value="Salida" />
+				<h:commandButton action="#{clienteBean.salidaVehiculo}" value="Salida" />
 			</p:column>
 		</p:dataTable>
 		<p:link outcome="/owner/home.xhtml" value="Regresar" />
