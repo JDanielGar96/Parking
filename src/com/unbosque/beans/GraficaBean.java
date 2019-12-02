@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.primefaces.model.chart.Axis;
@@ -12,23 +11,21 @@ import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.BarChartSeries;
 import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.component.chart.ChartRenderer;
-
 import com.unbosque.dao.impl.MovimientoDAOImpl;
 import com.unbosque.dao.impl.UsuarioDAOImpl;
 import com.unbosque.entity.Movimiento;
 import com.unbosque.entity.Usuario;
 
 @ManagedBean(name = "graficaBean")
-@ApplicationScoped
+@RequestScoped
 public class GraficaBean {
 
 	private BarChartModel grafModeloBarMov;
 	private BarChartModel grafModeloBarUsu;
-	private ChartSeries serieCart;
-	private BarChartSeries serieBar;
-	private List<Movimiento> mLista;
-	private List<Usuario> uLista;
+	private ChartSeries serieBarMovimientos;
+	private BarChartSeries serieBarUsuarios;
+	private List <Movimiento>mLista;
+	private List <Usuario>uLista;
 	private MovimientoDAOImpl movimiento;
 	private UsuarioDAOImpl usuario;
 
@@ -36,21 +33,22 @@ public class GraficaBean {
 		System.out.println("Holaaaaa");
 		grafModeloBarMov = new BarChartModel();
 		grafModeloBarUsu = new BarChartModel();
-		inicializarSerieCart();
-		inicializarSerieBar();
+		inicializarSerieBarMov();
+		inicializarSerieBarUsu();
 		inicializarModeloCartDeMovimiento();
 		inicializarModeloBarDeUsuario();
 	}
 
 	@SuppressWarnings("unchecked")
-	private void inicializarSerieCart() {
-		serieCart = new ChartSeries();
+	private void inicializarSerieBarMov() {
+		serieBarMovimientos = new ChartSeries();
 		movimiento = new MovimientoDAOImpl();
 		mLista = (List<Movimiento>) (Object) movimiento.list();
+		System.out.println(mLista);
 		Map<Object, Number> mapaCart = new HashMap<>();
 		for (Movimiento m : mLista) {
 			mapaCart.put(m.getLoginCliente(), m.getValorCobro());
-			serieCart.setData(mapaCart);
+			serieBarMovimientos.setData(mapaCart);
 		}
 	}
 
@@ -64,19 +62,19 @@ public class GraficaBean {
 	private void inicializarModeloCartDeMovimiento() {
 		grafModeloBarMov= new BarChartModel();
 		setAxisCartInfo();
-		grafModeloBarMov.addSeries(serieCart);
+		grafModeloBarMov.addSeries(serieBarMovimientos);
 	}
 
 	@SuppressWarnings("unchecked")
-	private void inicializarSerieBar() {
-		serieBar = new BarChartSeries();
+	private void inicializarSerieBarUsu() {
+		serieBarUsuarios = new BarChartSeries();
 		usuario = new UsuarioDAOImpl();
 		uLista = (List<Usuario>) (Object) usuario.list();
 		Map<Object, Number> mapaBar = new HashMap<>();
 
 		for (Usuario u : uLista) {
 			mapaBar.put(u.getApellidosNombres(), u.getIntentos());
-			serieBar.setData(mapaBar);
+			serieBarUsuarios.setData(mapaBar);
 		}
 	}
 
@@ -90,7 +88,7 @@ public class GraficaBean {
 	private void inicializarModeloBarDeUsuario() {
 		grafModeloBarUsu = new BarChartModel();
 		setAxisBarInfo();
-		grafModeloBarUsu.addSeries(serieBar);
+		grafModeloBarUsu.addSeries(serieBarUsuarios);
 		grafModeloBarUsu.setSeriesColors("FF0000");
 		grafModeloBarUsu.setShowPointLabels(true);
 	}
@@ -111,6 +109,54 @@ public class GraficaBean {
 		this.grafModeloBarUsu = grafModeloBarUsu;
 	}
 
+	public ChartSeries getSerieBarMovimientos() {
+		return serieBarMovimientos;
+	}
+
+	public void setSerieBarMovimientos(ChartSeries serieBarMovimientos) {
+		this.serieBarMovimientos = serieBarMovimientos;
+	}
+
+	public BarChartSeries getSerieBarUsuarios() {
+		return serieBarUsuarios;
+	}
+
+	public void setSerieBarUsuarios(BarChartSeries serieBarUsuarios) {
+		this.serieBarUsuarios = serieBarUsuarios;
+	}
+
+	public List<Movimiento> getmLista() {
+		return mLista;
+	}
+
+	public void setmLista(List<Movimiento> mLista) {
+		this.mLista = mLista;
+	}
+
+	public List<Usuario> getuLista() {
+		return uLista;
+	}
+
+	public void setuLista(List<Usuario> uLista) {
+		this.uLista = uLista;
+	}
+
+	public MovimientoDAOImpl getMovimiento() {
+		return movimiento;
+	}
+
+	public void setMovimiento(MovimientoDAOImpl movimiento) {
+		this.movimiento = movimiento;
+	}
+
+	public UsuarioDAOImpl getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioDAOImpl usuario) {
+		this.usuario = usuario;
+	}
+	
 	
 	
 }
