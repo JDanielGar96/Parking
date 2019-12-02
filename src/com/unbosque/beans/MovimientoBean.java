@@ -1,21 +1,15 @@
 package com.unbosque.beans;
 
 import com.unbosque.dao.impl.MovimientoDAOImpl;
-import com.unbosque.entity.Empresa;
 import com.unbosque.entity.Movimiento;
-import com.unbosque.entity.Parqueadero;
-import com.unbosque.entity.Usuario;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.mail.Session;
 
 @ManagedBean
 @SessionScoped
