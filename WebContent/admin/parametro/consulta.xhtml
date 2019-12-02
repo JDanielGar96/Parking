@@ -10,6 +10,7 @@
 
 <h:head>
 	<title>Gestión de Parametros</title>
+	<h:outputStylesheet library="css" name="forms.css"  />
 </h:head>
 <h:body>
 	<h:form>
@@ -76,7 +77,7 @@
 		</p:dataTable>
 		<br></br>
 		<h:commandButton action="#{parametroBean.prepararAdicionarParametro}"
-			value="Crear" />
+			value="Crear" styleClass="button" />
 		<br></br>
 		<p:link outcome="/admin/home.xhtml" value="Regresar" />
 	</h:form>

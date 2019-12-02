@@ -10,6 +10,7 @@
 
 	<h:head>
 		<title>Gestión de Parqueaderos</title>
+		<h:outputStylesheet library="css" name="forms.css"  />
 	</h:head>
 	<h:body>
 		<h:form>
@@ -96,7 +97,7 @@
 				</p:column>													
 			</p:dataTable>
 			 <br></br>
-			<h:commandButton action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
+			<h:commandButton styleClass="button" action="#{parqueaderoBean.prepararAdicionarParqueadero}" value="Crear"/>
 			<br></br>
 		    <p:link outcome="/admin/home.xhtml" value="Regresar" />
 		</h:form>

@@ -10,6 +10,7 @@
 
 	<h:head>
 		<title>Gestión de Parqueaderos</title>
+		<h:outputStylesheet library="css" name="forms.css"  />
 	</h:head>
 	<h:body>
 		<h:form>
@@ -65,7 +66,7 @@
 					<h:commandButton action="#{tarifaBean.eliminarTarifa}" value="Eliminar"/>
 				</p:column>													
 			</p:dataTable>
-			<h:commandButton action="#{tarifaBean.prepararAdicionarTarifa}" value="Crear"/>
+			<h:commandButton styleClass="button" action="#{tarifaBean.prepararAdicionarTarifa}" value="Crear"/>
 			
 				 <br></br>
 		         <p:link outcome="/admin/home.xhtml" value="Regresar" />
